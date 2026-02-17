@@ -14,12 +14,12 @@ export function GlobalNav() {
   const isHomeActive = pathname === "/";
 
   return (
-    <nav className="border-b border-slate-200 py-5">
+    <nav className="border-b border-slate-200 py-4">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <Link
           href="/"
           className={`text-sm font-semibold text-slate-900 hover:text-slate-900 ${
-            isHomeActive ? "underline" : ""
+            isHomeActive ? "underline" : "no-underline"
           }`}
         >
           Returning Home
@@ -34,7 +34,7 @@ export function GlobalNav() {
                 className={`text-sm ${
                   isActive
                     ? "font-medium text-slate-900 underline"
-                    : "text-slate-600 hover:text-slate-900"
+                    : "text-slate-500 hover:text-slate-900"
                 }`}
               >
                 {link.label}
