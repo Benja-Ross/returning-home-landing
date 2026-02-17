@@ -5,11 +5,12 @@ import { Hero } from "@/components/landing/Hero";
 import { PathCard } from "@/components/landing/PathCard";
 import { Section } from "@/components/landing/Section";
 import { TestimonialCard } from "@/components/landing/TestimonialCard";
+import { PageLayout } from "@/components/layout/PageLayout";
 import { landingContent } from "@/content/landing";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-slate-900">
+    <PageLayout>
       {/* Hero */}
       <Hero />
 
@@ -98,6 +99,6 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
-    </main>
+    </PageLayout>
   );
 }

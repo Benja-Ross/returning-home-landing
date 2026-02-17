@@ -1,28 +1,16 @@
 import Link from "next/link";
 
 import { Section } from "@/components/landing/Section";
+import { PageLayout } from "@/components/layout/PageLayout";
 
 export default function MissionAndMethodPage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900">
-      <Section innerClassName="mx-auto max-w-5xl px-6 py-10">
-        <div className="mb-6">
-          <Link href="/" className="text-sm text-slate-600 hover:text-slate-900">
-            ← Back home
-          </Link>
-        </div>
-
-        <header className="max-w-2xl">
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            Mission and Method
-          </h1>
-          <p className="mt-4 text-base leading-relaxed text-slate-700">
-            Returning Home is a practice for strengthening human ecology and belonging in specific places. It
-            supports people in seeing their shared context more clearly and moving with steadier, grounded care.
-          </p>
-        </header>
-      </Section>
-
+    <PageLayout
+      backHref="/"
+      backLabel="← Back home"
+      title="Mission and Method"
+      subtitle="Returning Home is a practice for strengthening human ecology and belonging in specific places. It supports people in seeing their shared context more clearly and moving with steadier, grounded care."
+    >
       <Section>
         <div className="max-w-3xl">
           <h2 className="text-xl font-semibold text-slate-900">The three-chapter arc</h2>
@@ -97,7 +85,7 @@ export default function MissionAndMethodPage() {
           </Link>
         </div>
       </Section>
-    </main>
+    </PageLayout>
   );
 }
 

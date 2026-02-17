@@ -1,26 +1,16 @@
 import Link from "next/link";
 
 import { Section } from "@/components/landing/Section";
+import { PageLayout } from "@/components/layout/PageLayout";
 
 export default function BeginPage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900">
-      <Section innerClassName="mx-auto max-w-5xl px-6 py-10">
-        <div className="mb-6 flex items-center justify-between gap-4">
-          <Link href="/" className="text-sm text-slate-600 hover:text-slate-900">
-            ← Back home
-          </Link>
-        </div>
-
-        <header className="max-w-2xl">
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Begin</h1>
-          <p className="mt-4 text-base leading-relaxed text-slate-700">
-            You can begin gently, at your own pace. This page will guide you into the first movements of the practice
-            and offer a simple way to notice where you are in relation to your place.
-          </p>
-        </header>
-      </Section>
-
+    <PageLayout
+      backHref="/"
+      backLabel="← Back home"
+      title="Begin"
+      subtitle="You can begin gently, at your own pace. This page will guide you into the first movements of the practice and offer a simple way to notice where you are in relation to your place."
+    >
       <Section>
         <div className="max-w-3xl space-y-8">
           <section>
@@ -60,7 +50,7 @@ export default function BeginPage() {
           </section>
         </div>
       </Section>
-    </main>
+    </PageLayout>
   );
 }
 
