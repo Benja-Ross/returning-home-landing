@@ -1,4 +1,5 @@
 import { ChapterCard } from "@/components/landing/ChapterCard";
+import { ChapterArc } from "@/components/landing/ChapterArc";
 import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Footer } from "@/components/landing/Footer";
 import { Hero } from "@/components/landing/Hero";
@@ -50,12 +51,7 @@ export default function Home() {
       {/* 3 chapters */}
       <Section>
         <h2 className="text-2xl font-semibold">{landingContent.chapters.title}</h2>
-
-        <div className="mt-10 grid gap-6 sm:grid-cols-3">
-          {landingContent.chapters.cards.map((card) => (
-            <ChapterCard key={card.number} number={card.number} title={card.title} body={card.body} />
-          ))}
-        </div>
+        <ChapterArc chapters={landingContent.chapters.cards} />
       </Section>
 
       {/* Shifts */}
