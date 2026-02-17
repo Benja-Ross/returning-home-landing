@@ -2,7 +2,7 @@ import { ChapterCard } from "@/components/landing/ChapterCard";
 
 type Chapter = { number: string; title: string; body: string };
 
-function ArcNode(props: { chapter: Chapter; align: "left" | "center" | "right" }) {
+function ArcNode(props: { chapter: Chapter; align: "left" | "center" | "right"; emphasized?: boolean }) {
   const alignClasses =
     props.align === "left"
       ? "text-left"
@@ -13,13 +13,20 @@ function ArcNode(props: { chapter: Chapter; align: "left" | "center" | "right" }
   return (
     <div
       className={[
-        "w-[15rem] rounded-2xl border border-slate-200 bg-white p-5",
-        "sm:w-[16rem] md:w-[17rem]",
+        // Keep typography the same; reduce widths at smaller desktop sizes to prevent overlap.
+        "w-[12rem] rounded-xl border bg-white p-5 shadow-sm",
+        props.emphasized ? "border-slate-300/70" : "border-slate-200/60",
+        "md:w-[14rem] lg:w-[16rem] xl:w-[17rem]",
         alignClasses,
       ].join(" ")}
     >
       <div className={["flex items-start gap-3", props.align === "right" ? "justify-end" : ""].join(" ")}>
-        <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-slate-900 text-xs font-semibold text-white">
+        <div
+          className={[
+            "flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-xs font-semibold text-white",
+            props.emphasized ? "bg-slate-950" : "bg-slate-900",
+          ].join(" ")}
+        >
           {props.chapter.number}
         </div>
         <div className={["min-w-0", props.align === "right" ? "text-right" : ""].join(" ")}>
@@ -45,38 +52,42 @@ export function ChapterArc(props: { chapters: readonly Chapter[]; className?: st
 
       {/* Desktop: arc + nodes */}
       <div className="relative mt-10 hidden sm:block">
-        <div className="relative h-[320px] w-full md:h-[360px]">
+        <div className="relative h-[380px] w-full md:h-[420px]">
           <svg
             aria-hidden="true"
             className="absolute inset-0 h-full w-full"
-            viewBox="0 0 1000 360"
+            viewBox="0 0 1000 420"
             preserveAspectRatio="none"
           >
+            <defs>
+              <linearGradient id="chapterArcGradient" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="rgb(226 232 240)" stopOpacity="0.15" />
+                <stop offset="50%" stopColor="rgb(226 232 240)" stopOpacity="0.7" />
+                <stop offset="100%" stopColor="rgb(226 232 240)" stopOpacity="0.15" />
+              </linearGradient>
+            </defs>
             <path
-              d="M 60 280 C 320 70 680 70 940 280"
+              d="M 60 330 C 320 90 680 90 940 330"
               fill="none"
-              stroke="rgb(226 232 240)"
-              strokeWidth="2"
+              stroke="url(#chapterArcGradient)"
+              strokeWidth="1.5"
               vectorEffect="non-scaling-stroke"
             />
           </svg>
 
           {/* Nodes positioned along the arc */}
           <div
-            className="absolute left-[4%] top-[72%] z-10 -translate-y-1/2"
-            style={{ transform: "translate(0, -50%)" }}
+            className="absolute left-[2%] top-[78%] z-10 -translate-y-1/2"
           >
             {chapters[0] && <ArcNode chapter={chapters[0]} align="left" />}
           </div>
           <div
-            className="absolute left-1/2 top-[10%] z-10 -translate-x-1/2"
-            style={{ transform: "translate(-50%, 0)" }}
+            className="absolute left-1/2 top-[4%] z-10 -translate-x-1/2"
           >
-            {chapters[1] && <ArcNode chapter={chapters[1]} align="center" />}
+            {chapters[1] && <ArcNode chapter={chapters[1]} align="center" emphasized />}
           </div>
           <div
-            className="absolute left-[96%] top-[72%] z-10 -translate-x-full -translate-y-1/2"
-            style={{ transform: "translate(-100%, -50%)" }}
+            className="absolute right-[2%] top-[78%] z-10 -translate-y-1/2"
           >
             {chapters[2] && <ArcNode chapter={chapters[2]} align="right" />}
           </div>
