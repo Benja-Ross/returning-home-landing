@@ -5,8 +5,8 @@ export const landingContent = {
     title: "A participatory practice for strengthening belonging and human ecology.",
     body:
       "Returning Home is a guided, three-chapter journey that helps individuals and communities rediscover connection to place, deepen shared understanding, and move toward regenerative action together.",
-    primaryCta: { href: "#start", label: "Begin the Journey" },
-    secondaryCta: { href: "#how", label: "Learn how it works →" },
+    primaryCta: { href: "/begin", label: "Begin the Journey" },
+    secondaryCta: { href: "/mission-and-method", label: "Learn how it works →" },
     cards: [
       { title: "Coherence over conversion", text: "A clarity hub, not a pressure funnel." },
       { title: "Dignified, grounded tone", text: "Calm, intelligent, structured." },
@@ -114,7 +114,7 @@ export const landingContent = {
     id: "start",
     title: "Start with Chapter 1",
     body: "Take the short Returning Home Assessment and begin the first chapter at your own pace.",
-    primaryCta: { href: "#", label: "Begin Chapter 1" },
+    primaryCta: { href: "/begin", label: "Begin Chapter 1" },
     secondaryCta: { href: "#", label: "Download overview PDF →" },
   },
   footer: {
