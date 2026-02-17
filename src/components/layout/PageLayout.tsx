@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 
+import { GlobalNav } from "./GlobalNav";
+
 function PageHeader(props: { eyebrow?: string; title?: string; subtitle?: string }) {
   return (
     <header className="max-w-3xl mb-12">
@@ -32,23 +34,26 @@ export function PageLayout(props: {
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
-      {hasHeader && (
-        <div className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
-          {props.backHref && (
-            <div className="mb-4">
-              <Link
-                href={props.backHref}
-                className="text-sm text-slate-600 hover:text-slate-900"
-              >
-                {props.backLabel ?? "← Back"}
-              </Link>
-            </div>
-          )}
-          {props.title && (
-            <PageHeader title={props.title} subtitle={props.subtitle} />
-          )}
-        </div>
-      )}
+      <div className="mx-auto max-w-5xl px-6">
+        <GlobalNav />
+        {hasHeader && (
+          <div className="py-16 sm:py-20">
+            {props.backHref && (
+              <div className="mb-4">
+                <Link
+                  href={props.backHref}
+                  className="text-sm text-slate-600 hover:text-slate-900"
+                >
+                  {props.backLabel ?? "← Back"}
+                </Link>
+              </div>
+            )}
+            {props.title && (
+              <PageHeader title={props.title} subtitle={props.subtitle} />
+            )}
+          </div>
+        )}
+      </div>
       {props.children}
     </main>
   );
