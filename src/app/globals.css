@@ -24,3 +24,25 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.rh-arc-wrapper {
+  position: relative;
+  width: 140vw;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: visible;
+}
+
+.rh-arc {
+  width: 100%;
+  height: clamp(180px, 22vw, 320px);
+  min-height: 180px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .rh-arc {
+    height: clamp(180px, 40vw, 280px);
+    min-height: 180px;
+  }
+}
