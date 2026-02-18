@@ -39,7 +39,7 @@ export function ChapterArc(props: { chapters: readonly Chapter[]; className?: st
   return (
     <div className={props.className}>
       {/* Arc: visible on all viewports (architectural horizon), extends beyond viewport */}
-      <div className="relative pt-2 sm:pt-4 overflow-visible">
+      <div className="relative overflow-visible">
         <div className="rh-arc-wrapper">
           <svg
             className="rh-arc"
@@ -54,39 +54,39 @@ export function ChapterArc(props: { chapters: readonly Chapter[]; className?: st
             </defs>
             {/* Halo */}
             <path
-              d="M -120 240 C 300 110, 900 110, 1320 240"
+              d="M -160 240 C 300 20, 900 20, 1360 240"
               fill="none"
-              stroke="currentColor"
-              strokeWidth="8"
-              opacity="0.08"
+              stroke="#F4B23C"
+              strokeWidth="30"
+              opacity="0.15"
               filter="url(#arcBlur)"
             />
             {/* Main Arc */}
             <path
-              d="M -120 240 C 300 110, 900 110, 1320 240"
+              d="M -160 240 C 300 5, 900 5, 1360 240"
               fill="none"
-              stroke="currentColor"
-              strokeWidth="4"
+              stroke="#1e293b"
+              strokeWidth="5.5"
               strokeLinecap="round"
               vectorEffect="non-scaling-stroke"
             />
           </svg>
         </div>
-        {/* Desktop: typographic blocks below arc */}
-        <div className="mt-2 sm:mt-3 flex flex-wrap items-end justify-between gap-6 hidden sm:flex">
-          <div className="flex-1 min-w-0 max-w-[17rem] pb-0">
+        {/* Desktop: typographic blocks below arc, top-aligned */}
+        <div className="mt-1 sm:mt-1.5 flex flex-wrap items-start justify-between gap-6 hidden sm:flex">
+          <div className="flex-1 min-w-0 max-w-[17rem]">
             {chapters[0] && <ArcNode chapter={chapters[0]} align="left" />}
           </div>
-          <div className="flex-1 min-w-0 max-w-[17rem] -mt-4 pb-0">
+          <div className="flex-1 min-w-0 max-w-[17rem]">
             {chapters[1] && <ArcNode chapter={chapters[1]} align="center" emphasized />}
           </div>
-          <div className="flex-1 min-w-0 max-w-[17rem] pb-0">
+          <div className="flex-1 min-w-0 max-w-[17rem]">
             {chapters[2] && <ArcNode chapter={chapters[2]} align="right" />}
           </div>
         </div>
       </div>
       {/* Mobile: stacked typographic blocks below arc */}
-      <div className="mt-4 space-y-5 sm:hidden">
+      <div className="mt-2 space-y-5 sm:hidden">
         {chapters.map((card) => (
           <ChapterCard key={card.number} number={card.number} title={card.title} body={card.body} />
         ))}

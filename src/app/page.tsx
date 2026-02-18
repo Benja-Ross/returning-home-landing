@@ -17,8 +17,8 @@ export default function Home() {
       <Hero />
 
       {/* 3 chapters / arc — arc extends beyond viewport, section clips horizontal overflow */}
-      <Section className="overflow-x-clip" innerClassName="mx-auto max-w-5xl px-6 pt-12 pb-16">
-        <h2 className="text-2xl font-semibold">{landingContent.chapters.title}</h2>
+      <Section className="overflow-x-clip" innerClassName="mx-auto max-w-5xl px-6 pt-6 pb-16">
+        <h2 className="text-2xl font-semibold mb-3">{landingContent.chapters.title}</h2>
         <ChapterArc chapters={landingContent.chapters.cards} />
         <p className="mt-10 max-w-3xl text-sm leading-relaxed text-slate-700">
           {returningHomeContent.landing.whatItIs.beneathArcLine}

@@ -35,7 +35,7 @@ body {
 
 .rh-arc {
   width: 100%;
-  height: clamp(180px, 22vw, 320px);
+  height: clamp(90px, 12vw, 160px);
   min-height: 180px;
   display: block;
 }
