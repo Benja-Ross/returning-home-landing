@@ -35,14 +35,14 @@ body {
 
 .rh-arc {
   width: 100%;
-  height: clamp(90px, 12vw, 160px);
-  min-height: 180px;
+  height: clamp(80px, 10vw, 140px);
+  min-height: 80px;
   display: block;
 }
 
 @media (max-width: 768px) {
   .rh-arc {
-    height: clamp(180px, 40vw, 280px);
-    min-height: 180px;
+    height: clamp(80px, 10vw, 140px);
+    min-height: 80px;
   }
 }

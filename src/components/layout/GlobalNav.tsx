@@ -26,21 +26,21 @@ export function GlobalNav() {
         </Link>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm ${
-                  isActive
-                    ? "font-medium text-slate-900 underline"
-                    : "text-slate-500 hover:text-slate-900"
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
+          const isActive = pathname === link.href;
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`text-sm ${
+                isActive
+                  ? "font-medium text-slate-900 underline"
+                  : "text-slate-500 hover:text-slate-900"
+              }`}
+            >
+              {link.label}
+            </Link>
+          );
+        })}
         </div>
       </div>
     </nav>

@@ -17,13 +17,7 @@ function ArcNode(props: { chapter: Chapter; align: "left" | "center" | "right"; 
         alignClasses,
       ].join(" ")}
     >
-      <div className={["flex items-start gap-3", props.align === "right" ? "justify-end" : ""].join(" ")}>
-        <span
-          className="text-[10px] font-medium text-slate-400 tabular-nums"
-          aria-hidden
-        >
-          {props.chapter.number}
-        </span>
+      <div className={["flex items-start", props.align === "right" ? "justify-end" : ""].join(" ")}>
         <div className={["min-w-0", props.align === "right" ? "text-right" : ""].join(" ")}>
           <h3 className="text-base font-semibold text-slate-900">{props.chapter.title}</h3>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">{props.chapter.body}</p>
@@ -72,8 +66,8 @@ export function ChapterArc(props: { chapters: readonly Chapter[]; className?: st
             />
           </svg>
         </div>
-        {/* Desktop: typographic blocks below arc, top-aligned */}
-        <div className="mt-1 sm:mt-1.5 flex flex-wrap items-start justify-between gap-6 hidden sm:flex">
+        {/* Desktop: typographic blocks below arc, top-aligned, pulled up toward arc */}
+        <div className="-mt-6 sm:-mt-8 flex flex-wrap items-start justify-between gap-6 hidden sm:flex">
           <div className="flex-1 min-w-0 max-w-[17rem]">
             {chapters[0] && <ArcNode chapter={chapters[0]} align="left" />}
           </div>
