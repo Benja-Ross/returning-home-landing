@@ -2,9 +2,8 @@ export const landingContent = {
   brand: "Returning Home",
   hero: {
     eyebrow: "Returning Home",
-    title: "A participatory practice for strengthening belonging and human ecology.",
-    body:
-      "Returning Home is a guided, three-chapter journey that helps individuals and communities rediscover connection to place, deepen shared understanding, and move toward regenerative action together.",
+    title: "A place-based practice for remembering, revealing, and reconnecting home.",
+    body: "Deepening shared understanding, belonging, and agency.",
     primaryCta: { href: "/begin", label: "Begin the Journey" },
     secondaryCta: { href: "/mission-and-method", label: "Learn how it works →" },
     cards: [
@@ -45,18 +44,18 @@ export const landingContent = {
     cards: [
       {
         number: "1",
-        title: "Remembering Life & Place",
-        body: "Reconnecting to lived experience, memory, and the feeling of home.",
+        title: "Remembering",
+        body: "Participatory storytelling to listen to one another and our shared world.",
       },
       {
         number: "2",
-        title: "Revealing Transformation",
-        body: "Seeing clearly what is changing—within ourselves and within the community.",
+        title: "Revealing the Way",
+        body: "Experiences and games to sense what is ready to emerge.",
       },
       {
         number: "3",
-        title: "Reconnecting Home",
-        body: "Walking the story forward through grounded imagination and shared commitment.",
+        title: "Reconnecting & Walking",
+        body: "Experience design and collective action to live more fully in our shared world.",
       },
     ],
   },
@@ -112,10 +111,10 @@ export const landingContent = {
   },
   finalCta: {
     id: "start",
-    title: "Start with Chapter 1",
-    body: "Take the short Returning Home Assessment and begin the first chapter at your own pace.",
-    primaryCta: { href: "/begin", label: "Begin Chapter 1" },
-    secondaryCta: { href: "#", label: "Download overview PDF →" },
+    title: "Begin the arc in your place",
+    body: "Enter the three-chapter arc at a gentle pace and begin practicing Returning Home where you already live and work.",
+    primaryCta: { href: "/begin", label: "Begin the Arc" },
+    secondaryCta: { href: "/mission-and-method", label: "Learn the Method" },
   },
   footer: {
     body:

@@ -8,6 +8,7 @@ import { Section } from "@/components/landing/Section";
 import { TestimonialCard } from "@/components/landing/TestimonialCard";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { landingContent } from "@/content/landing";
+import { returningHomeContent } from "@/content/returning-home";
 
 export default function Home() {
   return (
@@ -17,19 +18,40 @@ export default function Home() {
 
       {/* What it is */}
       <Section>
-        <h2 className="text-2xl font-semibold">{landingContent.whatItIs.title}</h2>
-        <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-700">{landingContent.whatItIs.body}</p>
+        <h2 className="text-2xl font-semibold">{returningHomeContent.landing.whatItIs.title}</h2>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          <div className="rounded-2xl bg-slate-50 p-6">
-            <h3 className="text-base font-semibold">{landingContent.whatItIs.whoFor.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-slate-700">{landingContent.whatItIs.whoFor.body}</p>
+        <div className="mt-8 grid gap-8 md:grid-cols-2">
+          <div className="space-y-4">
+            {returningHomeContent.landing.whatItIs.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="max-w-3xl text-base leading-relaxed text-slate-700">
+                {paragraph}
+              </p>
+            ))}
           </div>
-          <div className="rounded-2xl bg-slate-50 p-6">
-            <h3 className="text-base font-semibold">{landingContent.whatItIs.not.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-slate-700">{landingContent.whatItIs.not.body}</p>
+
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div className="rounded-2xl bg-slate-50 p-6">
+              <h3 className="text-base font-semibold">Is</h3>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-700">
+                {returningHomeContent.landing.whatItIs.isBullets.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-2xl bg-slate-50 p-6">
+              <h3 className="text-base font-semibold">Is not</h3>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-700">
+                {returningHomeContent.landing.whatItIs.isNotBullets.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
+
+        <p className="mt-10 max-w-3xl text-sm leading-relaxed text-slate-600">
+          {returningHomeContent.landing.whatItIs.quietLegitimacy}
+        </p>
       </Section>
 
       {/* Why now */}
@@ -48,10 +70,13 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 3 chapters */}
+      {/* 3 chapters / arc */}
       <Section>
         <h2 className="text-2xl font-semibold">{landingContent.chapters.title}</h2>
         <ChapterArc chapters={landingContent.chapters.cards} />
+        <p className="mt-10 max-w-3xl text-sm leading-relaxed text-slate-700">
+          {returningHomeContent.landing.whatItIs.beneathArcLine}
+        </p>
       </Section>
 
       {/* Shifts */}
