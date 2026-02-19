@@ -2,8 +2,8 @@ export const landingContent = {
   brand: "Returning Home",
   hero: {
     eyebrow: "Returning Home",
-    title: "A place-based practice for remembering, revealing, and reconnecting home.",
-    body: "Deepening shared understanding, belonging, and agency.",
+    title: "A shared practice for listening, imagining, and acting in place.",
+    body: "What takes root when we turn toward home together?",
     primaryCta: { href: "/begin", label: "Begin the Journey" },
     secondaryCta: { href: "/mission-and-method", label: "Learn how it works →" },
     cards: [
@@ -44,17 +44,17 @@ export const landingContent = {
     cards: [
       {
         number: "1",
-        title: "Remembering",
+        title: "Remembering Home",
         body: "Participatory storytelling to listen to one another and our shared world.",
       },
       {
         number: "2",
-        title: "Revealing the Way",
+        title: "Revealing the Way Home",
         body: "Experiences and games to sense what is ready to emerge.",
       },
       {
         number: "3",
-        title: "Reconnecting & Walking",
+        title: "Reconnecting & Walking Home",
         body: "Experience design and collective action to live more fully in our shared world.",
       },
     ],

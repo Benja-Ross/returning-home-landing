@@ -14,7 +14,7 @@ export const returningHomeContent = {
       isNotBullets: ["A course.", "A rigid methodology."],
       quietLegitimacy:
         "Returning Home is being explored by neighbors who want more connection, facilitators, and local organizations seeking more coherent ways of working together.",
-      beneathArcLine: "You can enter this arc alone, as a pair, in a small group, or as a whole community.",
+      beneathArcLine: "Enter the arc alone, as a pair, in a small group, or as a whole community.",
     },
   },
   missionAndMethod: {
