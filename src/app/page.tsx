@@ -5,7 +5,7 @@ import { Footer } from "@/components/landing/Footer";
 import { Hero } from "@/components/landing/Hero";
 import { PathCard } from "@/components/landing/PathCard";
 import { Section } from "@/components/landing/Section";
-import { TestimonialCard } from "@/components/landing/TestimonialCard";
+import { SocialSoilBand } from "@/components/landing/SocialSoilBand";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { landingContent } from "@/content/landing";
 import { returningHomeContent } from "@/content/returning-home";
@@ -24,41 +24,23 @@ export default function Home() {
           {returningHomeContent.landing.whatItIs.beneathArcLine}
         </p>
       </Section>
-      {/* What it is */}
+      {/* From the Social Soil */}
+      <div className="mt-5 mb-16">
+        <SocialSoilBand />
+      </div>
+      {/* Testimonials — typography-forward, no cards */}
       <Section>
-        <h2 className="text-2xl font-semibold">{returningHomeContent.landing.whatItIs.title}</h2>
-
-        <div className="mt-8 grid gap-8 md:grid-cols-2">
-          <div className="grid gap-6 sm:grid-cols-2">
-            <div className="rounded-2xl bg-slate-50 p-6">
-              <h3 className="text-base font-semibold">Is</h3>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-700">
-                {returningHomeContent.landing.whatItIs.isBullets.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="rounded-2xl bg-slate-50 p-6">
-              <h3 className="text-base font-semibold">Is not</h3>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-700">
-                {returningHomeContent.landing.whatItIs.isNotBullets.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <p className="mt-10 max-w-3xl text-sm leading-relaxed text-slate-600">
-          {returningHomeContent.landing.whatItIs.quietLegitimacy}
-        </p>
-      </Section>
-      {/* Testimonials */}
-      <Section>
-        <h2 className="text-2xl font-semibold">{landingContent.voices.title}</h2>
-        <div className="mt-8 grid gap-6 sm:grid-cols-3">
-          {landingContent.voices.quotes.map((q) => (
-            <TestimonialCard key={q} quote={q} />
+        <h2 className="text-2xl font-semibold text-slate-900">
+          {returningHomeContent.testimonials.title}
+        </h2>
+        <div className="mt-12 grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+          {returningHomeContent.testimonials.quotes.map((quote) => (
+            <blockquote
+              key={quote.slice(0, 40)}
+              className="border-l border-slate-300/70 pl-5 text-left text-sm sm:text-base text-slate-700 leading-relaxed"
+            >
+              {quote}
+            </blockquote>
           ))}
         </div>
       </Section>

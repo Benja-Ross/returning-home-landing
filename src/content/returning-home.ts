@@ -100,5 +100,13 @@ export const returningHomeContent = {
       secondaryLabel: "Read Mission and Method →",
     },
   },
+  testimonials: {
+    title: "The words of participants",
+    quotes: [
+      "Being heard and then also receiving other reflections deepened my sense of gratitude for being in place... there was a sense of shared community and belonging that bubbled to the surface when I knew we were all doing this together.",
+      "To be honest I'm feeling a little cracked open. A lot of inspiration and energy has been flowing through me in the last few days and lighting up places where I have felt stagnant...",
+      "...there was an invitation to reflect on the ways that we are actually composed of stories... that they make up an integral and foundation place in our lives: the makeup of our personality, and also how we orient, position ourselves, and relate to the larger whole...",
+    ],
+  },
 } as const;
 

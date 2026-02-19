@@ -73,7 +73,7 @@ export const landingContent = {
     note: "No grand promises. Just observable shifts in coherence.",
   },
   voices: {
-    title: "Voices",
+    title: "The words of participants",
     quotes: [
       "“I didn’t realize how fragmented I felt until we mapped our stories together. Something settled.”",
       "“This helped me see my community as a living system instead of a collection of projects.”",
@@ -111,10 +111,9 @@ export const landingContent = {
   },
   finalCta: {
     id: "start",
-    title: "Begin the arc in your place",
-    body: "Enter the three-chapter arc at a gentle pace and begin practicing Returning Home where you already live and work.",
-    primaryCta: { href: "/begin", label: "Begin the Arc" },
-    secondaryCta: { href: "/mission-and-method", label: "Learn the Method" },
+    title: "When you're ready",
+    body: "Begin with Chapter 1 at your own pace.",
+    primaryCta: { href: "/begin", label: "Begin the arc" },
   },
   footer: {
     body:
