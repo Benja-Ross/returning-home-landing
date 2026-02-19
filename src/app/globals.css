@@ -3,6 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Accent yellow: used for halo, wordmark gold. Set once for easy brand updates. */
+  --halo-yellow: #F4B23C;
+  --al-gold: var(--halo-yellow);
+  --al-ink: rgba(15, 23, 42, 0.9);
+  /* Warm tint for CTA background: derived from halo yellow with low opacity */
+  --halo-tint: rgba(244, 178, 60, 0.08);
 }
 
 @theme inline {

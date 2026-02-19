@@ -50,7 +50,7 @@ export function ChapterArc(props: { chapters: readonly Chapter[]; className?: st
             <path
               d="M -160 240 C 300 20, 900 20, 1360 240"
               fill="none"
-              stroke="#F4B23C"
+              stroke="var(--halo-yellow)"
               strokeWidth="30"
               opacity="0.15"
               filter="url(#arcBlur)"

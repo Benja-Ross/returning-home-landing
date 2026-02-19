@@ -1,7 +1,6 @@
 import { ChapterCard } from "@/components/landing/ChapterCard";
 import { ChapterArc } from "@/components/landing/ChapterArc";
 import { FinalCTA } from "@/components/landing/FinalCTA";
-import { Footer } from "@/components/landing/Footer";
 import { Hero } from "@/components/landing/Hero";
 import { PathCard } from "@/components/landing/PathCard";
 import { Section } from "@/components/landing/Section";
@@ -47,9 +46,6 @@ export default function Home() {
 
       {/* First step */}
       <FinalCTA />
-
-      {/* Footer */}
-      <Footer />
     </PageLayout>
   );
 }

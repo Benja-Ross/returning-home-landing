@@ -111,16 +111,16 @@ export const landingContent = {
   },
   finalCta: {
     id: "start",
-    headline: "You may feel a pull to begin where you are.",
-    subline: "Start with Chapter 1 alone and with a journal, or with a friend and grow from there.",
-    primaryCta: { href: "/begin", label: "Begin Chapter 1 →" },
+    headline: "You can begin where you are.",
+    subline: "Alone and with a journal, or with a friend and grow from there.",
+    primaryCta: { href: "/begin", label: "Open to Chapter 1 →" },
     secondaryText:
-      "Curious about the deeper intention behind Returning Home and how it all fits together? We've shared that here.",
+      "Curious about our story and how the practice works? We've shared that here.",
     secondaryLink: { href: "/mission-and-method", label: "Explore the mission & method →" },
   },
   footer: {
-    line1: "Returning Home is part of Awakening Lands.",
-    line2: "Awakening Lands supports communities in hearing the voice of place.",
+    line1: "Returning Home is part of",
+    line2: "Supporting communities in hearing the voice of their place.",
     copyrightName: "Awakening Lands",
   },
 } as const;

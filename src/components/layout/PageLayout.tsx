@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 
+import { Footer } from "@/components/landing/Footer";
 import { GlobalNav } from "./GlobalNav";
 
 function PageHeader(props: { eyebrow?: string; title?: string; subtitle?: string }) {
@@ -55,6 +56,7 @@ export function PageLayout(props: {
         )}
       </div>
       {props.children}
+      <Footer />
     </main>
   );
 }
