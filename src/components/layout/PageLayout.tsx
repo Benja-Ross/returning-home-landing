@@ -32,14 +32,29 @@ export function PageLayout(props: {
   backLabel?: string;
   /** When true, skip the page header block (title/subtitle/back link area). Used for full-viewport hero pages. */
   hidePageHeader?: boolean;
+  /** When true, nav is positioned fixed over the first child (e.g. hero); transparent bar, no layout space. */
+  overlayNav?: boolean;
 }) {
   const hasHeader = Boolean(!props.hidePageHeader && (props.backHref || props.title));
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
-      <div className="mx-auto max-w-5xl px-6">
-        <GlobalNav />
-        {hasHeader && (
+      {props.overlayNav ? (
+        <div
+          className="fixed top-0 left-0 right-0 z-50 backdrop-blur-[6px]"
+          style={{
+            background: "rgba(248,245,238,0.15)",
+            WebkitBackdropFilter: "blur(6px)",
+          }}
+        >
+          <div className="mx-auto max-w-5xl px-6">
+            <GlobalNav variant="overlay" />
+          </div>
+        </div>
+      ) : (
+        <div className="mx-auto max-w-5xl px-6">
+          <GlobalNav />
+          {hasHeader && (
           <div className="py-16 sm:py-20">
             {props.backHref && (
               <div className="mb-4">
@@ -56,7 +71,8 @@ export function PageLayout(props: {
             )}
           </div>
         )}
-      </div>
+        </div>
+      )}
       {props.children}
       <Footer />
     </main>

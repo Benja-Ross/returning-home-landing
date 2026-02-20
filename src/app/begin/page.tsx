@@ -7,7 +7,7 @@ import { BeginReflectionGate } from "@/components/begin/BeginReflectionGate";
 
 export default function BeginPage() {
   return (
-    <PageLayout backHref="/" backLabel="← Back home" hidePageHeader>
+    <PageLayout backHref="/" backLabel="← Back home" hidePageHeader overlayNav>
       {/* Full-bleed wrapper: breaks out of any container (no max-w, no mx-auto) */}
       <div className="relative left-1/2 w-screen -translate-x-1/2">
         {/* Hero: 100vh, full width; image locked to height, crops left/right when narrow */}
