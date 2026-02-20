@@ -1,8 +1,7 @@
-import Link from "next/link";
-
 import { Section } from "@/components/landing/Section";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { returningHomeContent } from "@/content/returning-home";
+
+import { BeginReflectionGate } from "@/components/begin/BeginReflectionGate";
 
 export default function BeginPage() {
   return (
@@ -10,54 +9,56 @@ export default function BeginPage() {
       backHref="/"
       backLabel="← Back home"
       title="Begin"
-      subtitle={returningHomeContent.begin.subtitle}
+      subtitle="A moment to reflect before you continue."
     >
       <Section>
-        <div className="max-w-3xl space-y-8">
-          <section>
-            <h2 className="text-xl font-semibold text-slate-900">
-              {returningHomeContent.begin.assessment.heading}
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-slate-700">
-              {returningHomeContent.begin.assessment.body}
+        <div className="mx-auto max-w-2xl space-y-16">
+          {/* Threshold block */}
+          <div className="space-y-4">
+            <h1 className="text-3xl font-semibold leading-tight text-slate-900 md:text-4xl">
+              Think of the place you call home.
+            </h1>
+            <p className="text-base leading-relaxed text-slate-600">
+              Not the idea of it.
+              <br />
+              The actual place.
             </p>
+          </div>
 
-            <div className="mt-6 rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-4 py-8 text-sm text-slate-500">
-              {returningHomeContent.begin.assessment.placeholder}
-            </div>
-          </section>
-
-          <section className="border-t border-slate-200 pt-8">
-            <h2 className="text-xl font-semibold text-slate-900">
-              {returningHomeContent.begin.orientation.heading}
+          {/* Pilot note */}
+          <div className="space-y-3 border-t border-slate-200 pt-8">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+              A note before you begin
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-slate-700">
-              {returningHomeContent.begin.orientation.intro}
-            </p>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-700">
-              {returningHomeContent.begin.orientation.bullets.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <button
-                type="button"
-                className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-medium text-white hover:bg-slate-800"
-              >
-                {returningHomeContent.begin.cta.primaryLabel}
-              </button>
-              <Link
-                href="/mission-and-method"
-                className="text-sm font-medium text-slate-700 hover:text-slate-900"
-              >
-                {returningHomeContent.begin.cta.secondaryLabel}
-              </Link>
+            <div className="space-y-2 text-sm leading-relaxed text-slate-700">
+              <p>
+                We are currently piloting the Returning Home practice in Erie–Niagara, Ann Arbor, and
+                Bangladesh.
+              </p>
+              <p>If you're in one of these communities, we're glad you're here.</p>
+              <p>
+                If you're elsewhere, you're still welcome to participate in the reflection and
+                Chapter 1. Discussion groups will open after this pilot cycle.
+              </p>
             </div>
-          </section>
+          </div>
+
+          {/* Reflection invite */}
+          <div className="space-y-2 border-t border-slate-200 pt-8">
+            <h2 className="text-xl font-semibold text-slate-900">
+              Before continuing, take a moment to reflect.
+            </h2>
+            <p className="text-sm leading-relaxed text-slate-600">
+              There are no right answers. Just locate where you're beginning.
+            </p>
+          </div>
+
+          {/* Typeform embed + Chapter 1 reveal (client) */}
+          <div className="border-t border-slate-200 pt-8">
+            <BeginReflectionGate />
+          </div>
         </div>
       </Section>
     </PageLayout>
   );
 }
-
