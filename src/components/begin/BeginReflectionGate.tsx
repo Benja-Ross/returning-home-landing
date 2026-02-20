@@ -1,11 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { TypeformInline } from "./TypeformInline";
 
 export function BeginReflectionGate() {
   const [reflectionComplete, setReflectionComplete] = useState(false);
+
+    useEffect(() => {
+      if (process.env.NODE_ENV === "development") {
+        (window as any).__unlockChapter1 = () => {
+          setReflectionComplete(true);
+        };
+
+        (window as any).__lockChapter1 = () => {
+          setReflectionComplete(false);
+        };
+      }
+    }, []);
 
   return (
     <>

@@ -30,8 +30,10 @@ export function PageLayout(props: {
   children: ReactNode;
   backHref?: string;
   backLabel?: string;
+  /** When true, skip the page header block (title/subtitle/back link area). Used for full-viewport hero pages. */
+  hidePageHeader?: boolean;
 }) {
-  const hasHeader = Boolean(props.backHref || props.title);
+  const hasHeader = Boolean(!props.hidePageHeader && (props.backHref || props.title));
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
