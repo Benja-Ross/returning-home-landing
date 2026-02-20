@@ -2,8 +2,8 @@ export const landingContent = {
   brand: "Returning Home",
   hero: {
     eyebrow: "Returning Home",
-    title: "A shared practice for listening, imagining, and acting in place.",
-    body: "What takes root when we turn toward home together?",
+    titleLines: ["A shared practice for", "listening and acting", "in place."],
+    body: "What becomes possible when we turn home together?",
     primaryCta: { href: "/begin", label: "Begin the Journey" },
     secondaryCta: { href: "/mission-and-method", label: "Learn how it works →" },
     cards: [
@@ -113,13 +113,13 @@ export const landingContent = {
     id: "start",
     headline: "You can begin where you are.",
     subline: "Alone and with a journal, or with a friend and grow from there.",
-    primaryCta: { href: "/begin", label: "Open to Chapter 1 →" },
+    primaryCta: { href: "/begin", label: "Begin Returning Home →" },
     secondaryText:
       "Curious about our story and how the practice works? We've shared that here.",
     secondaryLink: { href: "/mission-and-method", label: "Explore the mission & method →" },
   },
   footer: {
-    line1: "Returning Home is part of",
+    line1: "Returning Home is part of -",
     line2: "Supporting communities in hearing the voice of their place.",
     copyrightName: "Awakening Lands",
   },
