@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { createWidget } from "@typeform/embed";
 import "@typeform/embed/build/css/widget.css";
 
-const TYPEFORM_ID = "01KHXWBX1M267BWDBA2QXTZWKX";
+const TYPEFORM_ID = "JHlEcNzi";
 
 type TypeformInlineProps = {
   onSubmit?: () => void;
