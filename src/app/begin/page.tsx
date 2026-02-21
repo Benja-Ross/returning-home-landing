@@ -36,73 +36,126 @@ export default function BeginPage() {
         </section>
       </div>
 
-      {/* Content below the fold: orientation, progression, pilot note, accordions */}
+      {/* Content below the fold: how-to-begin instructions, then accordions */}
       <Section>
-        <div className="mx-auto max-w-2xl space-y-16">
-          {/* Orientation */}
+        <div className="mx-auto max-w-3xl space-y-20">
+          {/* How to Begin: title + intro */}
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold text-slate-900">
-              How Returning Home unfolds
+            <h2 className="text-2xl font-semibold text-slate-900 sm:text-3xl">
+              How to Begin
             </h2>
-            <p className="text-sm leading-relaxed text-slate-700">
-              Returning Home is a three-chapter practice. You'll begin with personal reflection, then
-              continue into deeper participation if you choose.
+            <p className="max-w-xl text-base leading-7 text-slate-800 sm:text-lg">
+              <strong className="font-semibold text-slate-900">Beginning below involves three clear steps.</strong>
+              {" "}
+              Move at your own pace.
+            </p>
+            <p className="text-sm leading-7 text-slate-600">
+              Chapter 1 typically takes 30–60 minutes.
             </p>
           </div>
 
-          {/* Progression: 1–3 */}
-          <ul className="space-y-4">
-            <li className="flex gap-4">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-700">
-                1
-              </span>
-              <div>
-                <p className="font-medium text-slate-900">Chapter 1 — Remembering Home</p>
-                <p className="mt-0.5 text-sm leading-relaxed text-slate-600">
-                  Personal reflection and guided practice.
-                </p>
-              </div>
-            </li>
-            <li className="flex gap-4">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-700">
-                2
-              </span>
-              <div>
-                <p className="font-medium text-slate-900">Chapter 2 — Revealing the Way Home</p>
-                <p className="mt-0.5 text-sm leading-relaxed text-slate-600">
-                  Collective awareness and next steps.
-                </p>
-              </div>
-            </li>
-            <li className="flex gap-4">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-700">
-                3
-              </span>
-              <div>
-                <p className="font-medium text-slate-900">Chapter 3 — Reconnecting Home</p>
-                <p className="mt-0.5 text-sm leading-relaxed text-slate-600">
-                  Discussion groups and Story Circles.
-                </p>
-              </div>
-            </li>
-          </ul>
-
-          {/* Pilot note */}
-          <div className="space-y-3 border-t border-slate-200 pt-8">
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-              A note before you begin
-            </h3>
-            <div className="space-y-2 text-sm leading-relaxed text-slate-700">
-              <p>
-                We are currently piloting the Returning Home practice in Erie–Niagara, Ann Arbor, and
-                Bangladesh.
+          {/* Step 1 */}
+          <article className="flex gap-5 pt-4">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-slate-200 text-xl font-semibold text-slate-800 sm:h-14 sm:w-14 sm:text-2xl" aria-hidden>
+              1
+            </span>
+            <div className="min-w-0 flex-1 space-y-5">
+              <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">
+                Step 1 - Complete Chapter 1
+              </h3>
+              <p className="text-base leading-7 text-slate-800 sm:text-lg">
+                <strong className="font-semibold text-slate-900">Complete the Chapter 1 reflection form below.</strong>
               </p>
-              <p>If you're in one of these communities, we're especially glad you're here.</p>
-              <p>
-                If you're elsewhere, you're still welcome to participate in the reflection and
-                Chapter 1. Discussion groups will expand over time.
+              <p className="text-base leading-7 text-slate-800 sm:text-lg">
+                After submitting, a download link will appear.
+              </p>
+              <p className="text-base leading-7 text-slate-800 sm:text-lg">
+                Use the booklet (PDF):
+              </p>
+              <ul className="list-disc space-y-1 pl-4 text-base leading-7 text-slate-800 sm:text-lg">
+                <li>With a partner (interviewer and interviewee), or</li>
+                <li>As a solo reflection.</li>
+              </ul>
+              <p className="text-base leading-7 text-slate-800 sm:text-lg">
+                <strong className="font-semibold text-slate-900">When finished, return to this page.</strong>
+                {" "}
+                Bring one key reflection with you.
+              </p>
+              <p className="text-base leading-7 font-semibold text-slate-900 sm:text-lg">
+                Then continue to Chapter 2 below.
               </p>
             </div>
+          </article>
+
+          {/* Step 2 */}
+          <article className="flex gap-5 pt-4">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-slate-200 text-xl font-semibold text-slate-800 sm:h-14 sm:w-14 sm:text-2xl" aria-hidden>
+              2
+            </span>
+            <div className="min-w-0 flex-1 space-y-5">
+              <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">
+                Step 2 - Complete Chapter 2
+              </h3>
+              <p className="text-base leading-7 text-slate-800 sm:text-lg">
+                <strong className="font-semibold text-slate-900">Complete the Chapter 2 reflection form below.</strong>
+                {" "}
+                This indicates you've completed Chapter 1 and are ready to continue.
+              </p>
+              <p className="text-base leading-7 text-slate-800 sm:text-lg">
+                After submitting, a download link will appear for the Chapter 2 guide (PDF).
+              </p>
+              <p className="text-base leading-7 text-slate-800 sm:text-lg">
+                Use the guide alone or with a small group (1 to 12 people).
+              </p>
+              <p className="text-base leading-7 text-slate-800 sm:text-lg">
+                The Chapter 2 form requires your email.
+              </p>
+              <p className="text-base leading-7 text-slate-800 sm:text-lg">
+                We will reach out to ask about your interest in joining a discussion group.
+              </p>
+            </div>
+          </article>
+
+          {/* Step 3 */}
+          <article className="flex gap-5 pt-4">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-slate-200 text-xl font-semibold text-slate-800 sm:h-14 sm:w-14 sm:text-2xl" aria-hidden>
+              3
+            </span>
+            <div className="min-w-0 flex-1 space-y-5">
+              <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">
+                Step 3 - Ongoing Participation
+              </h3>
+              <p className="text-base leading-7 text-slate-800 sm:text-lg">
+                After completing Chapter 2:
+              </p>
+              <ul className="list-disc space-y-1 pl-4 text-base leading-7 text-slate-800 sm:text-lg">
+                <li>Join a virtual discussion group for Chapter 3 and beyond</li>
+                <li>Participate in a local story circle (where available)</li>
+                <li>Help convene or facilitate future gatherings</li>
+              </ul>
+              <p className="text-base leading-7 font-semibold text-slate-900 sm:text-lg">
+                Participation deepens only if you choose.
+              </p>
+            </div>
+          </article>
+
+          {/* Where This Is Happening */}
+          <div className="space-y-4 pt-4">
+            <h3 className="text-lg font-semibold text-slate-900 sm:text-xl">
+              Where This Is Happening
+            </h3>
+            <p className="text-base leading-7 text-slate-800 sm:text-lg">
+              We are currently piloting in:
+            </p>
+            <ul className="list-disc space-y-1 pl-4 text-base leading-7 text-slate-800 sm:text-lg">
+              <li>Erie-Niagara</li>
+              <li>Ann Arbor</li>
+              <li>Bangladesh</li>
+            </ul>
+            <p className="text-base leading-7 text-slate-800 sm:text-lg">
+              If you're elsewhere, you can still complete Chapters 1 and 2.
+              Discussion groups and story circles will expand over time.
+            </p>
           </div>
 
           {/* Tally embeds + Chapter 1 & 2 gates (client) */}

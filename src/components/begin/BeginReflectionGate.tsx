@@ -33,11 +33,11 @@ export function BeginReflectionGate() {
   return (
     <>
       {/* Chapter 1 — disclosure, expanded by default */}
-      <div className="border-b border-slate-200">
+      <div className="mt-20 border-b border-slate-200">
         <button
           type="button"
           onClick={() => setChapter1Open((o) => !o)}
-          className="flex w-full items-center justify-between py-4 text-left text-lg font-medium text-slate-900"
+          className="flex w-full items-center justify-between py-6 text-left text-2xl font-semibold text-slate-900 sm:text-3xl"
           aria-expanded={chapter1Open}
         >
           Chapter 1
@@ -72,14 +72,17 @@ export function BeginReflectionGate() {
       </div>
 
       {/* Chapter 2 — disclosure, collapsed by default; scroll into view on expand */}
-      <div className="border-b border-slate-200" ref={chapter2PanelRef}>
+      <div className="mt-16 border-b border-slate-200" ref={chapter2PanelRef}>
         <button
           type="button"
           onClick={toggleChapter2}
-          className="flex w-full items-center justify-between py-4 text-left text-lg font-medium text-slate-900"
+          className="flex w-full items-center justify-between py-6 text-left text-2xl font-semibold text-slate-900 sm:text-3xl"
           aria-expanded={chapter2Open}
         >
-          Continue to Chapter 2 (Completed Chapter 1?)
+          <span className="block text-left">
+            <span className="block">Chapter 2</span>
+            <span className="mt-0.5 block text-sm font-normal text-slate-600">Continue when ready.</span>
+          </span>
           <span className="text-slate-400" aria-hidden>{chapter2Open ? "−" : "+"}</span>
         </button>
         {chapter2Open && (
