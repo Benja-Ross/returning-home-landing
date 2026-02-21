@@ -69,7 +69,7 @@ export default function BeginPage() {
             </p>
           </div>
 
-          {/* Typeform embed + Chapter 1 reveal (client) */}
+          {/* Tally embeds + Chapter 1 & 2 gates (client) */}
           <div className="border-t border-slate-200 pt-8">
             <BeginReflectionGate />
           </div>
