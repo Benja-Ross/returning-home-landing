@@ -36,37 +36,73 @@ export default function BeginPage() {
         </section>
       </div>
 
-      {/* Content below the fold: pilot note, reflection invite, Typeform, Chapter 1 */}
+      {/* Content below the fold: orientation, progression, pilot note, accordions */}
       <Section>
         <div className="mx-auto max-w-2xl space-y-16">
+          {/* Orientation */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold text-slate-900">
+              How Returning Home unfolds
+            </h2>
+            <p className="text-sm leading-relaxed text-slate-700">
+              Returning Home is a three-chapter practice. You'll begin with personal reflection, then
+              continue into deeper participation if you choose.
+            </p>
+          </div>
+
+          {/* Progression: 1–3 */}
+          <ul className="space-y-4">
+            <li className="flex gap-4">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-700">
+                1
+              </span>
+              <div>
+                <p className="font-medium text-slate-900">Chapter 1 — Remembering Home</p>
+                <p className="mt-0.5 text-sm leading-relaxed text-slate-600">
+                  Personal reflection and guided practice.
+                </p>
+              </div>
+            </li>
+            <li className="flex gap-4">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-700">
+                2
+              </span>
+              <div>
+                <p className="font-medium text-slate-900">Chapter 2 — Revealing the Way Home</p>
+                <p className="mt-0.5 text-sm leading-relaxed text-slate-600">
+                  Collective awareness and next steps.
+                </p>
+              </div>
+            </li>
+            <li className="flex gap-4">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-700">
+                3
+              </span>
+              <div>
+                <p className="font-medium text-slate-900">Chapter 3 — Reconnecting Home</p>
+                <p className="mt-0.5 text-sm leading-relaxed text-slate-600">
+                  Discussion groups and Story Circles.
+                </p>
+              </div>
+            </li>
+          </ul>
+
           {/* Pilot note */}
           <div className="space-y-3 border-t border-slate-200 pt-8">
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
               A note before you begin
-            </h2>
+            </h3>
             <div className="space-y-2 text-sm leading-relaxed text-slate-700">
               <p>
                 We are currently piloting the Returning Home practice in Erie–Niagara, Ann Arbor, and
                 Bangladesh.
               </p>
-              <p>If you're in one of these communities, we're glad you're here.</p>
+              <p>If you're in one of these communities, we're especially glad you're here.</p>
               <p>
                 If you're elsewhere, you're still welcome to participate in the reflection and
-                Chapter 1. 
-                <br />
-                There will be opportunities to join discussion groups.
+                Chapter 1. Discussion groups will expand over time.
               </p>
             </div>
-          </div>
-
-          {/* Reflection invite */}
-          <div className="space-y-2 border-t border-slate-200 pt-8">
-            <h2 className="text-xl font-semibold text-slate-900">
-              Before continuing, take a moment to reflect.
-            </h2>
-            <p className="text-sm leading-relaxed text-slate-600">
-              There are no right answers. Just locate where you're beginning.
-            </p>
           </div>
 
           {/* Tally embeds + Chapter 1 & 2 gates (client) */}

@@ -30,7 +30,7 @@ export function TallyInline({ formId, title, onSubmit }: TallyInlineProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   onSubmitRef.current = onSubmit;
 
-  const embedUrl = `${TALLY_EMBED_BASE}/${formId}?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1`;
+  const embedUrl = `${TALLY_EMBED_BASE}/${formId}?alignLeft=1&hideTitle=1&transparentBackground=0&dynamicHeight=1`;
 
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
