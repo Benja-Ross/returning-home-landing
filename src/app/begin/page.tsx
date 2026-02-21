@@ -158,6 +158,17 @@ export default function BeginPage() {
             </p>
           </div>
 
+          {/* Threshold divider (decorative) */}
+          <div className="relative left-1/2 w-screen -translate-x-1/2 mt-16 mb-16 h-28 md:h-36 overflow-hidden" aria-hidden>
+            <Image
+              src="/images/dividers/threshold.jpg"
+              alt=""
+              fill
+              className="object-cover object-[50%_70%]"
+              sizes="100vw"
+            />
+          </div>
+
           {/* Tally embeds + Chapter 1 & 2 gates (client) */}
           <div className="border-t border-slate-200 pt-8">
             <BeginReflectionGate />
