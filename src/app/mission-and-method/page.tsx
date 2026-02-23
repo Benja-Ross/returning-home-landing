@@ -21,29 +21,18 @@ export default function MissionAndMethodPage() {
   }));
 
   return (
-    <PageLayout
-      backHref="/"
-      backLabel="← Back home"
-      title={missionAndMethod.pageTitle}
-      subtitle={missionAndMethod.pageSubtitle}
-    >
+    <PageLayout backHref="/" backLabel="← Back home" hidePageHeader>
       {/* Section 1: Opening */}
       <section className={`border-t border-slate-200 ${sectionClass}`}>
         <div className={containerClass}>
-          <div className="space-y-6">
+          <h2 className={titleClass}>Why This Exists.</h2>
+          <div className="mt-8 space-y-6">
             {missionAndMethod.opening.map((paragraph, i) => (
               <p key={i} className={bodyClass}>
                 {paragraph}
               </p>
             ))}
           </div>
-          <p className="mt-8 text-sm leading-relaxed text-neutral-600">
-            If you want a deeper framing of human ecology, you can read the short article on the home page’s{" "}
-            <Link href="/#how" className="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400">
-              Why Human Ecology Matters
-            </Link>{" "}
-            section.
-          </p>
         </div>
       </section>
 
@@ -56,17 +45,6 @@ export default function MissionAndMethodPage() {
           <div className="mx-auto max-w-6xl px-6 sm:px-8">
             <ChapterArc chapters={arcChaptersForHomepage} />
           </div>
-        </div>
-        <div className={containerClass}>
-          <ul className="mt-12 space-y-4">
-            {missionAndMethod.arcChapters.map((ch, i) => (
-              <li key={i}>
-                <span className="font-semibold text-slate-900">Chapter {i + 1}: {ch.title}</span>
-                {" "}
-                <span className={bodyClass}>{ch.description}</span>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
@@ -158,6 +136,13 @@ export default function MissionAndMethodPage() {
               <p key={i} className={bodyClass}>{p}</p>
             ))}
           </div>
+          <p className="mt-8 text-sm leading-relaxed text-neutral-600">
+            If you want a deeper framing of human ecology, you can read the short article on the home page’s{" "}
+            <Link href="https://awakeninglands.substack.com/p/a-search-for-the-meaning-of-human?r=3cr1x3" className="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400">
+              Why Human Ecology Matters
+            </Link>{""}
+            section.
+          </p>
         </div>
       </section>
 
@@ -193,18 +178,6 @@ export default function MissionAndMethodPage() {
             ))}
             <p className={bodyClass}>{missionAndMethod.benjiNote.closing}</p>
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className={`border-t border-slate-200 ${sectionClass}`}>
-        <div className={containerClass}>
-          <Link
-            href="/begin"
-            className="inline-flex items-center justify-center rounded-xl border border-slate-300 px-5 py-2.5 text-base font-medium text-slate-900 hover:bg-slate-50"
-          >
-            Begin the Arc →
-          </Link>
         </div>
       </section>
     </PageLayout>
