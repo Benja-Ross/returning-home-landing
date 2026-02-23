@@ -1,90 +1,212 @@
+import Image from "next/image";
 import Link from "next/link";
 
+import { ChapterArc } from "@/components/landing/ChapterArc";
 import { Section } from "@/components/landing/Section";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { returningHomeContent } from "@/content/returning-home";
+import { LearningArc } from "@/components/mission/LearningArc";
+import { missionAndMethod } from "@/content/mission-and-method";
+
+const containerClass = "mx-auto max-w-4xl px-6 sm:px-8";
+const sectionClass = "py-20 sm:py-24";
+const titleClass = "text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl";
+const bodyClass = "text-base leading-relaxed text-neutral-800 sm:text-lg";
+const labelClass = "text-sm uppercase tracking-wide text-neutral-500";
 
 export default function MissionAndMethodPage() {
+  const arcChaptersForHomepage = missionAndMethod.arcChapters.map((ch, i) => ({
+    number: String(i + 1),
+    title: ch.title,
+    body: ch.description,
+  }));
+
   return (
     <PageLayout
       backHref="/"
       backLabel="← Back home"
-      title="Mission and Method"
-      subtitle={returningHomeContent.missionAndMethod.subtitle}
+      title={missionAndMethod.pageTitle}
+      subtitle={missionAndMethod.pageSubtitle}
     >
-      <Section>
-        <div className="max-w-3xl">
-          <h2 className="text-xl font-semibold text-slate-900">
-            {returningHomeContent.missionAndMethod.opening.heading}
-          </h2>
-          {returningHomeContent.missionAndMethod.opening.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="mt-4 text-base leading-relaxed text-slate-700">
-              {paragraph}
-            </p>
-          ))}
-          <p className="mt-4 text-sm leading-relaxed text-slate-600">
-            If you want a deeper framing of human ecology, you can read the short article on the home page&apos;s{" "}
+      {/* Section 1: Opening */}
+      <section className={`border-t border-slate-200 ${sectionClass}`}>
+        <div className={containerClass}>
+          <div className="space-y-6">
+            {missionAndMethod.opening.map((paragraph, i) => (
+              <p key={i} className={bodyClass}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+          <p className="mt-8 text-sm leading-relaxed text-neutral-600">
+            If you want a deeper framing of human ecology, you can read the short article on the home page’s{" "}
             <Link href="/#how" className="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400">
               Why Human Ecology Matters
             </Link>{" "}
             section.
           </p>
+        </div>
+      </section>
 
-          <div className="mt-8 space-y-6">
-            {returningHomeContent.missionAndMethod.chapters.map((chapter) => (
-              <div key={chapter.number}>
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-                  Chapter {chapter.number} · {chapter.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-700">{chapter.body}</p>
-              </div>
-            ))}
+      {/* Section 2: Arc full-width breakout (same as homepage) */}
+      <section className={`border-t border-slate-200 ${sectionClass}`}>
+        <div className={containerClass}>
+          <p className={`${bodyClass} mb-10`}>{missionAndMethod.arcIntro}</p>
+        </div>
+        <div className="relative left-1/2 w-screen -translate-x-1/2 overflow-x-clip">
+          <div className="mx-auto max-w-6xl px-6 sm:px-8">
+            <ChapterArc chapters={arcChaptersForHomepage} />
           </div>
         </div>
-      </Section>
+        <div className={containerClass}>
+          <ul className="mt-12 space-y-4">
+            {missionAndMethod.arcChapters.map((ch, i) => (
+              <li key={i}>
+                <span className="font-semibold text-slate-900">Chapter {i + 1}: {ch.title}</span>
+                {" "}
+                <span className={bodyClass}>{ch.description}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
-      <Section>
-        <div className="grid gap-10 sm:grid-cols-2">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-900">
-              {returningHomeContent.missionAndMethod.pathways.heading}
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-slate-700">
-              {returningHomeContent.missionAndMethod.pathways.intro}
-            </p>
-            <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-700">
-              {returningHomeContent.missionAndMethod.pathways.items.map((item) => (
-                <li key={item.label}>
-                  <span className="font-semibold">{item.label}</span> — {item.body}
-                </li>
-              ))}
-            </ul>
+      {/* Section 3: Learning model (contained) with simpler SVG */}
+      <section className={`border-t border-slate-200 ${sectionClass}`}>
+        <div className={containerClass}>
+          <p className={labelClass}>Learning pattern</p>
+          <div className="mt-8 sm:mt-10 text-neutral-800/80">
+            <LearningArc />
           </div>
-          <div>
-            <h2 className="text-xl font-semibold text-slate-900">
-              {returningHomeContent.missionAndMethod.lineage.heading}
-            </h2>
-            {returningHomeContent.missionAndMethod.lineage.paragraphs.map((paragraph) => (
-              <p key={paragraph} className="mt-3 text-sm leading-relaxed text-slate-700">
-                {paragraph}
+          <div className="mt-8 space-y-4">
+            {missionAndMethod.learningIntro.map((line, i) => (
+              <p key={i} className={bodyClass}>
+                {line}
               </p>
             ))}
           </div>
         </div>
+      </section>
 
-        <div className="mt-10 border-t border-slate-200 pt-8">
-          <p className="text-sm text-slate-700">
-            {returningHomeContent.missionAndMethod.cta.body}
-          </p>
+      {/* Section 4: Chapters (Remembering, Revealing, Reconnecting) */}
+      <section className={`border-t border-slate-200 ${sectionClass}`}>
+        <div className={containerClass}>
+          <h2 className={titleClass}>The three chapters</h2>
+
+          <div className="mt-12 space-y-16">
+            <div>
+              <h3 className="text-xl font-semibold text-slate-900">Remembering Home</h3>
+              <div className="mt-4 space-y-4">
+                {missionAndMethod.chapters.remembering.map((p, i) => (
+                  <p key={i} className={bodyClass}>{p}</p>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-slate-900">Revealing the Way Home</h3>
+              <div className="mt-4 space-y-4">
+                {missionAndMethod.chapters.revealing.map((p, i) => (
+                  <p key={i} className={bodyClass}>{p}</p>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-slate-900">Reconnecting & Walking Home</h3>
+              <div className="mt-4 space-y-4">
+                {missionAndMethod.chapters.reconnecting.map((p, i) => (
+                  <p key={i} className={bodyClass}>{p}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5: Human ecology + forest image (slight breakout) */}
+      <section className={`border-t border-slate-200 ${sectionClass}`}>
+        <div className={containerClass}>
+          <h2 className={titleClass}>Human ecology</h2>
+          <div className="mt-8 space-y-4">
+            {missionAndMethod.humanEcology.intro.map((p, i) => (
+              <p key={i} className={bodyClass}>{p}</p>
+            ))}
+          </div>
+
+          <div className="mt-10 sm:mt-12">
+            <div className="mx-auto max-w-5xl px-6 sm:px-8">
+              <Image
+                src="/images/forest-ecology.jpg"
+                alt="A healthy forest thrives because of interconnection: roots, mycelium networks, and the full picture of interconnectivity."
+                width={1200}
+                height={675}
+                className="w-full h-auto rounded-2xl border border-neutral-200"
+                sizes="(max-width: 1024px) 100vw, 1024px"
+              />
+            </div>
+          </div>
+
+          <ul className="mt-10 space-y-3">
+            {missionAndMethod.humanEcology.bullets.map((bullet, i) => (
+              <li key={i} className={`${bodyClass} pl-4 border-l-2 border-slate-200`}>
+                {bullet}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-10 space-y-4">
+            {missionAndMethod.humanEcology.closing.map((p, i) => (
+              <p key={i} className={bodyClass}>{p}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: How this grows */}
+      <section className={`border-t border-slate-200 ${sectionClass}`}>
+        <div className={containerClass}>
+          <h2 className={titleClass}>How this grows</h2>
+          <div className="mt-8 space-y-6">
+            {missionAndMethod.howThisGrows.map((p, i) => (
+              <p key={i} className={bodyClass}>{p}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 7: Benji video placeholder */}
+      <section className={`border-t border-slate-200 ${sectionClass}`}>
+        <div className={containerClass}>
+          <h2 className={titleClass}>A Note From Benji</h2>
+          <div className="mt-8 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 sm:p-8">
+            <div className="aspect-video w-full rounded-2xl border border-neutral-200 bg-neutral-100 flex items-center justify-center">
+              <p className="text-neutral-500 text-center text-sm sm:text-base">
+                Welcome video coming soon.
+              </p>
+            </div>
+            <p className="mt-4 text-center text-sm leading-relaxed text-neutral-600">
+              For now, this page holds the structure of the practice.
+            </p>
+          </div>
+          <div className="mt-10 space-y-4">
+            {missionAndMethod.benjiNote.bullets.map((bullet, i) => (
+              <p key={i} className={bodyClass}>{bullet}</p>
+            ))}
+            <p className={bodyClass}>{missionAndMethod.benjiNote.closing}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className={`border-t border-slate-200 ${sectionClass}`}>
+        <div className={containerClass}>
           <Link
             href="/begin"
-            className="mt-4 inline-flex items-center justify-center rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-900 hover:bg-slate-50"
+            className="inline-flex items-center justify-center rounded-xl border border-slate-300 px-5 py-2.5 text-base font-medium text-slate-900 hover:bg-slate-50"
           >
-            {returningHomeContent.missionAndMethod.cta.buttonLabel}
+            Begin the Arc →
           </Link>
         </div>
-      </Section>
+      </section>
     </PageLayout>
   );
 }
-
