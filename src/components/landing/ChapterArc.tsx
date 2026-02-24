@@ -2,7 +2,12 @@ import { ChapterCard } from "@/components/landing/ChapterCard";
 
 type Chapter = { number: string; title: string; body: string };
 
-function ArcNode(props: { chapter: Chapter; align: "left" | "center" | "right"; emphasized?: boolean }) {
+function ArcNode(props: {
+  chapter: Chapter;
+  align: "left" | "center" | "right";
+  emphasized?: boolean;
+  hideDescription?: boolean;
+}) {
   const alignClasses =
     props.align === "left"
       ? "text-left"
@@ -20,15 +25,26 @@ function ArcNode(props: { chapter: Chapter; align: "left" | "center" | "right"; 
       <div className={["flex items-start", props.align === "right" ? "justify-end" : ""].join(" ")}>
         <div className={["min-w-0", props.align === "right" ? "text-right" : ""].join(" ")}>
           <h3 className="text-base font-semibold text-slate-900">{props.chapter.title}</h3>
-          <p className="mt-2 text-sm leading-relaxed text-slate-700">{props.chapter.body}</p>
+          {!props.hideDescription && (
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{props.chapter.body}</p>
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-export function ChapterArc(props: { chapters: readonly Chapter[]; className?: string }) {
+export function ChapterArc(props: {
+  chapters: readonly Chapter[];
+  className?: string;
+  /** When true, only chapter titles are shown (no descriptions). Used on Mission & Method page. */
+  hideDescriptions?: boolean;
+  /** When true, render only the arc graphic (no titles or cards below). Used when page has its own mirrored title row. */
+  arcOnly?: boolean;
+}) {
   const chapters = props.chapters.slice(0, 3);
+  const hideDescriptions = props.hideDescriptions ?? false;
+  const arcOnly = props.arcOnly ?? false;
 
   return (
     <div className={props.className}>
@@ -66,25 +82,42 @@ export function ChapterArc(props: { chapters: readonly Chapter[]; className?: st
             />
           </svg>
         </div>
-        {/* Desktop: typographic blocks below arc, top-aligned, pulled up toward arc */}
-        <div className="-mt-6 sm:-mt-8 flex flex-wrap items-start justify-between gap-6 hidden sm:flex">
-          <div className="flex-1 min-w-0 max-w-[17rem]">
-            {chapters[0] && <ArcNode chapter={chapters[0]} align="left" />}
-          </div>
-          <div className="flex-1 min-w-0 max-w-[17rem]">
-            {chapters[1] && <ArcNode chapter={chapters[1]} align="center" emphasized />}
-          </div>
-          <div className="flex-1 min-w-0 max-w-[17rem]">
-            {chapters[2] && <ArcNode chapter={chapters[2]} align="right" />}
-          </div>
+        {!arcOnly && (
+          <>
+            {/* Desktop: typographic blocks below arc, top-aligned, pulled up toward arc */}
+            <div className="-mt-6 sm:-mt-8 flex flex-wrap items-start justify-between gap-6 hidden sm:flex">
+              <div className="flex-1 min-w-0 max-w-[17rem]">
+                {chapters[0] && (
+                  <ArcNode chapter={chapters[0]} align="left" hideDescription={hideDescriptions} />
+                )}
+              </div>
+              <div className="flex-1 min-w-0 max-w-[17rem]">
+                {chapters[1] && (
+                  <ArcNode chapter={chapters[1]} align="center" emphasized hideDescription={hideDescriptions} />
+                )}
+              </div>
+              <div className="flex-1 min-w-0 max-w-[17rem]">
+                {chapters[2] && (
+                  <ArcNode chapter={chapters[2]} align="right" hideDescription={hideDescriptions} />
+                )}
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+      {!arcOnly && (
+        <div className="mt-2 space-y-5 sm:hidden">
+          {/* Mobile: stacked typographic blocks below arc */}
+          {chapters.map((card) => (
+            <ChapterCard
+              key={card.number}
+              number={card.number}
+              title={card.title}
+              body={hideDescriptions ? "" : card.body}
+            />
+          ))}
         </div>
-      </div>
-      {/* Mobile: stacked typographic blocks below arc */}
-      <div className="mt-2 space-y-5 sm:hidden">
-        {chapters.map((card) => (
-          <ChapterCard key={card.number} number={card.number} title={card.title} body={card.body} />
-        ))}
-      </div>
+      )}
     </div>
   );
 }

@@ -2,16 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ChapterArc } from "@/components/landing/ChapterArc";
-import { Section } from "@/components/landing/Section";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { LearningArc } from "@/components/mission/LearningArc";
 import { missionAndMethod } from "@/content/mission-and-method";
 
 const containerClass = "mx-auto max-w-4xl px-6 sm:px-8";
 const sectionClass = "py-20 sm:py-24";
 const titleClass = "text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl";
 const bodyClass = "text-base leading-relaxed text-neutral-800 sm:text-lg";
-const labelClass = "text-sm uppercase tracking-wide text-neutral-500";
+// Fundamental Nature: mirrored learning labels + chapter titles (same grid, same typography)
+const mirrorRow =
+  "grid grid-cols-1 sm:grid-cols-3 gap-y-4 sm:gap-y-0 sm:gap-x-12 text-center";
+const mirrorText =
+  "text-lg sm:text-xl font-semibold tracking-tight text-neutral-900";
 
 export default function MissionAndMethodPage() {
   const arcChaptersForHomepage = missionAndMethod.arcChapters.map((ch, i) => ({
@@ -25,7 +27,7 @@ export default function MissionAndMethodPage() {
       {/* Section 1: Opening */}
       <section className={`border-t border-slate-200 ${sectionClass}`}>
         <div className={containerClass}>
-          <h2 className={titleClass}>Why This Exists.</h2>
+          <h2 className={titleClass}>Why This Practice Exists</h2>
           <div className="mt-8 space-y-6">
             {missionAndMethod.opening.map((paragraph, i) => (
               <p key={i} className={bodyClass}>
@@ -36,27 +38,34 @@ export default function MissionAndMethodPage() {
         </div>
       </section>
 
-      {/* Section 2: Arc full-width breakout (same as homepage) */}
+      {/* Unified Structure section: learning pattern + macro arc + chapter titles */}
       <section className={`border-t border-slate-200 ${sectionClass}`}>
         <div className={containerClass}>
-          <p className={`${bodyClass} mb-10`}>{missionAndMethod.arcIntro}</p>
-        </div>
-        <div className="relative left-1/2 w-screen -translate-x-1/2 overflow-x-clip">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8">
-            <ChapterArc chapters={arcChaptersForHomepage} />
+          <h2 className={titleClass}>{missionAndMethod.structure.title}</h2>
+          <p className={`${bodyClass} mt-6 mb-12`}>{missionAndMethod.structure.intro}</p>
+          <div className={mirrorRow}>
+            {missionAndMethod.structure.learningLabels.map((label, i) => (
+              <span key={i} className={mirrorText}>
+                {label}
+              </span>
+            ))}
           </div>
         </div>
-      </section>
-
-      {/* Section 3: Learning model (contained) with simpler SVG */}
-      <section className={`border-t border-slate-200 ${sectionClass}`}>
+        <div className="relative left-1/2 mt-10 w-screen -translate-x-1/2 overflow-x-clip py-0">
+          <div className="mx-auto max-w-6xl px-6 py-0 sm:px-8">
+            <ChapterArc chapters={arcChaptersForHomepage} arcOnly />
+          </div>
+        </div>
         <div className={containerClass}>
-          <p className={labelClass}>Learning pattern</p>
-          <div className="mt-8 sm:mt-10 text-neutral-800/80">
-            <LearningArc />
+          <div className={`${mirrorRow} mt-6 sm:mt-8`}>
+            {missionAndMethod.structure.chapterTitles.map((title, i) => (
+              <span key={i} className={mirrorText}>
+                {title}
+              </span>
+            ))}
           </div>
-          <div className="mt-8 space-y-4">
-            {missionAndMethod.learningIntro.map((line, i) => (
+          <div className="mt-10 space-y-4 sm:mt-12">
+            {missionAndMethod.structure.reinforcement.map((line, i) => (
               <p key={i} className={bodyClass}>
                 {line}
               </p>
@@ -68,7 +77,7 @@ export default function MissionAndMethodPage() {
       {/* Section 4: Chapters (Remembering, Revealing, Reconnecting) */}
       <section className={`border-t border-slate-200 ${sectionClass}`}>
         <div className={containerClass}>
-          <h2 className={titleClass}>The three chapters</h2>
+          <h2 className={titleClass}>The Three Chapters</h2>
 
           <div className="mt-12 space-y-16">
             <div>
@@ -104,7 +113,7 @@ export default function MissionAndMethodPage() {
       {/* Section 5: Human ecology + forest image (slight breakout) */}
       <section className={`border-t border-slate-200 ${sectionClass}`}>
         <div className={containerClass}>
-          <h2 className={titleClass}>Human ecology</h2>
+          <h2 className={titleClass}>Seeing Our Human Ecology</h2>
           <div className="mt-8 space-y-4">
             {missionAndMethod.humanEcology.intro.map((p, i) => (
               <p key={i} className={bodyClass}>{p}</p>
@@ -149,7 +158,7 @@ export default function MissionAndMethodPage() {
       {/* Section 6: How this grows */}
       <section className={`border-t border-slate-200 ${sectionClass}`}>
         <div className={containerClass}>
-          <h2 className={titleClass}>How this grows</h2>
+          <h2 className={titleClass}>How This Grows</h2>
           <div className="mt-8 space-y-6">
             {missionAndMethod.howThisGrows.map((p, i) => (
               <p key={i} className={bodyClass}>{p}</p>

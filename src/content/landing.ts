@@ -2,7 +2,7 @@ export const landingContent = {
   brand: "Returning Home",
   hero: {
     eyebrow: "Returning Home",
-    titleLines: ["A shared practice for", "bringing what's possible", "to life in place."],
+    titleLines: ["A shared practice", "to grow life", "in place."],
     body: "What becomes possible when we turn home together?",
     primaryCta: { href: "/begin", label: "Begin the Journey" },
     secondaryCta: { href: "/mission-and-method", label: "Learn how it works →" },

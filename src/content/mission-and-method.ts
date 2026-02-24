@@ -2,12 +2,17 @@ export type MissionAndMethodContent = {
   pageTitle: string
   pageSubtitle: string
   opening: string[]
-  arcIntro: string
+  structure: {
+    title: string
+    intro: string
+    learningLabels: [string, string, string]
+    chapterTitles: [string, string, string]
+    reinforcement: [string, string]
+  }
   arcChapters: {
     title: string
     description: string
   }[]
-  learningIntro: string[]
   chapters: {
     remembering: string[]
     revealing: string[]
@@ -43,8 +48,16 @@ export const missionAndMethod: MissionAndMethodContent = {
     "Returning Home exists to offer a clear, grounded, and ongoing path forward."
   ],
 
-  arcIntro:
-    "This is the same arc introduced on the home page. It appears again here to anchor the deeper exploration that follows.",
+  structure: {
+    title: "The Fundamental Nature of Returning Home",
+    intro: "The practice follows the basic pattern of how learning happens.",
+    learningLabels: ["Learn & Listen", "Reflect & Integrate", "Act & Embody"],
+    chapterTitles: ["Remembering Home", "Revealing the Way Home", "Reconnecting & Walking Home"],
+    reinforcement: [
+      "The three chapters of Returning Home map directly to this pattern.",
+      "Here, the learning is shared and directed toward our collective return to local community and place."
+    ]
+  },
 
   arcChapters: [
     {
@@ -62,12 +75,6 @@ export const missionAndMethod: MissionAndMethodContent = {
       description:
         "Experience design and collective action to live more fully in our shared world."
     }
-  ],
-
-  learningIntro: [
-    "This is the basic pattern of how people learn.",
-    "The three chapters of Returning Home map directly to this pattern.",
-    "Here, the learning is shared and directed toward our collective return to local community and place."
   ],
 
   chapters: {
