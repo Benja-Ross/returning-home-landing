@@ -1,8 +1,6 @@
-import { ChapterCard } from "@/components/landing/ChapterCard";
 import { ChapterArc } from "@/components/landing/ChapterArc";
 import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Hero } from "@/components/landing/Hero";
-import { PathCard } from "@/components/landing/PathCard";
 import { Section } from "@/components/landing/Section";
 import { SocialSoilBand } from "@/components/landing/SocialSoilBand";
 import { PageLayout } from "@/components/layout/PageLayout";

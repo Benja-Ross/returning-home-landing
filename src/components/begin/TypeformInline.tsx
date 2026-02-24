@@ -14,7 +14,10 @@ type TypeformInlineProps = {
 export function TypeformInline({ onSubmit }: TypeformInlineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const onSubmitRef = useRef(onSubmit);
-  onSubmitRef.current = onSubmit;
+
+  useEffect(() => {
+    onSubmitRef.current = onSubmit;
+  }, [onSubmit]);
 
   useEffect(() => {
     if (!containerRef.current) return;

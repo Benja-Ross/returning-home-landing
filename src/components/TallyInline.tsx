@@ -25,19 +25,28 @@ function loadTallyScript(): Promise<void> {
   });
 }
 
+declare global {
+  interface Window {
+    Tally?: { loadEmbeds?: () => void };
+  }
+}
+
 export function TallyInline({ formId, title, onSubmit }: TallyInlineProps) {
   const onSubmitRef = useRef(onSubmit);
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  onSubmitRef.current = onSubmit;
 
   const embedUrl = `${TALLY_EMBED_BASE}/${formId}?alignLeft=1&hideTitle=1&transparentBackground=0&dynamicHeight=1`;
+
+  useEffect(() => {
+    onSubmitRef.current = onSubmit;
+  }, [onSubmit]);
 
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
     loadTallyScript()
       .then(() => {
-        if (typeof (window as any).Tally?.loadEmbeds === "function") {
-          (window as any).Tally.loadEmbeds();
+        if (typeof window.Tally?.loadEmbeds === "function") {
+          window.Tally.loadEmbeds();
         }
         timeoutId = setTimeout(() => {
           const iframe = iframeRef.current;

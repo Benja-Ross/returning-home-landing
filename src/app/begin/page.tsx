@@ -99,7 +99,7 @@ export default function BeginPage() {
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
                 <strong className="font-semibold text-slate-900">Complete the Chapter 2 reflection form below.</strong>
                 {" "}
-                This indicates you've completed Chapter 1 and are ready to continue.
+                This indicates you&apos;ve completed Chapter 1 and are ready to continue.
               </p>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
                 After submitting, a download link will appear for the Chapter 2 guide (PDF).
@@ -153,7 +153,7 @@ export default function BeginPage() {
               <li>Bangladesh</li>
             </ul>
             <p className="text-base leading-7 text-slate-800 sm:text-lg">
-              If you're elsewhere, you can still complete Chapters 1 and 2.
+              If you&apos;re elsewhere, you can still complete Chapters 1 and 2.
               Discussion groups and story circles will expand over time.
             </p>
           </div>

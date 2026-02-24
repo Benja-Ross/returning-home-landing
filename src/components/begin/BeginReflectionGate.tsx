@@ -4,6 +4,15 @@ import { useState, useEffect, useRef } from "react";
 
 import { TallyInline } from "@/components/TallyInline";
 
+declare global {
+  interface Window {
+    __unlockChapter1?: () => void;
+    __lockChapter1?: () => void;
+    __unlockChapter2?: () => void;
+    __lockChapter2?: () => void;
+  }
+}
+
 export function BeginReflectionGate() {
   const [reflectionComplete, setReflectionComplete] = useState(false);
   const [chapter2Complete, setChapter2Complete] = useState(false);
@@ -13,10 +22,10 @@ export function BeginReflectionGate() {
 
   useEffect(() => {
     if (process.env.NODE_ENV === "development") {
-      (window as any).__unlockChapter1 = () => setReflectionComplete(true);
-      (window as any).__lockChapter1 = () => setReflectionComplete(false);
-      (window as any).__unlockChapter2 = () => setChapter2Complete(true);
-      (window as any).__lockChapter2 = () => setChapter2Complete(false);
+      window.__unlockChapter1 = () => setReflectionComplete(true);
+      window.__lockChapter1 = () => setReflectionComplete(false);
+      window.__unlockChapter2 = () => setChapter2Complete(true);
+      window.__lockChapter2 = () => setChapter2Complete(false);
     }
   }, []);
 
