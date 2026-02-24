@@ -204,6 +204,30 @@ export default function MissionAndMethodPage() {
           </div>
         </div>
       </section>
+
+      {/* Lineage */}
+      <section className={`border-t border-slate-200 ${sectionClass}`}>
+        <div className={containerClass}>
+          <h2 className={titleClass}>{missionAndMethod.lineage.title}</h2>
+          <p className={`${bodyClass} mt-6`}>{missionAndMethod.lineage.body}</p>
+        </div>
+      </section>
+
+      {/* Brand signature */}
+      <section className="mt-20 pb-20">
+        <div className={`${containerClass} flex flex-col items-center text-center`}>
+          <p className="text-sm text-neutral-600 text-center">
+            Returning Home is part of Awakening Lands.
+          </p>
+          <Image
+            src="/images/logo.png"
+            alt="Awakening Lands"
+            width={220}
+            height={80}
+            className="mx-auto mt-5 w-full max-w-[220px] h-auto"
+          />
+        </div>
+      </section>
     </PageLayout>
   );
 }

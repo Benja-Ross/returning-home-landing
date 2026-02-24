@@ -28,6 +28,10 @@ export type MissionAndMethodContent = {
     bullets: string[]
     closing: string
   }
+  lineage: {
+    title: string
+    body: string
+  }
 }
 
 export const missionAndMethod: MissionAndMethodContent = {
@@ -163,6 +167,12 @@ export const missionAndMethod: MissionAndMethodContent = {
     ],
 
     closing:
-      "I strive to bring those lessons along as I continue to learn more about Returning Home."
-  }
+      "I strive to bring those lessons along as I continue to learn more about Returning Home.",
+  },
+
+  lineage: {
+    title: "A Note on Lineage",
+    body:
+      "Returning Home is informed by a lineage of participatory storytelling, collective sense-making, regenerative design, and experience-based learning. Influences include Insight Share, Prosocial World, the Presencing Institute, and WeAreYonder. We will continue learning from practitioners and communities exploring these practices around the world.",
+  },
 }
