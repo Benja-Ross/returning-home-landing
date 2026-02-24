@@ -39,11 +39,14 @@ export default function MissionAndMethodPage() {
       </section>
 
       {/* Unified Structure section: learning pattern + macro arc + chapter titles */}
-      <section className={`border-t border-slate-200 ${sectionClass}`}>
+      <section className={`border-t border-slate-200 ${sectionClass} py-24 sm:py-28`}>
         <div className={containerClass}>
           <h2 className={titleClass}>{missionAndMethod.structure.title}</h2>
-          <p className={`${bodyClass} mt-6 mb-12`}>{missionAndMethod.structure.intro}</p>
-          <div className={mirrorRow}>
+          <p className={`${bodyClass} mt-6 mb-16 sm:mb-20`}>
+            {missionAndMethod.structure.intro}
+          </p>
+
+          <div className={`${mirrorRow} mb-2 sm:mb-3`}>
             {missionAndMethod.structure.learningLabels.map((label, i) => (
               <span key={i} className={mirrorText}>
                 {label}
@@ -51,26 +54,25 @@ export default function MissionAndMethodPage() {
             ))}
           </div>
         </div>
-        <div className="relative left-1/2 mt-10 w-screen -translate-x-1/2 overflow-x-clip py-0">
-          <div className="mx-auto max-w-6xl px-6 py-0 sm:px-8">
+
+        <div className="relative left-1/2 mt-6 sm:mt-8 w-screen -translate-x-1/2 overflow-x-clip">
+          <div className="mx-auto max-w-6xl px-6 py-2 sm:px-8 sm:py-3">
             <ChapterArc chapters={arcChaptersForHomepage} arcOnly />
           </div>
         </div>
+
         <div className={containerClass}>
-          <div className={`${mirrorRow} mt-6 sm:mt-8`}>
+          <div className={`${mirrorRow} -mt-10 sm:-mt-12`}>
             {missionAndMethod.structure.chapterTitles.map((title, i) => (
               <span key={i} className={mirrorText}>
                 {title}
               </span>
             ))}
           </div>
-          <div className="mt-10 space-y-4 sm:mt-12">
-            {missionAndMethod.structure.reinforcement.map((line, i) => (
-              <p key={i} className={bodyClass}>
-                {line}
-              </p>
-            ))}
-          </div>
+
+          <p className={`${bodyClass} mt-16 sm:mt-18`}>
+            {missionAndMethod.structure.reinforcement}
+          </p>
         </div>
       </section>
 

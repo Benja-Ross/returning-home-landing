@@ -7,7 +7,7 @@ export type MissionAndMethodContent = {
     intro: string
     learningLabels: [string, string, string]
     chapterTitles: [string, string, string]
-    reinforcement: [string, string]
+    reinforcement: string
   }
   arcChapters: {
     title: string
@@ -53,10 +53,8 @@ export const missionAndMethod: MissionAndMethodContent = {
     intro: "The practice follows the basic pattern of how learning happens.",
     learningLabels: ["Learn & Listen", "Reflect & Integrate", "Act & Embody"],
     chapterTitles: ["Remembering Home", "Revealing the Way Home", "Reconnecting & Walking Home"],
-    reinforcement: [
-      "The three chapters of Returning Home map directly to this pattern.",
-      "Here, the learning is shared and directed toward our collective return to local community and place."
-    ]
+    reinforcement:
+      "The three chapters follow this same pattern, but focused on learning how to return home to community and place."
   },
 
   arcChapters: [
