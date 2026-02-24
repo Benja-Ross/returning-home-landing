@@ -84,6 +84,9 @@ export default function MissionAndMethodPage() {
           <div className="mt-12 space-y-16">
             <div>
               <h3 className="text-xl font-semibold text-slate-900">Remembering Home</h3>
+              <p className="mt-1 italic text-neutral-700 sm:text-lg">
+                {missionAndMethod.arcChapters[0].description}
+              </p>
               <div className="mt-4 space-y-4">
                 {missionAndMethod.chapters.remembering.map((p, i) => (
                   <p key={i} className={bodyClass}>{p}</p>
@@ -93,6 +96,9 @@ export default function MissionAndMethodPage() {
 
             <div>
               <h3 className="text-xl font-semibold text-slate-900">Revealing the Way Home</h3>
+              <p className="mt-1 italic text-neutral-700 sm:text-lg">
+                {missionAndMethod.arcChapters[1].description}
+              </p>
               <div className="mt-4 space-y-4">
                 {missionAndMethod.chapters.revealing.map((p, i) => (
                   <p key={i} className={bodyClass}>{p}</p>
@@ -102,6 +108,9 @@ export default function MissionAndMethodPage() {
 
             <div>
               <h3 className="text-xl font-semibold text-slate-900">Reconnecting & Walking Home</h3>
+              <p className="mt-1 italic text-neutral-700 sm:text-lg">
+                {missionAndMethod.arcChapters[2].description}
+              </p>
               <div className="mt-4 space-y-4">
                 {missionAndMethod.chapters.reconnecting.map((p, i) => (
                   <p key={i} className={bodyClass}>{p}</p>
@@ -148,11 +157,10 @@ export default function MissionAndMethodPage() {
             ))}
           </div>
           <p className="mt-8 text-sm leading-relaxed text-neutral-600">
-            If you want a deeper framing of human ecology, you can read the short article on the home page’s{" "}
+            If you want a deeper exploration of human ecology, you can read our Substack article on on that subject here: {" "}
             <Link href="https://awakeninglands.substack.com/p/a-search-for-the-meaning-of-human?r=3cr1x3" className="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400">
               Why Human Ecology Matters
             </Link>{""}
-            section.
           </p>
         </div>
       </section>
