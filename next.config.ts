@@ -3,10 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
-  // Prevent Sentry (and other instrumentation) from running in development to avoid rate limits
-  experimental: {
-    instrumentationHook: process.env.NODE_ENV === "production",
-  },
+  // To run instrumentation only in production, gate it in instrumentation.ts using process.env.NODE_ENV.
 };
 
 export default nextConfig;
