@@ -158,7 +158,12 @@ export default function MissionAndMethodPage() {
           </div>
           <p className="mt-8 text-sm leading-relaxed text-neutral-600">
             If you want a deeper exploration of human ecology, you can read our Substack article on on that subject here: {" "}
-            <Link href="https://awakeninglands.substack.com/p/a-search-for-the-meaning-of-human?r=3cr1x3" className="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400">
+            <Link 
+              href="https://awakeninglands.substack.com/p/a-search-for-the-meaning-of-human" 
+              className="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Why Human Ecology Matters
             </Link>{""}
           </p>
