@@ -182,25 +182,26 @@ export default function MissionAndMethodPage() {
         </div>
       </section>
 
-      {/* Section 7: Benji video placeholder */}
+      {/* Section 7: A Note From Benji */}
       <section className={`border-t border-slate-200 ${sectionClass}`}>
         <div className={containerClass}>
           <h2 className={titleClass}>A Note From Benji</h2>
-          <div className="mt-8 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 sm:p-8">
-            <div className="aspect-video w-full rounded-2xl border border-neutral-200 bg-neutral-100 flex items-center justify-center">
-              <p className="text-neutral-500 text-center text-sm sm:text-base">
-                Welcome video coming soon.
-              </p>
+          <div className="mt-12 flex flex-col gap-6 sm:flex-row sm:items-start">
+            <div className="shrink-0">
+              <Image
+                src="/images/benji.png"
+                alt="Benji Ross"
+                width={140}
+                height={140}
+                className="rounded-md object-cover"
+              />
             </div>
-            <p className="mt-4 text-center text-sm leading-relaxed text-neutral-600">
-              For now, this page holds the structure of the practice.
-            </p>
-          </div>
-          <div className="mt-10 space-y-4">
-            {missionAndMethod.benjiNote.bullets.map((bullet, i) => (
-              <p key={i} className={bodyClass}>{bullet}</p>
-            ))}
-            <p className={bodyClass}>{missionAndMethod.benjiNote.closing}</p>
+            <div className="max-w-prose space-y-4">
+              {missionAndMethod.benjiNote.bullets.map((bullet, i) => (
+                <p key={i} className={bodyClass}>{bullet}</p>
+              ))}
+              <p className={bodyClass}>{missionAndMethod.benjiNote.closing}</p>
+            </div>
           </div>
         </div>
       </section>
