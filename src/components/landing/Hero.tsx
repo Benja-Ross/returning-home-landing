@@ -11,7 +11,10 @@ export function Hero() {
             </span>
           ))}
         </h1>
-        <p className="mt-4 text-lg leading-relaxed text-slate-700">{landingContent.hero.body}</p>
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-700">
+          {landingContent.whatItIs.body}
+        </p>
+        <p className="mt-4 text-md leading-relaxed text-slate-500 tracking-wide">{landingContent.hero.body}</p>
       </div>
     </section>
   );

@@ -57,7 +57,7 @@ export const missionAndMethod: MissionAndMethodContent = {
   structure: {
     title: "The Fundamental Nature of Returning Home",
     intro: "The practice follows the basic pattern of how learning happens.",
-    learningLabels: ["Learn & Listen", "Reflect & Integrate", "Act & Embody"],
+    learningLabels: ["Observe & Listen", "Reflect & Integrate", "Act & Embody"],
     chapterTitles: ["Remembering Home", "Revealing the Way Home", "Reconnecting & Walking Home"],
     reinforcement:
       "The three chapters mirror this pattern, focused on learning how to return home to community and place."
@@ -77,7 +77,7 @@ export const missionAndMethod: MissionAndMethodContent = {
     {
       title: "Reconnecting & Walking Home",
       description:
-        "Experience design and collective action to live more fully in our shared world."
+        "Experience design and collective action to live more fully into our shared world."
     }
   ],
 

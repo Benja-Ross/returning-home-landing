@@ -4,39 +4,19 @@ export const landingContent = {
     eyebrow: "Returning Home",
     titleLines: ["A shared practice", "to grow life", "in place."],
     body: "What becomes possible when we turn home together?",
-    primaryCta: { href: "/begin", label: "Begin the Journey" },
-    secondaryCta: { href: "/mission-and-method", label: "Learn how it works →" },
-    cards: [
-      { title: "Coherence over conversion", text: "A clarity hub, not a pressure funnel." },
-      { title: "Dignified, grounded tone", text: "Calm, intelligent, structured." },
-      { title: "Felt possibility", text: "No hype. Real shifts in relational life." },
-    ],
   },
   whatItIs: {
     title: "What is Returning Home?",
     body:
-      "Returning Home is a structured storytelling and reflection practice designed to strengthen the relational fabric of a place. It helps people reconnect with lived experience, listen to the collective story, see their community as a living system, and take meaningful steps toward shared vitality.",
-    whoFor: {
-      title: "Who it’s for",
-      body:
-        "People and communities looking to deepen belonging, coherence, and place-based care—without hype, urgency tactics, or overbuilt funnel logic.",
-    },
-    not: {
-      title: "What it is not",
-      body:
-        "Not a program to consume. Not a secret teaching. Not a high-pressure sales funnel. It’s a process to participate in.",
-    },
+      "Returning Home is a guided journey that helps people reconnect to where they live, discover what their place wants to be, and imagine what they can grow together."
   },
-  whyHumanEcology: {
-    id: "how",
-    title: "Why Human Ecology Matters",
-    body:
-      "Healthy ecosystems are defined by the quality of their relationships. So are human communities. Returning Home strengthens the “soil” of belonging—the invisible field that supports clear seeing, wise coordination, and integrity in action.",
-    bullets: [
-      "Disconnected from place",
-      "Overextended in service",
-      "Unsure how to contribute meaningfully",
-      "Surrounded by activity but lacking coherence",
+  howItWorks: {
+    title: "How does it work?",
+    paragraphs: [
+      "The three-chapter pattern works at many scales.",
+      "One person can begin alone. A small circle can move through it together. A whole community can return to it again and again.",
+      "One of the most powerful moments comes when people see their stories mapped together and recognize something they want to experience in their place together.",
+      "Depth grows over time.",
     ],
   },
   chapters: {
@@ -55,7 +35,7 @@ export const landingContent = {
       {
         number: "3",
         title: "Reconnecting & Walking Home",
-        body: "Experience design and collective action to live more fully in our shared world.",
+        body: "Experience design and collective action to live more fully into our shared world.",
       },
     ],
   },

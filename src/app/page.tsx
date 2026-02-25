@@ -14,13 +14,21 @@ export default function Home() {
       <Hero />
 
       {/* 3 chapters / arc — arc extends beyond viewport, section clips horizontal overflow */}
-      <Section className="overflow-x-clip mt-7 sm:mt-0" innerClassName="mx-auto max-w-5xl px-6 pt-6 pb-16">
+      <Section className="overflow-x-clip mt-8 sm:mt-10" innerClassName="mx-auto max-w-5xl px-6 pt-6 pb-16">
         <h2 className="text-2xl font-semibold mb-3">{landingContent.chapters.title}</h2>
         <ChapterArc chapters={landingContent.chapters.cards} />
-        <p className="mt-[60px] max-w-3xl text-sm leading-relaxed text-slate-700">
-          {returningHomeContent.landing.whatItIs.beneathArcLine}
-        </p>
       </Section>
+
+      {/* How does it work? */}
+      <Section>
+        <h2 className="text-2xl font-semibold text-slate-900 mb-3">{landingContent.howItWorks.title}</h2>
+        <div className="max-w-3xl space-y-3 text-slate-700 leading-relaxed">
+          {landingContent.howItWorks.paragraphs.map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+          ))}
+        </div>
+      </Section>
+
       {/* From the Social Soil */}
       <div className="mt-5 mb-16">
         <SocialSoilBand />

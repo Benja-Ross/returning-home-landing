@@ -17,7 +17,7 @@ export function LearningArc() {
         }}
       >
         <text x="140" y="188" textAnchor="middle">
-          Learn & Listen
+          Observe & Listen
         </text>
         <text x="600" y="110" textAnchor="middle">
           Reflect & Integrate

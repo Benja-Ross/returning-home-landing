@@ -2,19 +2,8 @@ export const returningHomeContent = {
   landing: {
     whatItIs: {
       title: "What is Returning Home?",
-      paragraphs: [
-        "Returning Home is a shared learning and acting arc, rooted in the specific places people already call home.",
-        "It holds space for people to see more of their shared world together and to move with a little more steadiness, care, and agency.",
-      ],
-      isBullets: [
-        "A shared learning and acting arc, rooted in place.",
-        "A practice to grow local meaning and purpose, belonging, and long-term place care.",
-        "Open to individuals and communities alike.",
-      ],
-      isNotBullets: ["A course.", "A rigid methodology."],
-      quietLegitimacy:
-        "Returning Home is being explored by neighbors who want more connection, facilitators, and local organizations seeking more coherent ways of working together.",
-      beneathArcLine: "Enter the arc alone, as a pair, in a small group, or as a whole community.",
+      paragraphs:
+        "A guided journey that helps people reconnect to where they live, discover what their place wants to be, and imagine what they can grow together.",
     },
   },
   begin: {
