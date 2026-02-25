@@ -67,7 +67,7 @@ export default function BeginPage() {
                 After submitting, a download button will appear for the Chapter 1 guide (PDF).
               </p>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
-                It's designed to be done with a partner (interviewer and interviewee), but can also be done as a solo reflection.
+                It&apos;s designed to be done with a partner (interviewer and interviewee), but can also be done as a solo reflection.
               </p>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
                 <strong className="font-semibold text-slate-900">When finished, return to this page.</strong>
