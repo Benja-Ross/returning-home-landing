@@ -62,19 +62,23 @@ export function BeginReflectionGate() {
             <div
               className={
                 reflectionComplete
-                  ? "mt-12 opacity-100 translate-y-0 transition-all duration-500 ease-out"
-                  : "mt-12 opacity-0 translate-y-4 pointer-events-none transition-all duration-500 ease-out"
+                  ? "mt-12 opacity-100 translate-y-0 transition-all duration-500 ease-out flex flex-col items-center"
+                  : "mt-12 opacity-0 translate-y-4 pointer-events-none transition-all duration-500 ease-out flex flex-col items-center"
               }
               aria-hidden={!reflectionComplete}
             >
               <p className="text-lg font-medium text-slate-900">Chapter 1 is ready.</p>
-              <a
-                href="/returning-home/chapter-1.pdf"
-                download
-                className="mt-4 inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-slate-800"
-              >
-                Download Chapter 1 (PDF)
-              </a>
+              <div className="mt-4 flex justify-center">
+                <a
+                  href="/returning-home/chapter-1.pdf"
+                  download
+                  aria-label="Download Chapter 1 PDF (Remembering Home)"
+                  className="inline-flex items-center justify-center rounded-2xl px-8 py-4 text-lg font-semibold text-neutral-900 bg-[#C8922E] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#A9741F] hover:shadow-xl"
+                >
+                  Begin Remembering Home (PDF)
+                  <span className="ml-2" aria-hidden>→</span>
+                </a>
+              </div>
             </div>
           </div>
         )}
@@ -104,19 +108,23 @@ export function BeginReflectionGate() {
             <div
               className={
                 chapter2Complete
-                  ? "mt-12 opacity-100 translate-y-0 transition-all duration-500 ease-out"
-                  : "mt-12 opacity-0 translate-y-4 pointer-events-none transition-all duration-500 ease-out"
+                  ? "mt-12 opacity-100 translate-y-0 transition-all duration-500 ease-out flex flex-col items-center"
+                  : "mt-12 opacity-0 translate-y-4 pointer-events-none transition-all duration-500 ease-out flex flex-col items-center"
               }
               aria-hidden={!chapter2Complete}
             >
               <p className="text-lg font-medium text-slate-900">Chapter 2 is ready.</p>
-              <a
-                href="/returning-home/chapter-2-walking-game.pdf"
-                download
-                className="mt-4 inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-slate-800"
-              >
-                Download Chapter 2 (PDF)
-              </a>
+              <div className="mt-4 flex justify-center">
+                <a
+                  href="/returning-home/chapter-2-walking-game.pdf"
+                  download
+                  aria-label="Download Chapter 2 PDF (Revealing the Way Home)"
+                  className="inline-flex items-center justify-center rounded-2xl px-8 py-4 text-lg font-semibold text-neutral-900 bg-[#C8922E] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#A9741F] hover:shadow-xl"
+                >
+                  Begin Revealing the Way Home (PDF)
+                  <span className="ml-2" aria-hidden>→</span>
+                </a>
+              </div>
             </div>
           </div>
         )}

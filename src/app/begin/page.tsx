@@ -42,15 +42,12 @@ export default function BeginPage() {
           {/* How to Begin: title + intro */}
           <div className="space-y-4">
             <h2 className="text-2xl font-semibold text-slate-900 sm:text-3xl">
-              How to Begin
+              To Begin Returning Home
             </h2>
             <p className="max-w-xl text-base leading-7 text-slate-800 sm:text-lg">
-              <strong className="font-semibold text-slate-900">Beginning below involves three clear steps.</strong>
+              <strong className="font-semibold text-slate-900">Follow the three steps below.</strong>
               {" "}
               Move at your own pace.
-            </p>
-            <p className="text-sm leading-7 text-slate-600">
-              Chapter 1 typically takes 30–60 minutes.
             </p>
           </div>
 
@@ -61,28 +58,24 @@ export default function BeginPage() {
             </span>
             <div className="min-w-0 flex-1 space-y-5">
               <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">
-                Step 1 - Complete Chapter 1
+                Chapter 1
               </h3>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
                 <strong className="font-semibold text-slate-900">Complete the Chapter 1 reflection form below.</strong>
               </p>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
-                After submitting, a download link will appear.
+                After submitting, a download button will appear for the Chapter 1 guide (PDF).
               </p>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
-                Use the booklet (PDF):
+                It's designed to be done with a partner (interviewer and interviewee), but can also be done as a solo reflection.
               </p>
-              <ul className="list-disc space-y-1 pl-4 text-base leading-7 text-slate-800 sm:text-lg">
-                <li>With a partner (interviewer and interviewee), or</li>
-                <li>As a solo reflection.</li>
-              </ul>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
                 <strong className="font-semibold text-slate-900">When finished, return to this page.</strong>
                 {" "}
                 Bring one key reflection with you.
               </p>
               <p className="text-base leading-7 font-semibold text-slate-900 sm:text-lg">
-                Then continue to Chapter 2 below.
+                Then continue to Chapter 2.
               </p>
             </div>
           </article>
@@ -94,7 +87,7 @@ export default function BeginPage() {
             </span>
             <div className="min-w-0 flex-1 space-y-5">
               <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">
-                Step 2 - Complete Chapter 2
+                Chapter 2
               </h3>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
                 <strong className="font-semibold text-slate-900">Complete the Chapter 2 reflection form below.</strong>
@@ -102,16 +95,13 @@ export default function BeginPage() {
                 This indicates you&apos;ve completed Chapter 1 and are ready to continue.
               </p>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
-                After submitting, a download link will appear for the Chapter 2 guide (PDF).
+                After submitting, a download button will appear for the Chapter 2 guide (PDF).
               </p>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
                 Use the guide alone or with a small group (1 to 12 people).
               </p>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
-                The Chapter 2 form requires your email.
-              </p>
-              <p className="text-base leading-7 text-slate-800 sm:text-lg">
-                We will reach out to ask about your interest in joining a discussion group.
+                The Chapter 2 form requires your email. We will reach out to ask about your interest in joining a discussion group.
               </p>
             </div>
           </article>
@@ -123,7 +113,7 @@ export default function BeginPage() {
             </span>
             <div className="min-w-0 flex-1 space-y-5">
               <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">
-                Step 3 - Ongoing Participation
+                Ongoing Participation
               </h3>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
                 After completing Chapter 2:
