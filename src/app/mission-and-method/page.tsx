@@ -12,8 +12,6 @@ const bodyClass = "text-base leading-relaxed text-neutral-800 sm:text-lg";
 // Fundamental Nature: mirrored learning labels + chapter titles (same grid, same typography)
 const mirrorRow =
   "grid grid-cols-1 sm:grid-cols-3 gap-y-4 sm:gap-y-0 sm:gap-x-12 text-center";
-const mirrorText =
-  "text-lg sm:text-xl font-semibold tracking-tight text-neutral-900";
 
 export default function MissionAndMethodPage() {
   const arcChaptersForHomepage = missionAndMethod.arcChapters.map((ch, i) => ({
@@ -28,7 +26,19 @@ export default function MissionAndMethodPage() {
       <section className={`border-t border-slate-200 ${sectionClass}`}>
         <div className={containerClass}>
           <h2 className={titleClass}>Why This Practice Exists</h2>
-          <div className="mt-8 space-y-6">
+
+          <div className="relative mt-10 sm:mt-12 w-full h-[400px] sm:h-[500px] rounded-1xl overflow-hidden shadow-sm">
+            <Image
+              src="/images/why-this-exists.jpg"
+              alt="Tree roots near the surface of soil"
+              fill
+              className="object-cover object-bottom"
+              sizes="(max-width: 768px) 100vw, 896px"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-white/12" aria-hidden />
+          </div>
+
+          <div className="mt-16 sm:mt-20 space-y-6">
             {missionAndMethod.opening.map((paragraph, i) => (
               <p key={i} className={bodyClass}>
                 {paragraph}
@@ -39,23 +49,23 @@ export default function MissionAndMethodPage() {
       </section>
 
       {/* Unified Structure section: learning pattern + macro arc + chapter titles */}
-      <section className={`border-t border-slate-200 ${sectionClass} py-24 sm:py-28`}>
+      <section className={`border-t border-slate-200 ${sectionClass} bg-stone-50 py-24 sm:py-28`}>
         <div className={containerClass}>
-          <h2 className={titleClass}>{missionAndMethod.structure.title}</h2>
-          <p className={`${bodyClass} mt-6 mb-16 sm:mb-20`}>
+          <h2 className={`${titleClass} mb-16 sm:mb-20 text-center`}>{missionAndMethod.structure.title}</h2>
+          <p className={`${bodyClass} mt-6 mb-16 sm:mb-20 text-center max-w-2xl mx-auto`}>
             {missionAndMethod.structure.intro}
           </p>
 
           <div className={`${mirrorRow} mb-2 sm:mb-3`}>
             {missionAndMethod.structure.learningLabels.map((label, i) => (
-              <span key={i} className={mirrorText}>
+              <span key={i} className="text-lg sm:text-xl font-medium tracking-wide text-neutral-600">
                 {label}
               </span>
             ))}
           </div>
         </div>
 
-        <div className="relative left-1/2 mt-6 sm:mt-8 w-screen -translate-x-1/2 overflow-x-clip">
+        <div className="relative left-1/2 mt-1 sm:mt-3 w-screen -translate-x-1/2 overflow-x-clip">
           <div className="mx-auto max-w-6xl px-6 py-2 sm:px-8 sm:py-3">
             <ChapterArc chapters={arcChaptersForHomepage} arcOnly />
           </div>
@@ -64,13 +74,13 @@ export default function MissionAndMethodPage() {
         <div className={containerClass}>
           <div className={`${mirrorRow} -mt-10 sm:-mt-12`}>
             {missionAndMethod.structure.chapterTitles.map((title, i) => (
-              <span key={i} className={mirrorText}>
+              <span key={i} className="text-lg sm:text-xl font-semibold tracking-tight text-neutral-900">
                 {title}
               </span>
             ))}
           </div>
 
-          <p className={`${bodyClass} mt-16 sm:mt-18`}>
+          <p className={`${bodyClass} mt-12 sm:mt-14 text-center max-w-2xl mx-auto`}>
             {missionAndMethod.structure.reinforcement}
           </p>
         </div>
@@ -138,7 +148,7 @@ export default function MissionAndMethodPage() {
                 alt="A healthy forest thrives because of interconnection: roots, mycelium networks, and the full picture of interconnectivity."
                 width={1200}
                 height={675}
-                className="w-full h-auto rounded-2xl border border-neutral-200"
+                className="w-full h-auto rounded-1xl border border-neutral-200"
                 sizes="(max-width: 1024px) 100vw, 1024px"
               />
             </div>
