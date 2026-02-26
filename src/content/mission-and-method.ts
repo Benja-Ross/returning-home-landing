@@ -47,7 +47,7 @@ export const missionAndMethod: MissionAndMethodContent = {
 
     "But many of us also see that people, places, and the Earth as a whole are experiencing deep fragmentation. The challenges we face are complex and interconnected. It's important we all see clearly that no individual can stand alone.",
 
-    "When we look out at what’s happening, we can feel isolated and overwhelmed while the larger picture. What we can do has become harder to see. Without shared understanding and purpose, shared direction and action, and sturdy webs of relationship, our individual and collective efforts remain scattered and insufficient.",
+    "When we look out at what’s happening, we can feel isolated and overwhelmed by the larger picture. What we can do has become harder to see. Without shared understanding and purpose, shared direction and action, and sturdy webs of relationship, our individual and collective efforts remain scattered and insufficient.",
 
     "In our globalized and transient world, we must remember together that place is where relationships take root. It is in specific neighborhoods, watersheds, and towns that resilience becomes real. When our attention is pulled elsewhere, the connections that make us strong are weakened. When we bring our attention home and to all that means, the conditions for vitality can return.",
 
