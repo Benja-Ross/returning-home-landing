@@ -8,7 +8,7 @@ export const landingContent = {
   whatItIs: {
     title: "What is Returning Home?",
     body:
-      "Returning Home is a guided journey that helps people reconnect to where they live, discover what their place wants to be, and imagine what they can grow together."
+      "Returning Home is a guided journey that helps people reconnect to where they live, discover what their place wants to be, and bring new possibilities to life together."
   },
   howItWorks: {
     title: "How does it work?",

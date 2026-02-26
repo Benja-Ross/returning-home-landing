@@ -67,7 +67,7 @@ export default function BeginPage() {
                 After submitting, a download button will appear for the Chapter 1 guide (PDF).
               </p>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
-                It&apos;s designed to be done with a partner (interviewer and interviewee), but can also be done as a solo reflection.
+                The Chapter 1 activity is designed to be done with a partner (interviewer and interviewee), but can also be done as a solo reflection.
               </p>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
                 <strong className="font-semibold text-slate-900">When finished, return to this page.</strong>
@@ -92,16 +92,16 @@ export default function BeginPage() {
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
                 <strong className="font-semibold text-slate-900">Complete the Chapter 2 reflection form below.</strong>
                 {" "}
-                This indicates you&apos;ve completed Chapter 1 and are ready to continue.
+                Doing so indicates you&apos;ve completed Chapter 1 and are ready to continue.
               </p>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
-                After submitting, a download button will appear for the Chapter 2 guide (PDF).
+                After submitting, a download button will appear for the Chapter 2 game instructions (PDF).
               </p>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
-                Use the guide alone or with a small group (1 to 12 people).
+                The Chapter 2 walking game can be done alone or with a small group (1 to 12 people).
               </p>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
-                The Chapter 2 form requires your email. We will reach out to ask about your interest in joining a discussion group.
+                The Chapter 2 form requires your email. This is so we can reach out to ask about your interest in joining a discussion group to continue your Returning Home practice.
               </p>
             </div>
           </article>
@@ -113,7 +113,7 @@ export default function BeginPage() {
             </span>
             <div className="min-w-0 flex-1 space-y-5">
               <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">
-                Ongoing Participation
+                Ongoing Participation and Practice
               </h3>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
                 After completing Chapter 2:
@@ -124,7 +124,7 @@ export default function BeginPage() {
                 <li>Help convene or facilitate future gatherings</li>
               </ul>
               <p className="text-base leading-7 font-semibold text-slate-900 sm:text-lg">
-                Participation deepens only if you choose.
+                Participation deepens if you choose.
               </p>
             </div>
           </article>

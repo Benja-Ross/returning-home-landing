@@ -41,13 +41,13 @@ export const missionAndMethod: MissionAndMethodContent = {
   opening: [
     "We care about the world we inhabit. How could we not? It’s the only home we’ve got.",
 
-    "Despite life's challenges, when something happens like an unanticipated sunset making the sky surreal, or being witness to a great act of kindness, we are reminded of how good it is to be here.",
+    "Even when we're facing life's challenges, when something happens like an unanticipated sunset making the sky surreal, or being witness to a great act of kindness, we are reminded of how good it is to be here.",
 
-    "We want to celebrate what brings life, honor what brings us awe, respond to what is breaking, and contribute in ways that matter.",
+    "We want to celebrate what brings life, honor what brings us awe, respond to what is suffering, and contribute in ways that matter.",
 
     "But many of us also see that people, places, and the Earth as a whole are experiencing deep fragmentation. The challenges we face are complex and interconnected. It's important we all see clearly that no individual can stand alone.",
 
-    "When we look out at what’s happening, we can feel isolated and overwhelmed while the larger picture, and what we can do, has become harder to see. Without shared understanding and purpose, shared direction and action, and sturdy webs of relationship, our individual and collective efforts remain scattered and insufficient.",
+    "When we look out at what’s happening, we can feel isolated and overwhelmed while the larger picture. What we can do has become harder to see. Without shared understanding and purpose, shared direction and action, and sturdy webs of relationship, our individual and collective efforts remain scattered and insufficient.",
 
     "In our globalized and transient world, we must remember together that place is where relationships take root. It is in specific neighborhoods, watersheds, and towns that resilience becomes real. When our attention is pulled elsewhere, the connections that make us strong are weakened. When we bring our attention home and to all that means, the conditions for vitality can return.",
 
@@ -95,19 +95,21 @@ export const missionAndMethod: MissionAndMethodContent = {
 
       "In a fragmented culture, individual stories placed side by side do not automatically form a clear shared picture. Often there is obvious connection and overlap, but this is also a moment when our fragmentation can become more visible. What is needed is a shared foundation to start, a kind of map that enables our stories to sit in proximity no matter how awkwardly. From there, we create space to pause, reflect, and notice emerging patterns and possibilities for connection.",
 
-      "In the Returning Home practice, we are finding it helpful to use simple, game-like formats to support all of this. Clear phases and questions can help the group shift perspective. When people understand the structure, their trust and patience grows, space is allowed, patterns more easily surface, and shared intention anddirection can begin to take shape.",
+      "In the Returning Home practice, we are finding it helpful to use simple, game-like formats to support all of this. Clear phases and questions can help the group shift perspective. When people understand the structure, their trust and patience grows, space is allowed, patterns more easily surface, and shared intention and direction can begin to take shape.",
 
       "Shared ways of sensing don't arrive fully formed, nor do things come together at the same time for everyone. But with structure and care, alignment can grow.",
 
-      "When that alignment forms, it can feel energizing. Something that was diffuse begins to feel more whole. The group begins to sense what their place is asking of them."
+      "When that alignment forms, it can feel energizing. Something that was diffuse begins to feel more whole. The group begins to sense what their place is asking of them, what it wants to be."
     ],
 
     reconnecting: [
       "In this chapter, groups bring what they’ve learned into a conversation with the physical world.",
 
-      "When the group has moved through thoughtful reflection and begun to see from a shared perspective, a next step often becomes surprisingly clear. It doesn’t need to be a big step and often it's better that it's not. It simply needs to feel aligned with what the group has heard and sensed together. The group knows it has arrived at a worthy step when it feels it has emerged somehow on its own.",
+      "When the group has moved through thoughtful reflection and begun to see from a shared perspective, a next step often becomes surprisingly clear. It doesn’t need to be a big step and often it's better that it's not. It simply needs to feel aligned with what the group has heard and sensed together.",
 
       "The Returning Home practice is experimenting with simple, thoughtfully designed story walks to support taking that next step. These walks invite participants to move through their own streets, along rivers, neighborhoods, into kitchens, living rooms, and communal gathering places while carrying a shared storyline. As they walk, the surrounding community and landscape become active participants. People can notice how reality responds.",
+
+      "It also doesn't need to be anything grand. Sometimes simply walking with a friend to locations shared in Chapter 1 stories is the most appropriate thing to do.",
 
       "Walking our stories into the world generates feedback. What has formed within the group deepens: shared meaning, direction, purpose, attention, and intention. This is when the value in the cyclical nature of the overall practice also becomes clear."
     ]
@@ -142,7 +144,7 @@ export const missionAndMethod: MissionAndMethodContent = {
   howThisGrows: [
     "Returning Home is designed to begin simply.",
 
-    "It may start with one person journaling alone through Chapter 1. From there, they may invite a few neighbors to share stories. In other places, a small group may begin together from the start. Sometimes a local organization discovers that the arc strengthens work already underway.",
+    "It may start with one person journaling alone through Chapter 1. From there, they may invite a few neighbors to share stories. In other places, a small group may begin together from the start. Sometimes a local organization discovers that the arc strengthens work already underway and a larger container for the practice is formed.",
 
     "This practice grows where there is readiness and interest. It does not require a large launch or a centralized campaign. It only requires a seed of interest and a willingness to begin.",
 
@@ -154,15 +156,15 @@ export const missionAndMethod: MissionAndMethodContent = {
 
     "Our intention is steady development rather than rapid expansion, planting seeds of the practice where the soil is ready and moving at a pace that strengthens relationships rather than straining them. A healthy human ecology relies on a web or trust and mutual understanding, after all",
 
-    "We meet people where they are, and go from there."
+    "We're all about attuning to place. We meet people where they are, and go from there."
   ],
 
   benjiNote: {
     bullets: [
       "The purpose behind this practice is larger than any one person, to say the least.",
       "But I do want to offer a human presence behind the work. I don't want to claim a title other than practitioner, and now you know at least one face and voice devoted to helping this grow.",
-      "It it has grown through so many relationships, experiments, and patience.",
-      "The part of my background that influences me most was when I was an aspiring agriculturalist and Permaculture practicioner. I long wanted to start a  farm and community kitchen. Then, years of living with chronic illness redirected my path and shaped how I understand wholeness, resilience, and will.",
+      "It has grown through so many relationships, mentorships, experiments, and patience.",
+      "The part of my background that influences me most was when I was an aspiring agriculturalist and Permaculture practicioner. I long wanted to start a  farm and community kitchen. Then, years of living with disabling illness redirected my path and shaped how I understand wholeness, resilience, and will.",
       
     ],
 
@@ -173,6 +175,6 @@ export const missionAndMethod: MissionAndMethodContent = {
   lineage: {
     title: "A Note on Lineage",
     body:
-      "Returning Home is informed by a lineage of participatory storytelling, collective sense-making, regenerative design, and experience-based learning. Influences include Insight Share, Prosocial World, the Presencing Institute, and WeAreYonder. We will continue learning from practitioners and communities exploring these practices around the world.",
+      "Returning Home is informed by a lineage of participatory storytelling, collective sense-making, regenerative design, and experience-based learning. Influences include Insight Share, Prosocial World, the Presencing Institute, and WeAreYonder. We will continue learning from the people and communities exploring how to return home, from around the world.",
   },
 }
