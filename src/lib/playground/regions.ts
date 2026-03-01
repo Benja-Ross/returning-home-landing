@@ -8,6 +8,7 @@ export const REGIONS: Record<string, RegionConfig> = {
     introParagraphs: [
       "This playground is a space for the Erie–Niagara region to deepen connection to place and share reflections.",
     ],
+    neighborhoodHint: "e.g. Buffalo, Tonawanda, Niagara Falls",
   },
   "ann-arbor": {
     slug: "ann-arbor",
@@ -16,6 +17,7 @@ export const REGIONS: Record<string, RegionConfig> = {
     introParagraphs: [
       "This playground supports the Ann Arbor community in the Returning Home practice.",
     ],
+    neighborhoodHint: "e.g. downtown, Burns Park, near campus",
   },
   bangladesh: {
     slug: "bangladesh",
@@ -24,6 +26,7 @@ export const REGIONS: Record<string, RegionConfig> = {
     introParagraphs: [
       "This playground is for participants in Bangladesh exploring Returning Home in place.",
     ],
+    neighborhoodHint: "e.g. your neighborhood, village, or area",
   },
 } as const;
 

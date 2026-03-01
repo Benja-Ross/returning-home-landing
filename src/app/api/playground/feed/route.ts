@@ -1,0 +1,56 @@
+import { NextResponse } from "next/server";
+
+import { getApprovedFeedPage } from "@/lib/playground/data";
+import { getRegion } from "@/lib/playground/regions";
+
+const UUID_REGEX =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const regionSlug = searchParams.get("regionSlug");
+  const promptId = searchParams.get("promptId");
+  const cursor = searchParams.get("cursor") ?? undefined;
+
+  if (!regionSlug || typeof regionSlug !== "string" || regionSlug.trim() === "") {
+    return NextResponse.json(
+      { ok: false, error: "regionSlug is required." },
+      { status: 400 }
+    );
+  }
+
+  if (!promptId || !UUID_REGEX.test(promptId)) {
+    return NextResponse.json(
+      { ok: false, error: "Valid promptId (UUID) is required." },
+      { status: 400 }
+    );
+  }
+
+  if (!getRegion(regionSlug.trim())) {
+    return NextResponse.json(
+      { ok: false, error: "Invalid region." },
+      { status: 400 }
+    );
+  }
+
+  try {
+    const feedPage = await getApprovedFeedPage({
+      regionSlug: regionSlug.trim(),
+      promptId,
+      limit: 12,
+      cursor,
+    });
+
+    return NextResponse.json({
+      ok: true,
+      items: feedPage.items,
+      totalApproved: feedPage.totalApproved,
+      nextCursor: feedPage.nextCursor,
+    });
+  } catch (err) {
+    return NextResponse.json(
+      { ok: false, error: "Failed to load feed." },
+      { status: 500 }
+    );
+  }
+}
