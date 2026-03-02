@@ -7,23 +7,23 @@ type Props = {
 
 const heroBodyCopy = (
   <>
-    A playground for voices of place. Why playground?
+    A playground for voices of place. Why a playground?
     <br />
     <br />
-    Playgrounds are open. They offer just enough structure for learning, freedom, and self-discovery.
+    They are open while offering just enough structure for guided self-discovery.
     <br />
     <br />
     This is a small experiment to discover place together.
     <br />
     <br />
-    Anyone can add a brief voice of place each week.
+    Anyone can offer their voice to discovering place each week.
     <br />
     There will be one weekly question.
     <br />
     One sentence responses are great.
     <br />
     <br />
-    If this were a game, place would be the main player.
+    If this were a game on a playground, place would be the main player.
   </>
 );
 
