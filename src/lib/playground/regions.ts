@@ -3,12 +3,14 @@ import type { RegionConfig } from "./types";
 export const REGIONS: Record<string, RegionConfig> = {
   "erie-niagara": {
     slug: "erie-niagara",
-    displayName: "Erie-Niagara",
+    displayName: "Erie–Niagara",
     stewards: [],
     introParagraphs: [
-      "This playground is a space for the Erie-Niagara region to deepen connection to place and share reflections.",
+      "This playground is a space for the Erie–Niagara region to deepen connection to place and share reflections.",
     ],
     neighborhoodHint: "If someone from your region asked you where you live, what would you say?",
+    hearingSummary:
+      "This week we’re hearing about subtle seasonal shifts, changing neighborhood rhythms, and small signs of renewal.",
   },
   "ann-arbor": {
     slug: "ann-arbor",
@@ -17,7 +19,9 @@ export const REGIONS: Record<string, RegionConfig> = {
     introParagraphs: [
       "This playground supports the Ann Arbor community in the Returning Home practice.",
     ],
-    neighborhoodHint: "e.g. downtown, Burns Park, near campus",
+    neighborhoodHint: "If someone from your region asked you where you live, what would you say?",
+    hearingSummary:
+      "This week we’re hearing about subtle seasonal shifts, changing neighborhood rhythms, and small signs of renewal.",
   },
   bangladesh: {
     slug: "bangladesh",
@@ -26,7 +30,9 @@ export const REGIONS: Record<string, RegionConfig> = {
     introParagraphs: [
       "This playground is for participants in Bangladesh exploring Returning Home in place.",
     ],
-    neighborhoodHint: "e.g. your neighborhood, village, or area",
+    neighborhoodHint: "If someone from your region asked you where you live, what would you say?",
+    hearingSummary:
+      "This week we’re hearing about subtle seasonal shifts, changing neighborhood rhythms, and small signs of renewal.",
   },
 } as const;
 

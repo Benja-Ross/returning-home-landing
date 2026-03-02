@@ -5,4 +5,6 @@ export type RegionConfig = {
   introParagraphs: string[];
   /** Shown as helper text for the neighborhood/area field (e.g. "e.g. Buffalo, Tonawanda") */
   neighborhoodHint: string;
+  /** Short summary of themes emerging in responses for the region. */
+  hearingSummary: string;
 };

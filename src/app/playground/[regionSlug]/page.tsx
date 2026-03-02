@@ -40,7 +40,7 @@ export default async function PlaygroundRegionPage({ params }: Props) {
       <PlaygroundHero regionName={region.displayName} heroImageSrc="/images/sand.jpg" />
 
       {prompt ? (
-        <section className="w-full bg-[#faf6f1] py-20 sm:py-28" aria-labelledby="voice-question">
+        <section className="w-full bg-[#faf6f1] py-10 sm:py-18" aria-labelledby="voice-question">
           <div className="mx-auto max-w-2xl px-6 text-center sm:px-8">
             <p className="text-base font-medium text-slate-600 sm:text-lg">
               This week&apos;s "voice of place" question:
@@ -63,7 +63,7 @@ export default async function PlaygroundRegionPage({ params }: Props) {
               {prompt.question}
             </p>
             <p className="mt-5 text-sm text-slate-500">
-              Share a sentence or a paragraph.
+              Share a sentence or a paragraph below.
             </p>
           </div>
         </section>
@@ -76,7 +76,36 @@ export default async function PlaygroundRegionPage({ params }: Props) {
         </section>
       )}
 
-      <div className={`${containerClass} pt-14 sm:pt-20`}>
+      <div
+        className="h-10 w-full bg-gradient-to-b from-[#faf6f1] to-slate-900 sm:h-12"
+        aria-hidden
+      />
+
+      <section className="w-full bg-slate-900 border-b border-slate-700/60">
+        <div className="mx-auto max-w-3xl px-6 pt-14 pb-16 text-center sm:px-8 sm:pt-16 sm:pb-20">
+          <svg
+            className="mx-auto h-12 w-12 text-amber-300"
+            viewBox="0 0 32 32"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="0.9"
+            strokeLinecap="round"
+            aria-hidden
+          >
+            <path d="M8 16c3-3.5 6-5.25 8-5.25 2 0 5 1.75 8 5.25" />
+            <path d="M10 20c2-2.25 4-3.4 6-3.4 2 0 4 1.15 6 3.4" />
+            <path d="M13 23.5c1.2-1.2 2.4-1.8 3.5-1.8 1.1 0 2.3.6 3.5 1.8" />
+          </svg>
+          <h2 className="mt-4 text-3xl font-medium tracking-[-0.01em] text-white sm:text-4xl">
+            What we&apos;re hearing
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-200/90">
+            {region.hearingSummary}
+          </p>
+        </div>
+      </section>
+
+      <div className={`${containerClass} pt-10 sm:pt-14`}>
         {region.stewards.length > 0 && (
           <section className={sectionClass}>
             <h2 className={headingClass}>Stewards</h2>
