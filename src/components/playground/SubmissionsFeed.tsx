@@ -64,11 +64,8 @@ export function SubmissionsFeed({
   return (
     <section aria-labelledby="feed-heading">
       <h2 id="feed-heading" className="text-2xl font-semibold text-slate-900">
-        Public reflections
+        Public Reflections ({totalApproved})
       </h2>
-      <p className="mt-1 text-slate-600">
-        {totalApproved} reflection{totalApproved === 1 ? "" : "s"} shared so far
-      </p>
 
       {totalApproved === 0 ? (
         <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50/50 px-6 py-8 text-center">

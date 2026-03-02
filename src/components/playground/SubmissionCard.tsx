@@ -17,22 +17,20 @@ export function SubmissionCard({ submission }: Props) {
 
   return (
     <article
-      className="rounded-xl border border-slate-200 bg-white px-6 py-5 shadow-sm"
+      className="rounded-xl border border-stone-200/70 bg-[#f6ba53] px-6 py-5"
       aria-labelledby={`submission-name-${submission.id}`}
     >
-      <p id={`submission-name-${submission.id}`} className="text-base font-medium text-slate-900">
-        {submission.name ?? "Anonymous"}
+      <p id={`submission-name-${submission.id}`} className="text-base text-slate-900">
+        <span className="font-semibold">{submission.name ?? "Anonymous"}</span>
+        <span className="text-slate-500"> · </span>
+        <span className="italic text-slate-700">{submission.neighborhood}</span>
       </p>
-      <p className="mt-0.5 text-sm text-slate-600">
-        <span className="font-medium text-slate-700">Neighborhood / area:</span>{" "}
-        {submission.neighborhood}
-      </p>
-      <p className="mt-3 text-slate-800 leading-relaxed">{submission.response}</p>
       {dateStr && (
-        <p className="mt-3 text-xs text-slate-400" aria-hidden>
+        <p className="mt-1 text-xs text-slate-400" aria-hidden>
           {dateStr}
         </p>
       )}
+      <p className="mt-3 text-slate-800 leading-loose">{submission.response}</p>
     </article>
   );
 }
