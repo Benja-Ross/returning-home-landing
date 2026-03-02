@@ -38,6 +38,44 @@ export default async function PlaygroundRegionPage({ params }: Props) {
   return (
     <PageLayout hidePageHeader>
       <PlaygroundHero regionName={region.displayName} heroImageSrc="/images/sand.jpg" />
+
+      {prompt ? (
+        <section className="w-full bg-[#faf6f1] py-20 sm:py-28" aria-labelledby="voice-question">
+          <div className="mx-auto max-w-2xl px-6 text-center sm:px-8">
+            <p className="text-base font-medium text-slate-600 sm:text-lg">
+              This week&apos;s voice of place question:
+            </p>
+            <svg
+              className="mx-auto mt-4 h-8 w-8 text-amber-700/40 sm:h-10 sm:w-10"
+              viewBox="0 0 32 32"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="0.75"
+              strokeLinecap="round"
+              aria-hidden
+            >
+              <circle cx="16" cy="16" r="3" />
+              <circle cx="16" cy="16" r="7" />
+              <circle cx="16" cy="16" r="11" />
+              <circle cx="16" cy="16" r="14" />
+            </svg>
+            <p id="voice-question" className="mt-6 text-2xl font-medium leading-relaxed text-slate-900 sm:text-3xl sm:leading-relaxed">
+              {prompt.question}
+            </p>
+            <p className="mt-5 text-sm text-slate-500">
+              New each week. Share a sentence or a paragraph.
+            </p>
+          </div>
+        </section>
+      ) : (
+        <section className="w-full bg-[#faf6f1] py-16 sm:py-20">
+          <div className="mx-auto max-w-3xl px-6 text-center sm:px-8">
+            <p className="text-slate-600">A new question is coming soon.</p>
+            <p className="mt-1 text-sm text-slate-500">Check back in a day or two.</p>
+          </div>
+        </section>
+      )}
+
       <div className={`${containerClass} pt-14 sm:pt-20`}>
         {region.stewards.length > 0 && (
           <section className={sectionClass}>
@@ -50,31 +88,9 @@ export default async function PlaygroundRegionPage({ params }: Props) {
           </section>
         )}
 
-        <section className={sectionClass}>
-          <h2 className={headingClass}>Current Voice of Place Question</h2>
-          {prompt ? (
-            <div className="rounded-xl border border-slate-200 bg-slate-50/50 px-6 py-8">
-              {prompt.title && (
-                <p className="text-sm font-medium text-slate-600">{prompt.title}</p>
-              )}
-              <p className="mt-2 text-lg leading-relaxed text-slate-900 sm:text-xl">
-                {prompt.question}
-              </p>
-              <p className="mt-4 text-sm text-slate-500">
-                New each week. One sentence is perfect.
-              </p>
-            </div>
-          ) : (
-            <div className="rounded-xl border border-slate-200 bg-slate-50/50 px-6 py-8 text-center">
-              <p className="text-slate-700">A new question is coming soon.</p>
-              <p className="mt-1 text-sm text-slate-500">Check back in a day or two.</p>
-            </div>
-          )}
-        </section>
-
         {prompt && (
           <section className={sectionClass}>
-            <h2 className={headingClass}>Share your reflection</h2>
+            <h2 className={headingClass}>Add your voice to your place</h2>
             <PlaygroundForm
               regionSlug={region.slug}
               promptId={prompt.id}

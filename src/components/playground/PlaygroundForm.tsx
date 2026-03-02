@@ -119,7 +119,7 @@ export function PlaygroundForm({ regionSlug, promptId, neighborhoodHint }: Props
           Your reflection
         </label>
         <p id="playground-response-desc" className="mt-0.5 text-sm text-slate-500">
-          One sentence is perfect. No right answer.
+          One sentence is great. A paragraph works too!
         </p>
         <textarea
           id="playground-response"
@@ -145,7 +145,7 @@ export function PlaygroundForm({ regionSlug, promptId, neighborhoodHint }: Props
           className="mt-1 h-4 w-4 rounded border-slate-300 focus:ring-slate-500"
         />
         <label htmlFor="playground-consent" className="text-sm text-slate-700">
-          I&apos;m okay with this being shared publicly.
+          Please share this reflection publicly.
         </label>
       </div>
 

@@ -8,7 +8,7 @@ export const REGIONS: Record<string, RegionConfig> = {
     introParagraphs: [
       "This playground is a space for the Erie-Niagara region to deepen connection to place and share reflections.",
     ],
-    neighborhoodHint: "e.g. Buffalo, Tonawanda, Niagara Falls",
+    neighborhoodHint: "If someone from your region asked you where you live, what would you say?",
   },
   "ann-arbor": {
     slug: "ann-arbor",
