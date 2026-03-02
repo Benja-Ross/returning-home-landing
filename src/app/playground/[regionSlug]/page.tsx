@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { PlaygroundForm } from "@/components/playground/PlaygroundForm";
+import { PlaygroundHero } from "@/components/playground/PlaygroundHero";
 import { SubmissionsFeed } from "@/components/playground/SubmissionsFeed";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { getActivePrompt, getApprovedFeedPage } from "@/lib/playground/data";
@@ -36,17 +37,8 @@ export default async function PlaygroundRegionPage({ params }: Props) {
 
   return (
     <PageLayout hidePageHeader>
-      <div className={containerClass}>
-        {region.introParagraphs.length > 0 && (
-          <section className={sectionClass}>
-            {region.introParagraphs.map((p, i) => (
-              <p key={i} className="text-base leading-7 text-slate-800">
-                {p}
-              </p>
-            ))}
-          </section>
-        )}
-
+      <PlaygroundHero regionName={region.displayName} heroImageSrc="/images/sand.jpg" />
+      <div className={`${containerClass} pt-14 sm:pt-20`}>
         {region.stewards.length > 0 && (
           <section className={sectionClass}>
             <h2 className={headingClass}>Stewards</h2>

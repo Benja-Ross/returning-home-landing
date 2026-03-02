@@ -3,10 +3,10 @@ import type { RegionConfig } from "./types";
 export const REGIONS: Record<string, RegionConfig> = {
   "erie-niagara": {
     slug: "erie-niagara",
-    displayName: "Erie–Niagara",
+    displayName: "Erie-Niagara",
     stewards: [],
     introParagraphs: [
-      "This playground is a space for the Erie–Niagara region to deepen connection to place and share reflections.",
+      "This playground is a space for the Erie-Niagara region to deepen connection to place and share reflections.",
     ],
     neighborhoodHint: "e.g. Buffalo, Tonawanda, Niagara Falls",
   },
