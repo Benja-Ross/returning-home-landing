@@ -10,7 +10,7 @@ export const REGIONS: Record<string, RegionConfig> = {
     ],
     neighborhoodHint: "If someone from your region asked you where you live, what would you say?",
     hearingSummary:
-      "This week we’re hearing about subtle seasonal shifts, changing neighborhood rhythms, and small signs of renewal.",
+      "We're hearing about things that often aren't appreciated, but with the right eyes there's so much more to them.",
   },
   "ann-arbor": {
     slug: "ann-arbor",
@@ -21,7 +21,7 @@ export const REGIONS: Record<string, RegionConfig> = {
     ],
     neighborhoodHint: "If someone from your region asked you where you live, what would you say?",
     hearingSummary:
-      "This week we’re hearing about subtle seasonal shifts, changing neighborhood rhythms, and small signs of renewal.",
+      "So far this week we're hearing the voices of things that aren't often seen as having a voice.",
   },
   bangladesh: {
     slug: "bangladesh",
@@ -32,7 +32,7 @@ export const REGIONS: Record<string, RegionConfig> = {
     ],
     neighborhoodHint: "If someone from your region asked you where you live, what would you say?",
     hearingSummary:
-      "This week we’re hearing about subtle seasonal shifts, changing neighborhood rhythms, and small signs of renewal.",
+      "This week we're hearing about the life in things that often aren't appreciated for having a life of their own.",
   },
 } as const;
 
