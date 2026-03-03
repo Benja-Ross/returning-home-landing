@@ -87,7 +87,7 @@ export default async function PlaygroundRegionPage({ params }: Props) {
         <section className="w-full bg-[#faf6f1] py-10 sm:py-18" aria-labelledby="voice-question">
           <div className="mx-auto max-w-2xl px-6 text-center sm:px-8">
             <p className="text-base font-medium text-slate-600 sm:text-lg">
-              This week&apos;s "voice of place" question:
+              This week&apos;s &quot;voice of place&quot; question:
             </p>
             <svg
               className="mx-auto mt-4 h-8 w-8 text-amber-700/40 sm:h-10 sm:w-10"

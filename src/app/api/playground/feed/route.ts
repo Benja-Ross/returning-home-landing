@@ -47,7 +47,7 @@ export async function GET(request: Request) {
       totalApproved: feedPage.totalApproved,
       nextCursor: feedPage.nextCursor,
     });
-  } catch (err) {
+  } catch {
     return NextResponse.json(
       { ok: false, error: "Failed to load feed." },
       { status: 500 }
