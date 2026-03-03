@@ -1,11 +1,27 @@
 import { notFound } from "next/navigation";
 
+import { ChapterArc } from "@/components/landing/ChapterArc";
 import { PlaygroundForm } from "@/components/playground/PlaygroundForm";
 import { PlaygroundHero } from "@/components/playground/PlaygroundHero";
 import { SubmissionsFeed } from "@/components/playground/SubmissionsFeed";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { getActivePrompt, getApprovedFeedPage } from "@/lib/playground/data";
 import { getRegion, REGIONS } from "@/lib/playground/regions";
+
+const SIX_WEEK_ARC = [
+  { title: "Noticing Place", subtext: "Week 1" },
+  { title: "Local Belonging", subtext: "Week 2" },
+  { title: "Local Story", subtext: "Week 3" },
+  { title: "Change Happening", subtext: "Week 4" },
+  { title: "Possibility", subtext: "Week 5" },
+  { title: "Acting", subtext: "Week 6" },
+] as const;
+
+const ARC_DUMMY_CHAPTERS = [
+  { number: "1", title: "", body: "" },
+  { number: "2", title: "", body: "" },
+  { number: "3", title: "", body: "" },
+];
 
 export const dynamic = "force-dynamic";
 
@@ -38,6 +54,34 @@ export default async function PlaygroundRegionPage({ params }: Props) {
   return (
     <PageLayout hidePageHeader>
       <PlaygroundHero regionName={region.displayName} heroImageSrc="/images/sand.jpg" />
+
+      <section className="w-full py-6 sm:py-8" aria-labelledby="six-week-arc-heading">
+        <div className="mx-auto max-w-5xl px-6 sm:px-8">
+          <h2
+            id="six-week-arc-heading"
+            className="text-center text-lg font-semibold text-slate-900 sm:text-xl"
+          >
+            Weekly Topics
+          </h2>
+          <div className="relative left-1/2 mt-4 w-screen -translate-x-1/2 overflow-hidden opacity-90 sm:mt-5">
+            <div className="mx-auto max-w-6xl px-6 sm:px-8">
+              <ChapterArc chapters={ARC_DUMMY_CHAPTERS} arcOnly />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-6 sm:gap-2 sm:-mt-10">
+            {SIX_WEEK_ARC.map((week, i) => (
+              <div key={i} className="text-center">
+                <p className="mt-0.5 text-xs text-slate-500 sm:mt-1 sm:text-sm">
+                  {week.subtext}
+                </p>
+                <p className="text-xs font-semibold text-slate-900 sm:text-sm">
+                  {week.title}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {prompt ? (
         <section className="w-full bg-[#faf6f1] py-10 sm:py-18" aria-labelledby="voice-question">

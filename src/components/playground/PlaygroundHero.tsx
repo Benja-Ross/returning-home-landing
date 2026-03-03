@@ -7,12 +7,6 @@ type Props = {
 
 const heroBodyCopy = (
   <>
-    A playground for voices of place. Why a playground?
-    <br />
-    <br />
-    They are open while offering just enough structure for guided self-discovery.
-    <br />
-    <br />
     This is a small experiment to discover place together.
     <br />
     <br />
