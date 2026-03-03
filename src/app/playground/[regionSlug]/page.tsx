@@ -97,7 +97,7 @@ export default async function PlaygroundRegionPage({ params }: Props) {
             <path d="M13 23.5c1.2-1.2 2.4-1.8 3.5-1.8 1.1 0 2.3.6 3.5 1.8" />
           </svg>
           <h2 className="mt-4 text-3xl font-medium tracking-[-0.01em] text-white sm:text-4xl">
-            What we&apos;re hearing
+            What Voices of Place Are Saying
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-200/90">
             {region.hearingSummary}
@@ -139,7 +139,7 @@ export default async function PlaygroundRegionPage({ params }: Props) {
             />
           ) : (
             <>
-              <h2 className={headingClass}>Public reflections</h2>
+              <h2 className={headingClass}>Reflections</h2>
               <div className={blockClass}>
                 <p className="text-sm">Reflections will appear here when a question is active.</p>
               </div>

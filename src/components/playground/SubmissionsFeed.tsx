@@ -64,7 +64,7 @@ export function SubmissionsFeed({
   return (
     <section aria-labelledby="feed-heading">
       <h2 id="feed-heading" className="text-2xl font-semibold text-slate-900">
-        Public Reflections ({totalApproved})
+        Voices Shared ({totalApproved})
       </h2>
 
       {totalApproved === 0 ? (
@@ -75,7 +75,7 @@ export function SubmissionsFeed({
         </div>
       ) : (
         <>
-          <ul className="mt-6 space-y-4 list-none p-0 m-0">
+          <ul className="mt-6 space-y-6 list-none p-0 m-0">
             {items.map((sub) => (
               <li key={sub.id}>
                 <SubmissionCard submission={sub} />
