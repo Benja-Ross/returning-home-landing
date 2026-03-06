@@ -32,7 +32,7 @@ const blockClass = "rounded-xl border border-slate-200 bg-slate-50/50 px-6 py-8 
 
 type Props = { params: Promise<{ regionSlug: string }> };
 
-export default async function PlaygroundRegionPage({ params }: Props) {
+export default async function VoicesRegionPage({ params }: Props) {
   const { regionSlug } = await params;
   const region = getRegion(regionSlug);
 

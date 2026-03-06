@@ -35,7 +35,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-## Supabase (Playground)
+## Supabase (Voices)
 
 - Add `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` to `.env.local` (copy from `.env.example` and fill in values from your [Supabase](https://supabase.com) project).
 - **Never** prefix the service role key with `NEXT_PUBLIC_`—it must stay server-only.
