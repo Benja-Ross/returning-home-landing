@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+import { getSubmissionContextForRegionCycleWeek } from "@/lib/voices/data";
 import { getRegion } from "@/lib/voices/regions";
 import { submissionSchema } from "@/lib/voices/validation";
 import { supabaseAdmin } from "@/lib/supabase/server";
@@ -79,7 +80,17 @@ export async function POST(request: Request) {
     );
   }
 
+  const context = await getSubmissionContextForRegionCycleWeek(data.regionCycleWeekId);
+  if (!context) {
+    return NextResponse.json(
+      { ok: false, error: "Invalid or inactive week." },
+      { status: 400 }
+    );
+  }
+
   const { error } = await supabaseAdmin.from("submissions").insert({
+    region_id: context.regionId,
+    region_cycle_id: context.regionCycleId,
     region_cycle_week_id: data.regionCycleWeekId,
     name: data.name,
     neighborhood: data.neighborhood,

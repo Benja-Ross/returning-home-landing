@@ -67,6 +67,8 @@ export default async function VoicesRegionPage({ params }: Props) {
         })
       : null;
 
+  const activeRegionCycleWeekId = activeWeek?.regionCycleWeekId ?? null;
+
   return (
     <PageLayout hidePageHeader>
       <VoicesHero regionName={region.displayName} heroImageSrc="/images/leaf-voices-blur.png" />
@@ -281,10 +283,10 @@ export default async function VoicesRegionPage({ params }: Props) {
         )}
 
         <section id="responses" className={sectionClass}>
-          {feed != null ? (
+          {feed != null && activeRegionCycleWeekId != null ? (
             <SubmissionsFeed
               regionSlug={region.slug}
-              regionCycleWeekId={activeWeek!.regionCycleWeekId}
+              regionCycleWeekId={activeRegionCycleWeekId}
               initialItems={feed.items}
               initialTotalApproved={feed.totalApproved}
               initialNextCursor={feed.nextCursor}

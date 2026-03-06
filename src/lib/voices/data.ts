@@ -191,7 +191,39 @@ export async function getRegionCycleWeeks(
 const DEFAULT_FEED_LIMIT = 12;
 
 /**
- * Paginated approved submissions for a single region_cycle_week.
+ * Returns region_id and region_cycle_id for a given region_cycle_week_id (for submission inserts).
+ * Returns null if the week is not found.
+ */
+export async function getSubmissionContextForRegionCycleWeek(
+  regionCycleWeekId: string
+): Promise<{ regionId: string; regionCycleId: string } | null> {
+  const { data: rcw, error: rcwError } = await supabaseAdmin
+    .from("region_cycle_weeks")
+    .select("region_cycle_id")
+    .eq("id", regionCycleWeekId)
+    .limit(1)
+    .maybeSingle();
+
+  if (rcwError || !rcw?.region_cycle_id) {
+    return null;
+  }
+
+  const { data: rc, error: rcError } = await supabaseAdmin
+    .from("region_cycles")
+    .select("region_id")
+    .eq("id", rcw.region_cycle_id)
+    .limit(1)
+    .maybeSingle();
+
+  if (rcError || !rc?.region_id) {
+    return null;
+  }
+
+  return { regionId: rc.region_id, regionCycleId: rcw.region_cycle_id };
+}
+
+/**
+ * Paginated submissions for a single region_cycle_week (moderation_status = 'approved', consent_public = true).
  */
 export async function getApprovedSubmissionsPageForRegionWeek(params: {
   regionCycleWeekId: string;
