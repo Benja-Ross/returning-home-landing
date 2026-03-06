@@ -8,7 +8,7 @@ type Props = {
   neighborhoodHint: string;
 };
 
-export function PlaygroundForm({ regionSlug, promptId, neighborhoodHint }: Props) {
+export function VoicesForm({ regionSlug, promptId, neighborhoodHint }: Props) {
   const [name, setName] = useState("");
   const [neighborhood, setNeighborhood] = useState("");
   const [response, setResponse] = useState("");
@@ -23,7 +23,7 @@ export function PlaygroundForm({ regionSlug, promptId, neighborhoodHint }: Props
     setErrorMessage("");
 
     try {
-      const res = await fetch("/api/playground/submit", {
+      const res = await fetch("/api/voices/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -78,54 +78,54 @@ export function PlaygroundForm({ regionSlug, promptId, neighborhoodHint }: Props
     <div className="relative rounded-2xl border border-slate-200/60 bg-[#fcf9f6] px-6 py-10 sm:px-8">
       <form onSubmit={handleSubmit} className="space-y-8">
         <div>
-          <label htmlFor="playground-name" className="block text-sm font-medium text-slate-800">
+          <label htmlFor="voices-name" className="block text-sm font-medium text-slate-800">
             Name
           </label>
-          <p id="playground-name-desc" className="mt-0.5 text-sm text-slate-500">
+          <p id="voices-name-desc" className="mt-0.5 text-sm text-slate-500">
             First name or nickname is fine.
           </p>
           <input
-            id="playground-name"
+            id="voices-name"
             type="text"
             required
             maxLength={60}
             value={name}
             onChange={(e) => setName(e.target.value)}
             disabled={status === "submitting"}
-            aria-describedby="playground-name-desc"
+            aria-describedby="voices-name-desc"
             className={inputClass}
           />
         </div>
 
         <div>
-          <label htmlFor="playground-neighborhood" className="block text-sm font-medium text-slate-800">
+          <label htmlFor="voices-neighborhood" className="block text-sm font-medium text-slate-800">
             Neighborhood / Area
           </label>
-          <p id="playground-neighborhood-desc" className="mt-0.5 text-sm text-slate-500">
+          <p id="voices-neighborhood-desc" className="mt-0.5 text-sm text-slate-500">
             {neighborhoodHint}
           </p>
           <input
-            id="playground-neighborhood"
+            id="voices-neighborhood"
             type="text"
             required
             maxLength={80}
             value={neighborhood}
             onChange={(e) => setNeighborhood(e.target.value)}
             disabled={status === "submitting"}
-            aria-describedby="playground-neighborhood-desc"
+            aria-describedby="voices-neighborhood-desc"
             className={inputClass}
           />
         </div>
 
         <div>
-          <label htmlFor="playground-response" className="block text-sm font-medium text-slate-800">
+          <label htmlFor="voices-response" className="block text-sm font-medium text-slate-800">
             Your reflection
           </label>
-          <p id="playground-response-desc" className="mt-0.5 text-sm text-slate-500">
+          <p id="voices-response-desc" className="mt-0.5 text-sm text-slate-500">
             One sentence is great. A paragraph works too!
           </p>
           <textarea
-            id="playground-response"
+            id="voices-response"
             required
             minLength={5}
             maxLength={500}
@@ -133,29 +133,29 @@ export function PlaygroundForm({ regionSlug, promptId, neighborhoodHint }: Props
             value={response}
             onChange={(e) => setResponse(e.target.value)}
             disabled={status === "submitting"}
-            aria-describedby="playground-response-desc"
+            aria-describedby="voices-response-desc"
             className={`${inputClass} min-h-[140px] px-5 py-4`}
           />
         </div>
 
         <div className="mt-4 flex items-start gap-4">
           <input
-            id="playground-consent"
+            id="voices-consent"
             type="checkbox"
             checked={consentPublic}
             onChange={(e) => setConsentPublic(e.target.checked)}
             disabled={status === "submitting"}
             className="mt-0.5 h-5 w-5 shrink-0 rounded border-slate-300 text-slate-700 focus:ring-2 focus:ring-slate-400/30 focus:ring-offset-0"
           />
-          <label htmlFor="playground-consent" className="text-sm text-slate-700">
+          <label htmlFor="voices-consent" className="text-sm text-slate-700">
             Please share this reflection publicly.
           </label>
         </div>
 
         <div className="absolute -left-[9999px] opacity-0" aria-hidden>
-          <label htmlFor="playground-website">Website</label>
+          <label htmlFor="voices-website">Website</label>
           <input
-            id="playground-website"
+            id="voices-website"
             type="text"
             name="website"
             tabIndex={-1}

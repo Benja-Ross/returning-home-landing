@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
 
 import { ChapterArc } from "@/components/landing/ChapterArc";
-import { PlaygroundForm } from "@/components/playground/PlaygroundForm";
-import { PlaygroundHero } from "@/components/playground/PlaygroundHero";
-import { SubmissionsFeed } from "@/components/playground/SubmissionsFeed";
+import { VoicesForm } from "@/components/voices/VoicesForm";
+import { VoicesHero } from "@/components/voices/VoicesHero";
+import { SubmissionsFeed } from "@/components/voices/SubmissionsFeed";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { getActivePrompt, getApprovedFeedPage } from "@/lib/playground/data";
-import { getRegion, REGIONS } from "@/lib/playground/regions";
+import { getActivePrompt, getApprovedFeedPage } from "@/lib/voices/data";
+import { getRegion, REGIONS } from "@/lib/voices/regions";
 
 const SIX_WEEK_ARC = [
   { title: "Noticing Place", subtext: "Week 1" },
@@ -53,7 +53,7 @@ export default async function VoicesRegionPage({ params }: Props) {
 
   return (
     <PageLayout hidePageHeader>
-      <PlaygroundHero regionName={region.displayName} heroImageSrc="/images/leaf-voices-blur.png" />
+      <VoicesHero regionName={region.displayName} heroImageSrc="/images/leaf-voices-blur.png" />
 
       <section className="w-full py-6 sm:py-8" aria-labelledby="six-week-arc-heading">
         <div className="mx-auto max-w-5xl px-6 sm:px-8">
@@ -264,7 +264,7 @@ export default async function VoicesRegionPage({ params }: Props) {
         {prompt && (
           <section className={sectionClass}>
             <h2 className={headingClass}>Add your voice to your place</h2>
-            <PlaygroundForm
+            <VoicesForm
               regionSlug={region.slug}
               promptId={prompt.id}
               neighborhoodHint={region.neighborhoodHint}

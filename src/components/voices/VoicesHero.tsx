@@ -21,7 +21,7 @@ const heroBodyCopy = (
   </>
 );
 
-export function PlaygroundHero({ regionName, heroImageSrc }: Props) {
+export function VoicesHero({ regionName, heroImageSrc }: Props) {
   return (
     <section className="relative w-full overflow-hidden min-h-[420px] h-[60vh] sm:min-h-[520px] sm:h-[70vh]">
       <Image

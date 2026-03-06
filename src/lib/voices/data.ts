@@ -1,8 +1,8 @@
 import "server-only";
 
 import { supabaseAdmin } from "@/lib/supabase/server";
-import type { FeedPage, SubmissionCardDTO } from "@/lib/playground/feed";
-import { decodeCursor, encodeCursor } from "@/lib/playground/feed";
+import type { FeedPage, SubmissionCardDTO } from "@/lib/voices/feed";
+import { decodeCursor, encodeCursor } from "@/lib/voices/feed";
 
 export type PromptDTO = {
   id: string;

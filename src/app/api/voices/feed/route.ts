@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-import { getApprovedFeedPage } from "@/lib/playground/data";
-import { getRegion } from "@/lib/playground/regions";
+import { getApprovedFeedPage } from "@/lib/voices/data";
+import { getRegion } from "@/lib/voices/regions";
 
 const UUID_REGEX =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;

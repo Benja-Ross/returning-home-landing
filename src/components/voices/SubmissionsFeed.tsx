@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import type { SubmissionCardDTO } from "@/lib/playground/feed";
+import type { SubmissionCardDTO } from "@/lib/voices/feed";
 import { LoadMoreButton } from "./LoadMoreButton";
 import { SubmissionCard } from "./SubmissionCard";
 
@@ -28,7 +28,7 @@ export function SubmissionsFeed({
 
   async function fetchPage(cursor?: string) {
     const params = new URLSearchParams({ regionSlug, promptId, ...(cursor && { cursor }) });
-    const res = await fetch(`/api/playground/feed?${params}`);
+    const res = await fetch(`/api/voices/feed?${params}`);
     const data = (await res.json()) as {
       ok: boolean;
       items?: SubmissionCardDTO[];

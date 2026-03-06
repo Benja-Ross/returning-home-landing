@@ -1,4 +1,4 @@
-import type { SubmissionCardDTO } from "@/lib/playground/feed";
+import type { SubmissionCardDTO } from "@/lib/voices/feed";
 
 type Props = { submission: SubmissionCardDTO };
 

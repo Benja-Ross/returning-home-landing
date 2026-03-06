@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-import { getRegion } from "@/lib/playground/regions";
-import { submissionSchema } from "@/lib/playground/validation";
+import { getRegion } from "@/lib/voices/regions";
+import { submissionSchema } from "@/lib/voices/validation";
 import { supabaseAdmin } from "@/lib/supabase/server";
 
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
