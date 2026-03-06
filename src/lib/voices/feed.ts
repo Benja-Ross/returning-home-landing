@@ -4,6 +4,9 @@ export type SubmissionCardDTO = {
   neighborhood: string;
   response: string;
   created_at: string;
+  /** Week context for region-wide feed (e.g. "Week 1", "Noticing Place"). */
+  weekLabel?: string | null;
+  themeTitle?: string | null;
 };
 
 /** One week in the six-week arc for a region (from cycle_weeks + region_cycle_weeks). */

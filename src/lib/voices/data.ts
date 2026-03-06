@@ -223,6 +223,101 @@ export async function getSubmissionContextForRegionCycleWeek(
 }
 
 /**
+ * Paginated submissions for the whole region (moderation_status = 'approved', consent_public = true).
+ * Includes week context (weekLabel, themeTitle) via region_cycle_weeks -> cycle_weeks.
+ */
+export async function getApprovedSubmissionsPageForRegion(params: {
+  regionSlug: string;
+  limit?: number;
+  cursor?: string;
+}): Promise<FeedPage> {
+  const limit = params.limit ?? DEFAULT_FEED_LIMIT;
+
+  const { data: region, error: regionError } = await supabaseAdmin
+    .from("regions")
+    .select("id")
+    .eq("slug", params.regionSlug)
+    .limit(1)
+    .maybeSingle();
+
+  if (regionError || !region) {
+    return { items: [], totalApproved: 0 };
+  }
+
+  const { count: totalApproved, error: countError } = await supabaseAdmin
+    .from("submissions")
+    .select("*", { count: "exact", head: true })
+    .eq("region_id", region.id)
+    .eq("moderation_status", "approved")
+    .eq("consent_public", true);
+
+  if (countError) {
+    throw new Error(`Failed to count submissions: ${countError.message}`);
+  }
+
+  let itemsQuery = supabaseAdmin
+    .from("submissions")
+    .select(
+      "id,name,neighborhood,response,created_at,region_cycle_weeks(cycle_weeks(week_label,theme_title))"
+    )
+    .eq("region_id", region.id)
+    .eq("moderation_status", "approved")
+    .eq("consent_public", true)
+    .order("created_at", { ascending: false })
+    .order("id", { ascending: false })
+    .limit(limit);
+
+  const decoded = params.cursor ? decodeCursor(params.cursor) : null;
+  if (decoded) {
+    itemsQuery = itemsQuery.lt("created_at", decoded.createdAt);
+  }
+
+  const { data: rows, error: itemsError } = await itemsQuery;
+
+  if (itemsError) {
+    throw new Error(`Failed to fetch submissions: ${itemsError.message}`);
+  }
+
+  const typedRows = (rows ?? []) as Array<{
+    id: string;
+    name: string | null;
+    neighborhood: string;
+    response: string;
+    created_at: string;
+    region_cycle_weeks?: {
+      cycle_weeks?: { week_label?: string; theme_title?: string } | null;
+    } | null;
+  }>;
+
+  const items: SubmissionCardDTO[] = typedRows.map((row) => {
+    const rcw = row.region_cycle_weeks;
+    const cw = rcw && !Array.isArray(rcw) ? rcw.cycle_weeks : null;
+    const cwObj = cw && !Array.isArray(cw) ? cw : Array.isArray(cw) ? cw[0] : null;
+    return {
+      id: row.id,
+      name: row.name,
+      neighborhood: row.neighborhood,
+      response: row.response,
+      created_at: row.created_at,
+      weekLabel: cwObj?.week_label ?? null,
+      themeTitle: cwObj?.theme_title ?? null,
+    };
+  });
+
+  let nextCursor: string | undefined;
+  if (items.length === limit && items.length > 0) {
+    const last = items[items.length - 1];
+    nextCursor = encodeCursor(last.created_at, last.id);
+  }
+
+  return {
+    items,
+    totalApproved: totalApproved ?? 0,
+    nextCursor,
+  };
+}
+
+/**
  * Paginated submissions for a single region_cycle_week (moderation_status = 'approved', consent_public = true).
  */
 export async function getApprovedSubmissionsPageForRegionWeek(params: {

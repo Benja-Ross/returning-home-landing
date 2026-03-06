@@ -8,7 +8,7 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import {
   getActiveRegionWeek,
   getRegionCycleWeeks,
-  getApprovedSubmissionsPageForRegionWeek,
+  getApprovedSubmissionsPageForRegion,
 } from "@/lib/voices/data";
 import { getRegion, REGIONS } from "@/lib/voices/regions";
 
@@ -59,15 +59,10 @@ export default async function VoicesRegionPage({ params }: Props) {
       ? cycleWeeks.findIndex((w) => w.regionCycleWeekId === activeWeek.regionCycleWeekId)
       : -1;
 
-  const feed =
-    activeWeek != null
-      ? await getApprovedSubmissionsPageForRegionWeek({
-          regionCycleWeekId: activeWeek.regionCycleWeekId,
-          limit: 12,
-        })
-      : null;
-
-  const activeRegionCycleWeekId = activeWeek?.regionCycleWeekId ?? null;
+  const feed = await getApprovedSubmissionsPageForRegion({
+    regionSlug: region.slug,
+    limit: 12,
+  });
 
   return (
     <PageLayout hidePageHeader>
@@ -291,22 +286,12 @@ export default async function VoicesRegionPage({ params }: Props) {
         )}
 
         <section id="responses" className={sectionClass}>
-          {feed != null && activeRegionCycleWeekId != null ? (
-            <SubmissionsFeed
-              regionSlug={region.slug}
-              regionCycleWeekId={activeRegionCycleWeekId}
-              initialItems={feed.items}
-              initialTotalApproved={feed.totalApproved}
-              initialNextCursor={feed.nextCursor}
-            />
-          ) : (
-            <>
-              <h2 className={headingClass}>Reflections</h2>
-              <div className={blockClass}>
-                <p className="text-sm">Reflections will appear here when a question is active.</p>
-              </div>
-            </>
-          )}
+          <SubmissionsFeed
+            regionSlug={region.slug}
+            initialItems={feed.items}
+            initialTotalApproved={feed.totalApproved}
+            initialNextCursor={feed.nextCursor}
+          />
         </section>
       </div>
     </PageLayout>

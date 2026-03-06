@@ -8,7 +8,6 @@ import { SubmissionCard } from "./SubmissionCard";
 
 type Props = {
   regionSlug: string;
-  regionCycleWeekId: string;
   initialItems: SubmissionCardDTO[];
   initialTotalApproved: number;
   initialNextCursor?: string;
@@ -16,7 +15,6 @@ type Props = {
 
 export function SubmissionsFeed({
   regionSlug,
-  regionCycleWeekId,
   initialItems,
   initialTotalApproved,
   initialNextCursor,
@@ -27,7 +25,7 @@ export function SubmissionsFeed({
   const [loadingMore, setLoadingMore] = useState(false);
 
   async function fetchPage(cursor?: string) {
-    const params = new URLSearchParams({ regionSlug, regionCycleWeekId, ...(cursor && { cursor }) });
+    const params = new URLSearchParams({ regionSlug, ...(cursor && { cursor }) });
     const res = await fetch(`/api/voices/feed?${params}`);
     const data = (await res.json()) as {
       ok: boolean;

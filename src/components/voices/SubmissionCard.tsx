@@ -14,23 +14,34 @@ function formatDate(iso: string): string {
 
 export function SubmissionCard({ submission }: Props) {
   const dateStr = formatDate(submission.created_at);
+  const weekContext =
+    submission.weekLabel != null && submission.themeTitle != null
+      ? `${submission.weekLabel} · ${submission.themeTitle}`
+      : null;
 
   return (
     <article
       className="rounded-2xl border border-white bg-[#D8B2AC] px-6 py-5"
       aria-labelledby={`submission-name-${submission.id}`}
     >
-      <div className="flex items-baseline justify-between gap-4">
-        <p id={`submission-name-${submission.id}`} className="text-base text-white min-w-0">
-          <span className="font-semibold">{submission.name ?? "Anonymous"}</span>
-          <span className="text-white"> · </span>
-          <span className="italic text-white">{submission.neighborhood}</span>
+      <div className="flex items-start justify-between gap-4 flex-wrap">
+        <p id={`submission-name-${submission.id}`} className="text-base min-w-0">
+          <span className="font-semibold text-slate-900">{submission.name ?? "Anonymous"}</span>
+          <span className="text-slate-500"> · </span>
+          <span className="text-slate-500 italic">{submission.neighborhood}</span>
         </p>
-        {dateStr && (
-          <p className="shrink-0 text-xs font-bold text-white/85" aria-hidden>
-            {dateStr}
-          </p>
-        )}
+        <div className="flex flex-col items-end gap-1 shrink-0">
+          {weekContext && (
+            <p className="text-xs text-slate-500" aria-hidden>
+              {weekContext}
+            </p>
+          )}
+          {dateStr && (
+            <p className="text-xs text-slate-400" aria-hidden>
+              {dateStr}
+            </p>
+          )}
+        </div>
       </div>
       <p className="mt-3 text-black leading-loose">{submission.response}</p>
     </article>
