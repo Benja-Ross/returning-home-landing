@@ -10,7 +10,7 @@ const heroBodyCopy = (
     What does the voice of place want to say?
     <br />
     <br />
-    For six weeks let's explore just that.
+    For six weeks let&apos;s explore just that.
     <br />
     Stop by to add your voice. 
     <br />

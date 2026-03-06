@@ -87,7 +87,7 @@ export default async function VoicesRegionPage({ params }: Props) {
         <section className="w-full bg-[#faf6f1] py-10 sm:py-18" aria-labelledby="voice-question">
           <div className="mx-auto max-w-2xl px-6 text-center sm:px-8">
             <p className="text-base font-medium text-slate-600 sm:text-lg">
-              This week&apos;s &quot;voice of place&quot; question:
+              The {prompt.title} &quot;Voice of Place&quot; question:
             </p>
             <svg
               className="mx-auto mt-4 h-8 w-8 text-amber-700/40 sm:h-10 sm:w-10"
@@ -143,6 +143,7 @@ export default async function VoicesRegionPage({ params }: Props) {
           <h2 className="mt-4 text-3xl font-medium tracking-[-0.01em] text-white sm:text-4xl">
             What Voices of Place Are Saying
           </h2>
+          <p className="text-white italic pt-2">Your voice can become a part of this</p>
         </div>
 
         <div className="mx-auto max-w-3xl px-6 pb-16 text-left sm:px-8 sm:pb-20">
@@ -150,26 +151,26 @@ export default async function VoicesRegionPage({ params }: Props) {
             {/* Block 1: This Week's Reflection */}
             <div className="space-y-6">
               <p className="text-xs uppercase tracking-wide text-slate-300/70">
-                This Week&apos;s Reflection
+                {prompt?.title} Reflection
               </p>
               <h3 className="text-xl font-semibold text-white sm:text-2xl">
-                Week 1 — Noticing Place
+                Noticing Place
               </h3>
 
               <div className="space-y-0">
-                <div className="border-t border-white/10 pt-6 space-y-4">
+                <div className="border-t border-white/10 pt-6 pb-4 space-y-4">
                   <h4 className="text-base font-semibold text-slate-100">Participation</h4>
                   <p className="text-slate-200/85 leading-relaxed">
                     18 reflections shared this week from across the community.
                   </p>
                 </div>
-                <div className="border-t border-white/10 pt-6 space-y-4">
+                <div className="border-t border-white/10 pt-6 pb-4 space-y-4">
                   <h4 className="text-base font-semibold text-slate-100">Patterns Emerging</h4>
                   <p className="text-slate-200/85 leading-relaxed">
                     Many people described small details that are easy to overlook: a particular tree on a street corner, the smell of food drifting from a local bakery, the way evening light falls on a familiar building.
                   </p>
                 </div>
-                <div className="border-t border-white/10 pt-6 space-y-4">
+                <div className="border-t border-white/10 pt-6 pb-4 space-y-4">
                   <h4 className="text-base font-semibold text-slate-100">Voices From the Stories</h4>
                   <div className="space-y-4">
                     <blockquote className="border-l-2 border-white/15 pl-4 text-slate-200/85 italic leading-relaxed">
@@ -183,7 +184,7 @@ export default async function VoicesRegionPage({ params }: Props) {
                     </blockquote>
                   </div>
                 </div>
-                <div className="border-t border-white/10 pt-6 space-y-4">
+                <div className="border-t border-white/10 pt-6 pb-4 space-y-4">
                   <h4 className="text-base font-semibold text-slate-100">Voice of Place</h4>
                   <p className="text-slate-200/85 leading-relaxed">
                     These reflections point toward a place full of small details that quietly shape daily life but often pass unnoticed.
@@ -201,10 +202,10 @@ export default async function VoicesRegionPage({ params }: Props) {
               </div>
             </div>
 
-            {/* Block 2: Story Signals So Far */}
+            {/* Block 2: Weekly Summaries */}
             <div className="space-y-6 border-t border-white/10 pt-10">
               <p className="text-xs uppercase tracking-wide text-slate-300/70">
-                Story Signals So Far
+                Weekly Summaries
               </p>
               <div className="space-y-6">
                 <div className="space-y-2">
