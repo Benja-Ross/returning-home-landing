@@ -5,17 +5,12 @@ import { VoicesForm } from "@/components/voices/VoicesForm";
 import { VoicesHero } from "@/components/voices/VoicesHero";
 import { SubmissionsFeed } from "@/components/voices/SubmissionsFeed";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { getActivePrompt, getApprovedFeedPage } from "@/lib/voices/data";
+import {
+  getActiveRegionWeek,
+  getRegionCycleWeeks,
+  getApprovedSubmissionsPageForRegionWeek,
+} from "@/lib/voices/data";
 import { getRegion, REGIONS } from "@/lib/voices/regions";
-
-const SIX_WEEK_ARC = [
-  { title: "Noticing Place", subtext: "Week 1" },
-  { title: "Local Belonging", subtext: "Week 2" },
-  { title: "Local Story", subtext: "Week 3" },
-  { title: "Change Happening", subtext: "Week 4" },
-  { title: "Possibility", subtext: "Week 5" },
-  { title: "Acting", subtext: "Week 6" },
-] as const;
 
 const ARC_DUMMY_CHAPTERS = [
   { number: "1", title: "", body: "" },
@@ -30,6 +25,16 @@ const sectionClass = "mt-10 space-y-4";
 const headingClass = "text-2xl font-semibold text-slate-900";
 const blockClass = "rounded-xl border border-slate-200 bg-slate-50/50 px-6 py-8 text-slate-600";
 
+/** Fallback arc labels when region has no cycle weeks in DB. */
+const FALLBACK_ARC_WEEKS = [
+  { subtext: "Week 1", title: "—" },
+  { subtext: "Week 2", title: "—" },
+  { subtext: "Week 3", title: "—" },
+  { subtext: "Week 4", title: "—" },
+  { subtext: "Week 5", title: "—" },
+  { subtext: "Week 6", title: "—" },
+];
+
 type Props = { params: Promise<{ regionSlug: string }> };
 
 export default async function VoicesRegionPage({ params }: Props) {
@@ -40,13 +45,24 @@ export default async function VoicesRegionPage({ params }: Props) {
     notFound();
   }
 
-  const prompt = await getActivePrompt(region.slug);
+  const [activeWeek, cycleWeeks] = await Promise.all([
+    getActiveRegionWeek(region.slug),
+    getRegionCycleWeeks(region.slug),
+  ]);
+
+  const arcWeeks =
+    cycleWeeks.length > 0
+      ? cycleWeeks.map((w) => ({ subtext: w.weekLabel, title: w.themeTitle }))
+      : FALLBACK_ARC_WEEKS;
+  const activeWeekIndex =
+    activeWeek != null
+      ? cycleWeeks.findIndex((w) => w.regionCycleWeekId === activeWeek.regionCycleWeekId)
+      : -1;
 
   const feed =
-    prompt != null
-      ? await getApprovedFeedPage({
-          regionSlug: region.slug,
-          promptId: prompt.id,
+    activeWeek != null
+      ? await getApprovedSubmissionsPageForRegionWeek({
+          regionCycleWeekId: activeWeek.regionCycleWeekId,
           limit: 12,
         })
       : null;
@@ -69,8 +85,11 @@ export default async function VoicesRegionPage({ params }: Props) {
             </div>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-6 sm:gap-2 sm:-mt-10">
-            {SIX_WEEK_ARC.map((week, i) => (
-              <div key={i} className="text-center">
+            {arcWeeks.map((week, i) => (
+              <div
+                key={i}
+                className={`text-center ${i === activeWeekIndex ? "rounded-md ring-1 ring-slate-300/80 py-1" : ""}`}
+              >
                 <p className="mt-0.5 text-xs text-slate-500 sm:mt-1 sm:text-sm">
                   {week.subtext}
                 </p>
@@ -83,11 +102,11 @@ export default async function VoicesRegionPage({ params }: Props) {
         </div>
       </section>
 
-      {prompt ? (
+      {activeWeek ? (
         <section className="w-full bg-[#faf6f1] py-10 sm:py-18" aria-labelledby="voice-question">
           <div className="mx-auto max-w-2xl px-6 text-center sm:px-8">
             <p className="text-base font-medium text-slate-600 sm:text-lg">
-              The {prompt.title} &quot;Voice of Place&quot; question:
+              The {activeWeek.weekLabel} &quot;Voice of Place&quot; question:
             </p>
             <svg
               className="mx-auto mt-4 h-8 w-8 text-amber-700/40 sm:h-10 sm:w-10"
@@ -104,7 +123,7 @@ export default async function VoicesRegionPage({ params }: Props) {
               <circle cx="16" cy="16" r="14" />
             </svg>
             <p id="voice-question" className="mt-6 text-2xl font-medium leading-relaxed text-slate-900 sm:text-3xl sm:leading-relaxed">
-              {prompt.question}
+              {activeWeek.question}
             </p>
             <p className="mt-5 text-sm text-slate-500">
               Share a sentence or a paragraph below.
@@ -151,52 +170,54 @@ export default async function VoicesRegionPage({ params }: Props) {
             {/* Block 1: This Week's Reflection */}
             <div className="space-y-6">
               <p className="text-xs uppercase tracking-wide text-slate-300/70">
-                {prompt?.title} Reflection
+                {activeWeek ? `${activeWeek.weekLabel} Reflection` : "Reflection"}
               </p>
               <h3 className="text-xl font-semibold text-white sm:text-2xl">
-                Noticing Place
+                {activeWeek?.themeTitle ?? "—"}
               </h3>
 
               <div className="space-y-0">
                 <div className="border-t border-white/10 pt-6 pb-4 space-y-4">
                   <h4 className="text-base font-semibold text-slate-100">Participation</h4>
                   <p className="text-slate-200/85 leading-relaxed">
-                    18 reflections shared this week from across the community.
+                    {activeWeek?.participationSummary ?? "Participation summary will appear when available."}
                   </p>
                 </div>
                 <div className="border-t border-white/10 pt-6 pb-4 space-y-4">
                   <h4 className="text-base font-semibold text-slate-100">Patterns Emerging</h4>
                   <p className="text-slate-200/85 leading-relaxed">
-                    Many people described small details that are easy to overlook: a particular tree on a street corner, the smell of food drifting from a local bakery, the way evening light falls on a familiar building.
+                    {activeWeek?.patternsEmerging ?? "Patterns will appear when available."}
                   </p>
                 </div>
                 <div className="border-t border-white/10 pt-6 pb-4 space-y-4">
                   <h4 className="text-base font-semibold text-slate-100">Voices From the Stories</h4>
                   <div className="space-y-4">
-                    <blockquote className="border-l-2 border-white/15 pl-4 text-slate-200/85 italic leading-relaxed">
-                      I never realized how much I look forward to hearing the church bells in the afternoon.
-                    </blockquote>
-                    <blockquote className="border-l-2 border-white/15 pl-4 text-slate-200/85 italic leading-relaxed">
-                      There&apos;s a narrow trail behind my apartment where people walk their dogs every evening. I didn&apos;t notice how many quiet greetings happen there.
-                    </blockquote>
-                    <blockquote className="border-l-2 border-white/15 pl-4 text-slate-200/85 italic leading-relaxed">
-                      The old bridge downtown is something I drive past every day, but when I actually stopped there last week it felt like a different place entirely.
-                    </blockquote>
+                    {activeWeek?.voicesFromStories?.length
+                      ? activeWeek.voicesFromStories.map((quote, i) => (
+                          <blockquote
+                            key={i}
+                            className="border-l-2 border-white/15 pl-4 text-slate-200/85 italic leading-relaxed"
+                          >
+                            {quote}
+                          </blockquote>
+                        ))
+                      : (
+                          <p className="text-slate-200/85 leading-relaxed italic">
+                            Voices from the stories will appear when available.
+                          </p>
+                        )}
                   </div>
                 </div>
                 <div className="border-t border-white/10 pt-6 pb-4 space-y-4">
                   <h4 className="text-base font-semibold text-slate-100">Voice of Place</h4>
                   <p className="text-slate-200/85 leading-relaxed">
-                    These reflections point toward a place full of small details that quietly shape daily life but often pass unnoticed.
+                    {activeWeek?.voiceOfPlace ?? "Voice of place summary will appear when available."}
                   </p>
                 </div>
                 <div className="border-t border-white/10 pt-6 space-y-4">
                   <h4 className="text-base font-semibold text-slate-100">Emerging Story</h4>
                   <p className="text-slate-200/85 leading-relaxed">
-                    The first week of the experiment began with attention.
-                  </p>
-                  <p className="text-slate-200/85 leading-relaxed">
-                    People started noticing the ordinary features of their surroundings that carry meaning.
+                    {activeWeek?.emergingStory ?? "Emerging story will appear when available."}
                   </p>
                 </div>
               </div>
@@ -208,42 +229,28 @@ export default async function VoicesRegionPage({ params }: Props) {
                 Weekly Summaries
               </p>
               <div className="space-y-6">
-                <div className="space-y-2">
-                  <p className="font-semibold text-slate-100">Week 1 — Noticing Place</p>
-                  <p className="text-slate-200/85 leading-relaxed text-sm">
-                    People are beginning with simple observations: overlooked corners, small rituals, and everyday landscapes that shape life in this place.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <p className="font-semibold text-slate-100">Week 2 — Local Belonging (coming next)</p>
-                  <p className="text-slate-200/85 leading-relaxed text-sm">
-                    Participants will reflect on moments or places where they feel a sense of belonging in their community.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <p className="font-semibold text-slate-100">Week 3 — Local Story</p>
-                  <p className="text-slate-200/85 leading-relaxed text-sm">
-                    Stories that help explain how this place became what it is today.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <p className="font-semibold text-slate-100">Week 4 — Change Happening</p>
-                  <p className="text-slate-200/85 leading-relaxed text-sm">
-                    Reflections on how the community is shifting or evolving.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <p className="font-semibold text-slate-100">Week 5 — Possibility</p>
-                  <p className="text-slate-200/85 leading-relaxed text-sm">
-                    Imagining what this place could become.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <p className="font-semibold text-slate-100">Week 6 — Acting</p>
-                  <p className="text-slate-200/85 leading-relaxed text-sm">
-                    Where people feel called to participate in shaping the future of the place.
-                  </p>
-                </div>
+                {cycleWeeks.length > 0
+                  ? cycleWeeks.map((w) => (
+                      <div key={w.regionCycleWeekId} className="space-y-2">
+                        <p className="font-semibold text-slate-100">
+                          {w.weekLabel} — {w.themeTitle}
+                          {w.status === "upcoming" ? " (coming next)" : ""}
+                        </p>
+                        <p className="text-slate-200/85 leading-relaxed text-sm">
+                          {w.summaryShort ?? "—"}
+                        </p>
+                      </div>
+                    ))
+                  : (
+                      <>
+                        {[1, 2, 3, 4, 5, 6].map((n) => (
+                          <div key={n} className="space-y-2">
+                            <p className="font-semibold text-slate-100">Week {n} — —</p>
+                            <p className="text-slate-200/85 leading-relaxed text-sm">—</p>
+                          </div>
+                        ))}
+                      </>
+                    )}
               </div>
             </div>
           </div>
@@ -262,12 +269,12 @@ export default async function VoicesRegionPage({ params }: Props) {
           </section>
         )}
 
-        {prompt && (
+        {activeWeek && (
           <section className={sectionClass}>
             <h2 className={headingClass}>Add your voice to your place</h2>
             <VoicesForm
               regionSlug={region.slug}
-              promptId={prompt.id}
+              regionCycleWeekId={activeWeek.regionCycleWeekId}
               neighborhoodHint={region.neighborhoodHint}
             />
           </section>
@@ -277,7 +284,7 @@ export default async function VoicesRegionPage({ params }: Props) {
           {feed != null ? (
             <SubmissionsFeed
               regionSlug={region.slug}
-              promptId={prompt!.id}
+              regionCycleWeekId={activeWeek!.regionCycleWeekId}
               initialItems={feed.items}
               initialTotalApproved={feed.totalApproved}
               initialNextCursor={feed.nextCursor}

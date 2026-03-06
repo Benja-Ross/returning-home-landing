@@ -6,6 +6,30 @@ export type SubmissionCardDTO = {
   created_at: string;
 };
 
+/** One week in the six-week arc for a region (from cycle_weeks + region_cycle_weeks). */
+export type RegionCycleWeekSummaryDTO = {
+  regionCycleWeekId: string;
+  weekNumber: number;
+  weekLabel: string;
+  themeTitle: string;
+  summaryShort: string | null;
+  status: "upcoming" | "active" | "completed";
+};
+
+/** Active week for a region: synthesis + question for the "What Voices of Place Are Saying" block. */
+export type ActiveRegionWeekDTO = {
+  regionCycleWeekId: string;
+  weekLabel: string;
+  themeTitle: string;
+  question: string;
+  participationSummary: string | null;
+  patternsEmerging: string | null;
+  voicesFromStories: string[];
+  voiceOfPlace: string | null;
+  emergingStory: string | null;
+  summaryShort: string | null;
+};
+
 export type FeedPage = {
   items: SubmissionCardDTO[];
   totalApproved: number;

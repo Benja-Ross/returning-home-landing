@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { getApprovedFeedPage } from "@/lib/voices/data";
+import { getApprovedSubmissionsPageForRegionWeek } from "@/lib/voices/data";
 import { getRegion } from "@/lib/voices/regions";
 
 const UUID_REGEX =
@@ -9,7 +9,7 @@ const UUID_REGEX =
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const regionSlug = searchParams.get("regionSlug");
-  const promptId = searchParams.get("promptId");
+  const regionCycleWeekId = searchParams.get("regionCycleWeekId");
   const cursor = searchParams.get("cursor") ?? undefined;
 
   if (!regionSlug || typeof regionSlug !== "string" || regionSlug.trim() === "") {
@@ -19,9 +19,9 @@ export async function GET(request: Request) {
     );
   }
 
-  if (!promptId || !UUID_REGEX.test(promptId)) {
+  if (!regionCycleWeekId || !UUID_REGEX.test(regionCycleWeekId)) {
     return NextResponse.json(
-      { ok: false, error: "Valid promptId (UUID) is required." },
+      { ok: false, error: "Valid regionCycleWeekId (UUID) is required." },
       { status: 400 }
     );
   }
@@ -34,9 +34,8 @@ export async function GET(request: Request) {
   }
 
   try {
-    const feedPage = await getApprovedFeedPage({
-      regionSlug: regionSlug.trim(),
-      promptId,
+    const feedPage = await getApprovedSubmissionsPageForRegionWeek({
+      regionCycleWeekId,
       limit: 12,
       cursor,
     });

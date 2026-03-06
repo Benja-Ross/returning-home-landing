@@ -4,11 +4,11 @@ import { useState } from "react";
 
 type Props = {
   regionSlug: string;
-  promptId: string;
+  regionCycleWeekId: string;
   neighborhoodHint: string;
 };
 
-export function VoicesForm({ regionSlug, promptId, neighborhoodHint }: Props) {
+export function VoicesForm({ regionSlug, regionCycleWeekId, neighborhoodHint }: Props) {
   const [name, setName] = useState("");
   const [neighborhood, setNeighborhood] = useState("");
   const [response, setResponse] = useState("");
@@ -28,7 +28,7 @@ export function VoicesForm({ regionSlug, promptId, neighborhoodHint }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           regionSlug,
-          promptId,
+          regionCycleWeekId,
           name: name.trim(),
           neighborhood: neighborhood.trim(),
           response: response.trim(),

@@ -80,8 +80,7 @@ export async function POST(request: Request) {
   }
 
   const { error } = await supabaseAdmin.from("submissions").insert({
-    region_slug: data.regionSlug,
-    prompt_id: data.promptId,
+    region_cycle_week_id: data.regionCycleWeekId,
     name: data.name,
     neighborhood: data.neighborhood,
     response: data.response,

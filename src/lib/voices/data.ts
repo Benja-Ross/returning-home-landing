@@ -1,50 +1,210 @@
 import "server-only";
 
 import { supabaseAdmin } from "@/lib/supabase/server";
-import type { FeedPage, SubmissionCardDTO } from "@/lib/voices/feed";
+import type {
+  ActiveRegionWeekDTO,
+  FeedPage,
+  RegionCycleWeekSummaryDTO,
+  SubmissionCardDTO,
+} from "@/lib/voices/feed";
 import { decodeCursor, encodeCursor } from "@/lib/voices/feed";
 
-export type PromptDTO = {
-  id: string;
-  title: string | null;
-  question: string;
-  region_slug: string;
-};
+// ----- New schema: active region week -----
 
-export async function getActivePrompt(regionSlug: string): Promise<PromptDTO | null> {
-  const { data, error } = await supabaseAdmin
-    .from("prompts")
-    .select("id, title, question, region_slug")
-    .eq("region_slug", regionSlug)
-    .eq("is_active", true)
+function parseVoicesFromStories(value: unknown): string[] {
+  if (Array.isArray(value)) {
+    return value.filter((v): v is string => typeof v === "string");
+  }
+  if (typeof value === "string") {
+    try {
+      const parsed = JSON.parse(value) as unknown;
+      return Array.isArray(parsed) ? parsed.filter((v): v is string => typeof v === "string") : [];
+    } catch {
+      return [];
+    }
+  }
+  return [];
+}
+
+/**
+ * Fetches the active region_cycle_week for a region (status = 'active').
+ * Returns null if the region has no active week.
+ */
+export async function getActiveRegionWeek(
+  regionSlug: string
+): Promise<ActiveRegionWeekDTO | null> {
+  const { data: region, error: regionError } = await supabaseAdmin
+    .from("regions")
+    .select("id")
+    .eq("slug", regionSlug)
+    .limit(1)
+    .maybeSingle();
+
+  if (regionError || !region) {
+    return null;
+  }
+
+  const { data: rc, error: rcError } = await supabaseAdmin
+    .from("region_cycles")
+    .select("id")
+    .eq("region_id", region.id)
     .order("created_at", { ascending: false })
     .limit(1)
     .maybeSingle();
 
-  if (error) {
-    throw new Error(`Failed to fetch active prompt: ${error.message}`);
+  if (rcError || !rc) {
+    return null;
   }
 
-  return data;
+  const { data: rcwRow, error: rcwRowError } = await supabaseAdmin
+    .from("region_cycle_weeks")
+    .select(
+      `
+      id,
+      theme_title_override,
+      question_override,
+      participation_summary,
+      patterns_emerging,
+      voices_from_stories,
+      voice_of_place,
+      emerging_story,
+      summary_short,
+      cycle_weeks (
+        week_number,
+        week_label,
+        theme_title,
+        question
+      )
+    `
+    )
+    .eq("region_cycle_id", rc.id)
+    .eq("status", "active")
+    .limit(1)
+    .maybeSingle();
+
+  if (rcwRowError || !rcwRow) {
+    return null;
+  }
+
+  const raw = rcwRow.cycle_weeks as
+    | { week_number: number; week_label: string; theme_title: string; question: string }
+    | { week_number: number; week_label: string; theme_title: string; question: string }[]
+    | null;
+  const cw = Array.isArray(raw) ? raw[0] ?? null : raw;
+  if (!cw) {
+    return null;
+  }
+
+  return {
+    regionCycleWeekId: rcwRow.id,
+    weekLabel: cw.week_label ?? `Week ${cw.week_number}`,
+    themeTitle: rcwRow.theme_title_override ?? cw.theme_title ?? "",
+    question: rcwRow.question_override ?? cw.question ?? "",
+    participationSummary: rcwRow.participation_summary ?? null,
+    patternsEmerging: rcwRow.patterns_emerging ?? null,
+    voicesFromStories: parseVoicesFromStories(rcwRow.voices_from_stories),
+    voiceOfPlace: rcwRow.voice_of_place ?? null,
+    emergingStory: rcwRow.emerging_story ?? null,
+    summaryShort: rcwRow.summary_short ?? null,
+  };
+}
+
+/**
+ * Fetches all six weeks for the region's current cycle, ordered by week_number.
+ */
+export async function getRegionCycleWeeks(
+  regionSlug: string
+): Promise<RegionCycleWeekSummaryDTO[]> {
+  const { data: region, error: regionError } = await supabaseAdmin
+    .from("regions")
+    .select("id")
+    .eq("slug", regionSlug)
+    .limit(1)
+    .maybeSingle();
+
+  if (regionError || !region) {
+    return [];
+  }
+
+  const { data: rc, error: rcError } = await supabaseAdmin
+    .from("region_cycles")
+    .select("id")
+    .eq("region_id", region.id)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (rcError || !rc) {
+    return [];
+  }
+
+  const { data: rows, error } = await supabaseAdmin
+    .from("region_cycle_weeks")
+    .select(
+      `
+      id,
+      status,
+      theme_title_override,
+      summary_short,
+      cycle_weeks (
+        week_number,
+        week_label,
+        theme_title
+      )
+    `
+    )
+    .eq("region_cycle_id", rc.id);
+
+  if (error || !rows?.length) {
+    return [];
+  }
+
+  const sorted = [...rows].sort((a, b) => {
+    const acw = a.cycle_weeks as { week_number?: number } | { week_number?: number }[] | null;
+    const bcw = b.cycle_weeks as { week_number?: number } | { week_number?: number }[] | null;
+    const an = Array.isArray(acw) ? acw[0]?.week_number : acw?.week_number;
+    const bn = Array.isArray(bcw) ? bcw[0]?.week_number : bcw?.week_number;
+    return (an ?? 0) - (bn ?? 0);
+  });
+
+  const result: RegionCycleWeekSummaryDTO[] = [];
+  for (const row of sorted) {
+    const raw = row.cycle_weeks as
+      | { week_number: number; week_label: string; theme_title: string }
+      | { week_number: number; week_label: string; theme_title: string }[]
+      | null;
+    const cw = Array.isArray(raw) ? raw[0] ?? null : raw;
+    if (!cw) continue;
+    const status = (row.status as string) === "active" ? "active" : (row.status as string) === "completed" ? "completed" : "upcoming";
+    result.push({
+      regionCycleWeekId: row.id,
+      weekNumber: cw.week_number,
+      weekLabel: cw.week_label ?? `Week ${cw.week_number}`,
+      themeTitle: row.theme_title_override ?? cw.theme_title ?? "",
+      summaryShort: row.summary_short ?? null,
+      status,
+    });
+  }
+  return result;
 }
 
 const DEFAULT_FEED_LIMIT = 12;
 
-export async function getApprovedFeedPage(params: {
-  regionSlug: string;
-  promptId: string;
+/**
+ * Paginated approved submissions for a single region_cycle_week.
+ */
+export async function getApprovedSubmissionsPageForRegionWeek(params: {
+  regionCycleWeekId: string;
   limit?: number;
   cursor?: string;
 }): Promise<FeedPage> {
-  const { regionSlug, promptId } = params;
   const limit = params.limit ?? DEFAULT_FEED_LIMIT;
 
   const { count: totalApproved, error: countError } = await supabaseAdmin
     .from("submissions")
-    .select("id", { count: "exact", head: true })
-    .eq("region_slug", regionSlug)
-    .eq("prompt_id", promptId)
-    .eq("approved", true)
+    .select("*", { count: "exact", head: true })
+    .eq("region_cycle_week_id", params.regionCycleWeekId)
+    .eq("moderation_status", "approved")
     .eq("consent_public", true);
 
   if (countError) {
@@ -53,10 +213,9 @@ export async function getApprovedFeedPage(params: {
 
   let itemsQuery = supabaseAdmin
     .from("submissions")
-    .select("id, name, neighborhood, response, created_at")
-    .eq("region_slug", regionSlug)
-    .eq("prompt_id", promptId)
-    .eq("approved", true)
+    .select("id,name,neighborhood,response,created_at")
+    .eq("region_cycle_week_id", params.regionCycleWeekId)
+    .eq("moderation_status", "approved")
     .eq("consent_public", true)
     .order("created_at", { ascending: false })
     .order("id", { ascending: false })
