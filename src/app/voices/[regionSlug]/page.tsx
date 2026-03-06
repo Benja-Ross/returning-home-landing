@@ -23,7 +23,6 @@ export const dynamic = "force-dynamic";
 const containerClass = "mx-auto max-w-3xl px-6 py-12";
 const sectionClass = "mt-10 space-y-4";
 const headingClass = "text-2xl font-semibold text-slate-900";
-const blockClass = "rounded-xl border border-slate-200 bg-slate-50/50 px-6 py-8 text-slate-600";
 
 /** Fallback arc labels when region has no cycle weeks in DB. */
 const FALLBACK_ARC_WEEKS = [
@@ -276,7 +275,7 @@ export default async function VoicesRegionPage({ params }: Props) {
 
         {activeWeek && (
           <section className={sectionClass}>
-            <h2 className={headingClass}>Add your voice to your place</h2>
+            <h2 className={headingClass}>Add Your Voice to Your Place</h2>
             <VoicesForm
               regionSlug={region.slug}
               regionCycleWeekId={activeWeek.regionCycleWeekId}
