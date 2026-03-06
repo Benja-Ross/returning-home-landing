@@ -93,14 +93,14 @@ export default async function VoicesRegionPage({ params }: Props) {
                 <div key={i} className="text-center">
                   <p
                     className={`mt-0.5 text-xs sm:mt-1 sm:text-sm ${
-                      isActive ? "text-slate-900 font-semibold" : "text-slate-500 font-medium"
+                      isActive ? "text-slate-900 font-semibold" : "text-slate-800 font-medium"
                     }`}
                   >
                     {week.subtext}
                   </p>
                   <p
                     className={`text-xs sm:text-sm ${
-                      isActive ? "text-slate-900 font-semibold" : "text-slate-500 font-medium"
+                      isActive ? "text-slate-900 font-semibold" : "text-slate-800 font-medium"
                     }`}
                   >
                     {week.title}
@@ -116,7 +116,7 @@ export default async function VoicesRegionPage({ params }: Props) {
         <section className="w-full bg-[#faf6f1] py-10 sm:py-18" aria-labelledby="voice-question">
           <div className="mx-auto max-w-2xl px-6 text-center sm:px-8">
             <p className="text-base font-medium text-slate-600 sm:text-lg">
-              The {activeWeek.weekLabel} &quot;Voice of Place&quot; question:
+              The {activeWeek.weekLabel} question:
             </p>
             <svg
               className="mx-auto mt-4 h-8 w-8 text-amber-700/40 sm:h-10 sm:w-10"
@@ -243,8 +243,8 @@ export default async function VoicesRegionPage({ params }: Props) {
                   ? cycleWeeks.map((w) => (
                       <div key={w.regionCycleWeekId} className="space-y-2">
                         <p className="font-semibold text-slate-100">
-                          {w.weekLabel} — {w.themeTitle}
-                          {w.status === "upcoming" ? " (coming next)" : ""}
+                          {w.weekLabel} - {w.themeTitle}
+                          {w.status === "active" ? " (current week)" : ""}
                         </p>
                         <p className="text-slate-200/85 leading-relaxed text-sm">
                           {w.summaryShort ?? "—"}
