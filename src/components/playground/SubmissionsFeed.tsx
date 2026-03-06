@@ -64,7 +64,7 @@ export function SubmissionsFeed({
   return (
     <section aria-labelledby="feed-heading">
       <h2 id="feed-heading" className="text-2xl font-semibold text-slate-900">
-        Voices Shared ({totalApproved})
+        What People Are Saying ({totalApproved})
       </h2>
 
       {totalApproved === 0 ? (

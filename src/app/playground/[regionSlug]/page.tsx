@@ -53,7 +53,7 @@ export default async function PlaygroundRegionPage({ params }: Props) {
 
   return (
     <PageLayout hidePageHeader>
-      <PlaygroundHero regionName={region.displayName} heroImageSrc="/images/sand.jpg" />
+      <PlaygroundHero regionName={region.displayName} heroImageSrc="/images/leaf-voices-blur.png" />
 
       <section className="w-full py-6 sm:py-8" aria-labelledby="six-week-arc-heading">
         <div className="mx-auto max-w-5xl px-6 sm:px-8">
@@ -61,7 +61,7 @@ export default async function PlaygroundRegionPage({ params }: Props) {
             id="six-week-arc-heading"
             className="text-center text-lg font-semibold text-slate-900 sm:text-xl"
           >
-            Weekly Topics
+            The Six Weekly Topics
           </h2>
           <div className="relative left-1/2 mt-4 w-screen -translate-x-1/2 overflow-hidden opacity-90 sm:mt-5">
             <div className="mx-auto max-w-6xl px-6 sm:px-8">
@@ -126,7 +126,7 @@ export default async function PlaygroundRegionPage({ params }: Props) {
       />
 
       <section className="w-full bg-slate-900 border-b border-slate-700/60">
-        <div className="mx-auto max-w-3xl px-6 pt-14 pb-16 text-center sm:px-8 sm:pt-16 sm:pb-20">
+        <div className="mx-auto max-w-3xl px-6 pt-14 text-center sm:px-8 sm:pt-16">
           <svg
             className="mx-auto h-12 w-12 text-amber-300"
             viewBox="0 0 32 32"
@@ -143,9 +143,109 @@ export default async function PlaygroundRegionPage({ params }: Props) {
           <h2 className="mt-4 text-3xl font-medium tracking-[-0.01em] text-white sm:text-4xl">
             What Voices of Place Are Saying
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-200/90">
-            {region.hearingSummary}
-          </p>
+        </div>
+
+        <div className="mx-auto max-w-3xl px-6 pb-16 text-left sm:px-8 sm:pb-20">
+          <div className="space-y-12 pt-12 sm:pt-14">
+            {/* Block 1: This Week's Reflection */}
+            <div className="space-y-6">
+              <p className="text-xs uppercase tracking-wide text-slate-300/70">
+                This Week&apos;s Reflection
+              </p>
+              <h3 className="text-xl font-semibold text-white sm:text-2xl">
+                Week 1 — Noticing Place
+              </h3>
+
+              <div className="space-y-0">
+                <div className="border-t border-white/10 pt-6 space-y-4">
+                  <h4 className="text-base font-semibold text-slate-100">Participation</h4>
+                  <p className="text-slate-200/85 leading-relaxed">
+                    18 reflections shared this week from across the community.
+                  </p>
+                </div>
+                <div className="border-t border-white/10 pt-6 space-y-4">
+                  <h4 className="text-base font-semibold text-slate-100">Patterns Emerging</h4>
+                  <p className="text-slate-200/85 leading-relaxed">
+                    Many people described small details that are easy to overlook: a particular tree on a street corner, the smell of food drifting from a local bakery, the way evening light falls on a familiar building.
+                  </p>
+                </div>
+                <div className="border-t border-white/10 pt-6 space-y-4">
+                  <h4 className="text-base font-semibold text-slate-100">Voices From the Stories</h4>
+                  <div className="space-y-4">
+                    <blockquote className="border-l-2 border-white/15 pl-4 text-slate-200/85 italic leading-relaxed">
+                      I never realized how much I look forward to hearing the church bells in the afternoon.
+                    </blockquote>
+                    <blockquote className="border-l-2 border-white/15 pl-4 text-slate-200/85 italic leading-relaxed">
+                      There&apos;s a narrow trail behind my apartment where people walk their dogs every evening. I didn&apos;t notice how many quiet greetings happen there.
+                    </blockquote>
+                    <blockquote className="border-l-2 border-white/15 pl-4 text-slate-200/85 italic leading-relaxed">
+                      The old bridge downtown is something I drive past every day, but when I actually stopped there last week it felt like a different place entirely.
+                    </blockquote>
+                  </div>
+                </div>
+                <div className="border-t border-white/10 pt-6 space-y-4">
+                  <h4 className="text-base font-semibold text-slate-100">Voice of Place</h4>
+                  <p className="text-slate-200/85 leading-relaxed">
+                    These reflections point toward a place full of small details that quietly shape daily life but often pass unnoticed.
+                  </p>
+                </div>
+                <div className="border-t border-white/10 pt-6 space-y-4">
+                  <h4 className="text-base font-semibold text-slate-100">Emerging Story</h4>
+                  <p className="text-slate-200/85 leading-relaxed">
+                    The first week of the experiment began with attention.
+                  </p>
+                  <p className="text-slate-200/85 leading-relaxed">
+                    People started noticing the ordinary features of their surroundings that carry meaning.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Block 2: Story Signals So Far */}
+            <div className="space-y-6 border-t border-white/10 pt-10">
+              <p className="text-xs uppercase tracking-wide text-slate-300/70">
+                Story Signals So Far
+              </p>
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <p className="font-semibold text-slate-100">Week 1 — Noticing Place</p>
+                  <p className="text-slate-200/85 leading-relaxed text-sm">
+                    People are beginning with simple observations: overlooked corners, small rituals, and everyday landscapes that shape life in this place.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <p className="font-semibold text-slate-100">Week 2 — Local Belonging (coming next)</p>
+                  <p className="text-slate-200/85 leading-relaxed text-sm">
+                    Participants will reflect on moments or places where they feel a sense of belonging in their community.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <p className="font-semibold text-slate-100">Week 3 — Local Story</p>
+                  <p className="text-slate-200/85 leading-relaxed text-sm">
+                    Stories that help explain how this place became what it is today.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <p className="font-semibold text-slate-100">Week 4 — Change Happening</p>
+                  <p className="text-slate-200/85 leading-relaxed text-sm">
+                    Reflections on how the community is shifting or evolving.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <p className="font-semibold text-slate-100">Week 5 — Possibility</p>
+                  <p className="text-slate-200/85 leading-relaxed text-sm">
+                    Imagining what this place could become.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <p className="font-semibold text-slate-100">Week 6 — Acting</p>
+                  <p className="text-slate-200/85 leading-relaxed text-sm">
+                    Where people feel called to participate in shaping the future of the place.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
