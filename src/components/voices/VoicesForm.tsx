@@ -16,6 +16,7 @@ export function VoicesForm({ regionSlug, regionCycleWeekId, neighborhoodHint }: 
   const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [linkCopied, setLinkCopied] = useState(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -52,21 +53,63 @@ export function VoicesForm({ regionSlug, regionCycleWeekId, neighborhoodHint }: 
     }
   }
 
+  async function handleCopyPageLink() {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 2000);
+    } catch {
+      setLinkCopied(false);
+    }
+  }
+
   if (status === "success") {
     return (
       <div
-        className="rounded-xl border border-slate-200 bg-slate-50/50 px-6 py-8 text-center"
+        className="rounded-xl border border-slate-200 bg-slate-50/50 px-6 py-10 sm:py-12 text-center min-h-[280px] flex flex-col justify-center"
         role="status"
         aria-live="polite"
       >
-        <p className="text-lg font-medium text-slate-900">Thank you.</p>
-        <p className="mt-2 text-slate-700">Your reflection will appear once reviewed.</p>
-        <a
-          href="#responses"
-          className="mt-6 inline-block min-h-[44px] rounded-xl bg-slate-900 px-6 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-slate-800 focus:outline focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
-        >
-          See responses
-        </a>
+        <div className="max-w-3xl mx-auto">
+          <div
+            className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-green-50 text-green-600 mb-5"
+            aria-hidden
+          >
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <p className="text-lg font-medium text-slate-900">Thanks.</p>
+          <p className="mt-3 text-base text-slate-600 font-medium">
+            Your reflection has been received.
+          </p>
+          <p className="mt-5 max-w-2xl mx-auto text-slate-700 font-medium leading-relaxed">
+            Know someone else in your community who might want to share their voice? Send them this
+            page.
+          </p>
+          <div className="mt-6">
+            <button
+              type="button"
+              onClick={handleCopyPageLink}
+              className="min-h-[44px] rounded-xl bg-slate-900 px-6 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-slate-800 focus:outline focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
+            >
+              Copy page link
+            </button>
+            {linkCopied && (
+              <p className="mt-2 text-sm text-slate-600" aria-live="polite">
+                Link copied
+              </p>
+            )}
+          </div>
+        </div>
       </div>
     );
   }
