@@ -26,24 +26,24 @@ export function SubmissionCard({ submission }: Props) {
     >
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <p id={`submission-name-${submission.id}`} className="text-base min-w-0">
-          <span className="font-semibold text-slate-900">{submission.name ?? "Anonymous"}</span>
-          <span className="text-slate-500"> · </span>
-          <span className="text-slate-500 italic">{submission.neighborhood}</span>
+          <span className="font-semibold text-white">{submission.name ?? "Anonymous"}</span>
+          <span className="text-white"> · </span>
+          <span className="text-white/80 italic">{submission.neighborhood}</span>
         </p>
         <div className="flex flex-col items-end gap-1 shrink-0">
           {weekContext && (
-            <p className="text-xs text-slate-500" aria-hidden>
+            <p className="font-semibold text-xs text-white" aria-hidden>
               {weekContext}
             </p>
           )}
           {dateStr && (
-            <p className="text-xs text-slate-400" aria-hidden>
+            <p className="font-semibold text-xs text-white" aria-hidden>
               {dateStr}
             </p>
           )}
         </div>
       </div>
-      <p className="mt-3 text-black leading-loose">{submission.response}</p>
+      <p className="mt-3 text-slate-900 leading-loose">{submission.response}</p>
     </article>
   );
 }

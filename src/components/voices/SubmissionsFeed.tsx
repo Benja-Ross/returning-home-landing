@@ -67,7 +67,7 @@ export function SubmissionsFeed({
 
       {totalApproved === 0 ? (
         <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50/50 px-6 py-8 text-center">
-          <p className="text-slate-700">
+          <p className="text-white">
             No reflections have been published yet. Yours may be the first once reviewed.
           </p>
         </div>
