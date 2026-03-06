@@ -87,19 +87,27 @@ export default async function VoicesRegionPage({ params }: Props) {
             </div>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-6 sm:gap-2 sm:-mt-10">
-            {arcWeeks.map((week, i) => (
-              <div
-                key={i}
-                className={`text-center ${i === activeWeekIndex ? "rounded-md ring-1 ring-slate-300/80 py-1" : ""}`}
-              >
-                <p className="mt-0.5 text-xs text-slate-500 sm:mt-1 sm:text-sm">
-                  {week.subtext}
-                </p>
-                <p className="text-xs font-semibold text-slate-900 sm:text-sm">
-                  {week.title}
-                </p>
-              </div>
-            ))}
+            {arcWeeks.map((week, i) => {
+              const isActive = i === activeWeekIndex;
+              return (
+                <div key={i} className="text-center">
+                  <p
+                    className={`mt-0.5 text-xs sm:mt-1 sm:text-sm ${
+                      isActive ? "text-slate-900 font-semibold" : "text-slate-500 font-medium"
+                    }`}
+                  >
+                    {week.subtext}
+                  </p>
+                  <p
+                    className={`text-xs sm:text-sm ${
+                      isActive ? "text-slate-900 font-semibold" : "text-slate-500 font-medium"
+                    }`}
+                  >
+                    {week.title}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
