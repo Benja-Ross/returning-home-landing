@@ -13,6 +13,7 @@ import {
 import { getParticipationSummary } from "@/lib/voices/participation";
 import {
   getReflectionContent,
+  getWeeklySummaryText,
   REFLECTION_FALLBACKS,
 } from "@/lib/voices/reflection";
 import { getRegion, REGIONS } from "@/lib/voices/regions";
@@ -264,7 +265,7 @@ export default async function VoicesRegionPage({ params }: Props) {
                           {w.status === "active" ? " (current week)" : ""}
                         </p>
                         <p className="text-slate-200/85 leading-relaxed text-sm">
-                          {w.summaryShort ?? "—"}
+                          {getWeeklySummaryText(w.weekNumber, w.summaryShort)}
                         </p>
                       </div>
                     ))
@@ -273,7 +274,9 @@ export default async function VoicesRegionPage({ params }: Props) {
                         {[1, 2, 3, 4, 5, 6].map((n) => (
                           <div key={n} className="space-y-2">
                             <p className="font-semibold text-slate-100">Week {n} — —</p>
-                            <p className="text-slate-200/85 leading-relaxed text-sm">—</p>
+                            <p className="text-slate-200/85 leading-relaxed text-sm">
+                              {getWeeklySummaryText(n, null)}
+                            </p>
                           </div>
                         ))}
                       </>
@@ -298,7 +301,7 @@ export default async function VoicesRegionPage({ params }: Props) {
 
         {activeWeek && (
           <section className={sectionClass}>
-            <h2 className={headingClass}>Add Your Voice to Your Place</h2>
+            <h2 className={headingClass}>Offer Your Voice to Your Place</h2>
             <VoicesForm
               regionSlug={region.slug}
               regionCycleWeekId={activeWeek.regionCycleWeekId}
