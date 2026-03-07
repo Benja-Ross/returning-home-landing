@@ -209,22 +209,30 @@ const DEFAULT_FEED_LIMIT = 12;
 
 const REGION_FEED_CURSOR_SEP = "__";
 
+/** Returns raw cursor string (no encoding). Client encodes once when adding to URL. */
 function encodeRegionFeedCursor(weekNumber: number, createdAt: string, id: string): string {
-  return encodeURIComponent(`${weekNumber}${REGION_FEED_CURSOR_SEP}${createdAt}${REGION_FEED_CURSOR_SEP}${id}`);
+  return `${weekNumber}${REGION_FEED_CURSOR_SEP}${createdAt}${REGION_FEED_CURSOR_SEP}${id}`;
 }
 
-function decodeRegionFeedCursor(
+/**
+ * Parses cursor from query (decode once; URL encoding is applied by client when building URL).
+ * Returns null if invalid so API can return 400.
+ */
+export function decodeRegionFeedCursor(
   cursor: string
 ): { weekNumber: number; createdAt: string; id: string } | null {
+  if (!cursor || typeof cursor !== "string" || cursor.trim() === "") return null;
   try {
     const decoded = decodeURIComponent(cursor);
     const parts = decoded.split(REGION_FEED_CURSOR_SEP);
     if (parts.length < 3) return null;
     const weekNumber = parseInt(parts[0], 10);
-    if (Number.isNaN(weekNumber)) return null;
+    if (Number.isNaN(weekNumber) || weekNumber < 1 || weekNumber > 6) return null;
     const id = parts[parts.length - 1];
     const createdAt = parts.slice(1, -1).join(REGION_FEED_CURSOR_SEP);
-    if (!createdAt || !id) return null;
+    if (!createdAt || !id || id.length < 10) return null;
+    const date = new Date(createdAt);
+    if (Number.isNaN(date.getTime())) return null;
     return { weekNumber, createdAt, id };
   } catch {
     return null;

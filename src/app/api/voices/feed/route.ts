@@ -1,12 +1,15 @@
 import { NextResponse } from "next/server";
 
-import { getApprovedSubmissionsPageForRegion } from "@/lib/voices/data";
+import {
+  decodeRegionFeedCursor,
+  getApprovedSubmissionsPageForRegion,
+} from "@/lib/voices/data";
 import { getRegion } from "@/lib/voices/regions";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const regionSlug = searchParams.get("regionSlug");
-  const cursor = searchParams.get("cursor") ?? undefined;
+  const cursorParam = searchParams.get("cursor") ?? undefined;
 
   if (!regionSlug || typeof regionSlug !== "string" || regionSlug.trim() === "") {
     return NextResponse.json(
@@ -22,11 +25,21 @@ export async function GET(request: Request) {
     );
   }
 
+  if (cursorParam !== undefined && cursorParam !== null && cursorParam !== "") {
+    const parsed = decodeRegionFeedCursor(cursorParam);
+    if (!parsed) {
+      return NextResponse.json(
+        { ok: false, error: "Invalid cursor." },
+        { status: 400 }
+      );
+    }
+  }
+
   try {
     const feedPage = await getApprovedSubmissionsPageForRegion({
       regionSlug: regionSlug.trim(),
       limit: 12,
-      cursor,
+      cursor: cursorParam ?? undefined,
     });
 
     return NextResponse.json({
