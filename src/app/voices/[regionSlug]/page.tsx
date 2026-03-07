@@ -11,6 +11,10 @@ import {
   getApprovedSubmissionsPageForRegion,
 } from "@/lib/voices/data";
 import { getParticipationSummary } from "@/lib/voices/participation";
+import {
+  getReflectionContent,
+  REFLECTION_FALLBACKS,
+} from "@/lib/voices/reflection";
 import { getRegion, REGIONS } from "@/lib/voices/regions";
 
 const ARC_DUMMY_CHAPTERS = [
@@ -63,6 +67,11 @@ export default async function VoicesRegionPage({ params }: Props) {
     regionSlug: region.slug,
     limit: 12,
   });
+
+  const realVoicesQuotes =
+    activeWeek?.voicesFromStories?.filter(
+      (q) => typeof q === "string" && q.trim().length > 0
+    ) ?? [];
 
   return (
     <PageLayout hidePageHeader>
@@ -195,38 +204,47 @@ export default async function VoicesRegionPage({ params }: Props) {
                 <div className="border-t border-white/10 pt-6 pb-4 space-y-4">
                   <h4 className="text-base font-semibold text-slate-100">Patterns Emerging</h4>
                   <p className="text-slate-200/85 leading-relaxed">
-                    {activeWeek?.patternsEmerging ?? "Patterns will appear when available."}
+                    {getReflectionContent(
+                      activeWeek?.patternsEmerging,
+                      REFLECTION_FALLBACKS.patternsEmerging
+                    )}
                   </p>
                 </div>
                 <div className="border-t border-white/10 pt-6 pb-4 space-y-4">
                   <h4 className="text-base font-semibold text-slate-100">Voices From the Stories</h4>
                   <div className="space-y-4">
-                    {activeWeek?.voicesFromStories?.length
-                      ? activeWeek.voicesFromStories.map((quote, i) => (
-                          <blockquote
-                            key={i}
-                            className="border-l-2 border-white/15 pl-4 text-slate-200/85 italic leading-relaxed"
-                          >
-                            {quote}
-                          </blockquote>
-                        ))
-                      : (
-                          <p className="text-slate-200/85 leading-relaxed italic">
-                            Voices from the stories will appear when available.
-                          </p>
-                        )}
+                    {realVoicesQuotes.length > 0 ? (
+                      realVoicesQuotes.map((quote, i) => (
+                        <blockquote
+                          key={i}
+                          className="border-l-2 border-white/15 pl-4 text-slate-200/85 italic leading-relaxed"
+                        >
+                          {quote}
+                        </blockquote>
+                      ))
+                    ) : (
+                      <p className="text-slate-200/85 leading-relaxed">
+                        {REFLECTION_FALLBACKS.voicesFromStories}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="border-t border-white/10 pt-6 pb-4 space-y-4">
                   <h4 className="text-base font-semibold text-slate-100">Voice of Place</h4>
                   <p className="text-slate-200/85 leading-relaxed">
-                    {activeWeek?.voiceOfPlace ?? "Voice of place summary will appear when available."}
+                    {getReflectionContent(
+                      activeWeek?.voiceOfPlace,
+                      REFLECTION_FALLBACKS.voiceOfPlace
+                    )}
                   </p>
                 </div>
                 <div className="border-t border-white/10 pt-6 space-y-4">
                   <h4 className="text-base font-semibold text-slate-100">Emerging Story</h4>
                   <p className="text-slate-200/85 leading-relaxed">
-                    {activeWeek?.emergingStory ?? "Emerging story will appear when available."}
+                    {getReflectionContent(
+                      activeWeek?.emergingStory,
+                      REFLECTION_FALLBACKS.emergingStory
+                    )}
                   </p>
                 </div>
               </div>
