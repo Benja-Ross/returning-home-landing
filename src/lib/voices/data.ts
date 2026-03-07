@@ -207,6 +207,30 @@ export async function getRegionCycleWeeks(
 
 const DEFAULT_FEED_LIMIT = 12;
 
+const REGION_FEED_CURSOR_SEP = "__";
+
+function encodeRegionFeedCursor(weekNumber: number, createdAt: string, id: string): string {
+  return encodeURIComponent(`${weekNumber}${REGION_FEED_CURSOR_SEP}${createdAt}${REGION_FEED_CURSOR_SEP}${id}`);
+}
+
+function decodeRegionFeedCursor(
+  cursor: string
+): { weekNumber: number; createdAt: string; id: string } | null {
+  try {
+    const decoded = decodeURIComponent(cursor);
+    const parts = decoded.split(REGION_FEED_CURSOR_SEP);
+    if (parts.length < 3) return null;
+    const weekNumber = parseInt(parts[0], 10);
+    if (Number.isNaN(weekNumber)) return null;
+    const id = parts[parts.length - 1];
+    const createdAt = parts.slice(1, -1).join(REGION_FEED_CURSOR_SEP);
+    if (!createdAt || !id) return null;
+    return { weekNumber, createdAt, id };
+  } catch {
+    return null;
+  }
+}
+
 /**
  * Returns region_id and region_cycle_id for a given region_cycle_week_id (for submission inserts).
  * Returns null if the week is not found.
@@ -272,24 +296,18 @@ export async function getApprovedSubmissionsPageForRegion(params: {
     throw new Error(`Failed to count submissions: ${countError.message}`);
   }
 
-  let itemsQuery = supabaseAdmin
+  const MAX_FETCH = 500;
+  const { data: rows, error: itemsError } = await supabaseAdmin
     .from("submissions")
     .select(
-      "id,name,neighborhood,response,created_at,region_cycle_weeks(cycle_weeks(week_label,theme_title))"
+      "id,name,neighborhood,response,created_at,region_cycle_weeks(cycle_weeks(week_number,week_label,theme_title))"
     )
     .eq("region_id", region.id)
     .eq("moderation_status", "approved")
     .eq("consent_public", true)
     .order("created_at", { ascending: false })
     .order("id", { ascending: false })
-    .limit(limit);
-
-  const decoded = params.cursor ? decodeCursor(params.cursor) : null;
-  if (decoded) {
-    itemsQuery = itemsQuery.lt("created_at", decoded.createdAt);
-  }
-
-  const { data: rows, error: itemsError } = await itemsQuery;
+    .limit(MAX_FETCH);
 
   if (itemsError) {
     throw new Error(`Failed to fetch submissions: ${itemsError.message}`);
@@ -302,14 +320,19 @@ export async function getApprovedSubmissionsPageForRegion(params: {
     response: string;
     created_at: string;
     region_cycle_weeks?: {
-      cycle_weeks?: { week_label?: string; theme_title?: string } | null;
+      cycle_weeks?:
+        | { week_number?: number; week_label?: string; theme_title?: string }
+        | { week_number?: number; week_label?: string; theme_title?: string }[]
+        | null;
     } | null;
   }>;
 
-  const items: SubmissionCardDTO[] = typedRows.map((row) => {
+  type RowWithWeek = SubmissionCardDTO & { weekNumber: number };
+  const withWeek: RowWithWeek[] = typedRows.map((row) => {
     const rcw = row.region_cycle_weeks;
     const cw = rcw && !Array.isArray(rcw) ? rcw.cycle_weeks : null;
     const cwObj = cw && !Array.isArray(cw) ? cw : Array.isArray(cw) ? cw[0] : null;
+    const weekNumber = cwObj?.week_number ?? 0;
     return {
       id: row.id,
       name: row.name,
@@ -318,13 +341,33 @@ export async function getApprovedSubmissionsPageForRegion(params: {
       created_at: row.created_at,
       weekLabel: cwObj?.week_label ?? null,
       themeTitle: cwObj?.theme_title ?? null,
+      weekNumber,
     };
   });
 
+  withWeek.sort((a, b) => {
+    if (b.weekNumber !== a.weekNumber) return b.weekNumber - a.weekNumber;
+    return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+  });
+
+  const decoded = params.cursor ? decodeRegionFeedCursor(params.cursor) : null;
+  let startIndex = 0;
+  if (decoded) {
+    const idx = withWeek.findIndex(
+      (r) =>
+        r.weekNumber === decoded.weekNumber &&
+        r.created_at === decoded.createdAt &&
+        r.id === decoded.id
+    );
+    if (idx >= 0) startIndex = idx + 1;
+  }
+
+  const page = withWeek.slice(startIndex, startIndex + limit);
+  const items: SubmissionCardDTO[] = page.map(({ weekNumber: _w, ...rest }) => rest);
   let nextCursor: string | undefined;
-  if (items.length === limit && items.length > 0) {
-    const last = items[items.length - 1];
-    nextCursor = encodeCursor(last.created_at, last.id);
+  if (page.length === limit && startIndex + page.length < withWeek.length) {
+    const last = withWeek[startIndex + page.length - 1];
+    nextCursor = encodeRegionFeedCursor(last.weekNumber, last.created_at, last.id);
   }
 
   return {
