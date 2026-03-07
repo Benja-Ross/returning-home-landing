@@ -41,7 +41,7 @@ export function PageLayout(props: {
     <main className="min-h-screen bg-white text-slate-900">
       {props.overlayNav ? (
         <div
-          className="w-full backdrop-blur-[6px]"
+          className="z-10 w-full backdrop-blur-[6px]"
           style={{
             position: "absolute",
             top: 0,
