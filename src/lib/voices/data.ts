@@ -371,6 +371,8 @@ export async function getApprovedSubmissionsPageForRegion(params: {
   }
 
   const page = withWeek.slice(startIndex, startIndex + limit);
+  // weekNumber intentionally omitted from DTO
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars -- destructure to exclude from rest
   const items: SubmissionCardDTO[] = page.map(({ weekNumber: _w, ...rest }) => rest);
   let nextCursor: string | undefined;
   if (page.length === limit && startIndex + page.length < withWeek.length) {
