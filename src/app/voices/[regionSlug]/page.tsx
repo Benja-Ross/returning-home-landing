@@ -10,6 +10,7 @@ import {
   getRegionCycleWeeks,
   getApprovedSubmissionsPageForRegion,
 } from "@/lib/voices/data";
+import { getParticipationSummary } from "@/lib/voices/participation";
 import { getRegion, REGIONS } from "@/lib/voices/regions";
 
 const ARC_DUMMY_CHAPTERS = [
@@ -65,7 +66,7 @@ export default async function VoicesRegionPage({ params }: Props) {
 
   return (
     <PageLayout hidePageHeader>
-      <VoicesHero regionName={region.displayName} heroImageSrc="/images/leaf-voices-blur.png" />
+      <VoicesHero regionName={region.displayName} heroImageSrc="/images/blur.png" />
 
       <section className="w-full py-6 sm:py-8" aria-labelledby="six-week-arc-heading">
         <div className="mx-auto max-w-5xl px-6 sm:px-8">
@@ -184,7 +185,11 @@ export default async function VoicesRegionPage({ params }: Props) {
                 <div className="border-t border-white/10 pt-6 pb-4 space-y-4">
                   <h4 className="text-base font-semibold text-slate-100">Participation</h4>
                   <p className="text-slate-200/85 leading-relaxed">
-                    {activeWeek?.participationSummary ?? "Participation summary will appear when available."}
+                    {getParticipationSummary(
+                      activeWeek?.participationSummary ?? null,
+                      activeWeek?.totalResponses ?? 0,
+                      activeWeek?.distinctAreas ?? 0
+                    )}
                   </p>
                 </div>
                 <div className="border-t border-white/10 pt-6 pb-4 space-y-4">

@@ -26,6 +26,10 @@ export type ActiveRegionWeekDTO = {
   themeTitle: string;
   question: string;
   participationSummary: string | null;
+  /** Count of approved, consenting submissions for this week (for fallback participation copy). */
+  totalResponses: number;
+  /** Count of distinct non-empty neighborhoods/areas (case-insensitive) for this week. */
+  distinctAreas: number;
   patternsEmerging: string | null;
   voicesFromStories: string[];
   voiceOfPlace: string | null;

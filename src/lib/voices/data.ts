@@ -95,12 +95,29 @@ export async function getActiveRegionWeek(
     return null;
   }
 
+  const { data: submissionRows } = await supabaseAdmin
+    .from("submissions")
+    .select("neighborhood")
+    .eq("region_cycle_week_id", rcwRow.id)
+    .eq("moderation_status", "approved")
+    .eq("consent_public", true);
+
+  const neighborhoods = (submissionRows ?? []) as { neighborhood: string | null }[];
+  const totalResponses = neighborhoods.length;
+  const distinctAreas = new Set(
+    neighborhoods
+      .map((s) => (s.neighborhood ?? "").trim().toLowerCase())
+      .filter((s) => s.length > 0)
+  ).size;
+
   return {
     regionCycleWeekId: rcwRow.id,
     weekLabel: cw.week_label ?? `Week ${cw.week_number}`,
     themeTitle: rcwRow.theme_title_override ?? cw.theme_title ?? "",
     question: rcwRow.question_override ?? cw.question ?? "",
     participationSummary: rcwRow.participation_summary ?? null,
+    totalResponses,
+    distinctAreas,
     patternsEmerging: rcwRow.patterns_emerging ?? null,
     voicesFromStories: parseVoicesFromStories(rcwRow.voices_from_stories),
     voiceOfPlace: rcwRow.voice_of_place ?? null,

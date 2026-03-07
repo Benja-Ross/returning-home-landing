@@ -7,14 +7,16 @@ type Props = {
 
 const heroBodyCopy = (
   <>
-    What does the voice of place want to say?
+    What might the voice of your place have to say?
+    <br />
+    Listening together can make us all feel more at home.
     <br />
     <br />
-    For six weeks let&apos;s explore just that.
+    For six weeks...
     <br />
-    Stop by to add your voice. 
+    Join us to add your voice. 
     <br />
-    Stop by to hear our place speak.
+    Come by and stay a while, to hear your place speaking.
     <br />
     <br />
     Send this page to someone you think might want to join.
