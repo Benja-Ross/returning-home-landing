@@ -78,34 +78,46 @@ export default async function VoicesRegionPage({ params }: Props) {
     <PageLayout hidePageHeader>
       <VoicesHero regionName={region.displayName} heroImageSrc="/images/blur.png" />
 
-      <section className="w-full py-6 sm:py-8" aria-labelledby="six-week-arc-heading">
-        <div className="mx-auto max-w-5xl px-6 sm:px-8">
+      {/* Top rim: clearly visible lit edge above the slab */}
+      <div
+        className="h-14 w-full bg-[linear-gradient(to_bottom,white_0%,white_35%,rgba(226,232,240,0.45)_70%,rgba(203,213,225,0.7)_100%)]"
+        aria-hidden
+      />
+
+      <section
+        className="w-full py-7 sm:py-9 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.8)]"
+        aria-labelledby="six-week-arc-heading"
+      >
+        <div className="mx-auto max-w-5xl px-6 pt-8 pb-8 sm:px-8">
           <h2
             id="six-week-arc-heading"
-            className="text-center text-lg font-semibold text-slate-900 sm:text-xl"
+            className="text-center text-lg font-semibold text-slate-900 sm:text-xl mb-1 sm:mb-2"
           >
             The Six Weekly Topics
           </h2>
-          <div className="relative left-1/2 mt-4 w-screen -translate-x-1/2 overflow-hidden opacity-90 sm:mt-5">
+          <div className="relative left-1/2 mt-2 w-screen -translate-x-1/2 overflow-hidden sm:mt-3">
             <div className="mx-auto max-w-6xl px-6 sm:px-8">
               <ChapterArc chapters={ARC_DUMMY_CHAPTERS} arcOnly />
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-6 sm:gap-2 sm:-mt-10">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-6 sm:gap-2 sm:gap-y-0 sm:-mt-8">
             {arcWeeks.map((week, i) => {
               const isActive = i === activeWeekIndex;
               return (
-                <div key={i} className="text-center">
+                <div
+                  key={i}
+                  className={`text-center py-2 pb-2 sm:py-1.5 sm:pb-1.5`}
+                >
                   <p
-                    className={`mt-0.5 text-xs sm:mt-1 sm:text-sm ${
-                      isActive ? "text-slate-900 font-semibold" : "text-slate-800 font-medium"
+                    className={`text-base sm:text-lg ${
+                      isActive ? "font-extrabold text-slate-900" : "font-bold text-slate-700"
                     }`}
                   >
                     {week.subtext}
                   </p>
                   <p
-                    className={`text-xs sm:text-sm ${
-                      isActive ? "text-slate-900 font-semibold" : "text-slate-800 font-medium"
+                    className={`mt-0.5 text-sm leading-snug sm:text-base ${
+                      isActive ? "font-semibold text-slate-900" : "font-medium text-slate-600"
                     }`}
                   >
                     {week.title}
@@ -116,6 +128,12 @@ export default async function VoicesRegionPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* Bottom shadow: clearly visible depth below the slab */}
+      <div
+        className="h-12 w-full bg-gradient-to-b from-slate-300/90 via-slate-200/50 to-[#faf6f1] sm:h-14"
+        aria-hidden
+      />
 
       {activeWeek ? (
         <section className="w-full bg-[#faf6f1] py-10 sm:py-18" aria-labelledby="voice-question">

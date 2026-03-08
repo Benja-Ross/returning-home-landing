@@ -13,7 +13,7 @@ export function getParticipationSummary(
   }
 
   if (totalResponses === 0) {
-    return "No reflections have been shared yet. The first voices shared this week will begin to shape what this place is saying.";
+    return "No reflections have been shared yet.";
   }
 
   if (totalResponses === 1) {
