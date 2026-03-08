@@ -110,7 +110,7 @@ export default async function VoicesRegionPage({ params }: Props) {
                 >
                   <p
                     className={`text-base sm:text-lg ${
-                      isActive ? "font-extrabold text-slate-900" : "font-bold text-slate-700"
+                      isActive ? "font-extrabold text-slate-900" : "text-slate-700"
                     }`}
                   >
                     {week.subtext}
@@ -319,7 +319,7 @@ export default async function VoicesRegionPage({ params }: Props) {
 
         {activeWeek && (
           <section className={sectionClass}>
-            <h2 className={headingClass}>Offer Your Voice to Your Place</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 pb-2">Offer Your Voice to Your Place</h2>
             <VoicesForm
               regionSlug={region.slug}
               regionCycleWeekId={activeWeek.regionCycleWeekId}
