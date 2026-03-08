@@ -6,9 +6,10 @@ type Props = {
   regionSlug: string;
   regionCycleWeekId: string;
   neighborhoodHint: string;
+  question: string;
 };
 
-export function VoicesForm({ regionSlug, regionCycleWeekId, neighborhoodHint }: Props) {
+export function VoicesForm({ regionSlug, regionCycleWeekId, neighborhoodHint, question }: Props) {
   const [name, setName] = useState("");
   const [neighborhood, setNeighborhood] = useState("");
   const [response, setResponse] = useState("");
@@ -119,6 +120,15 @@ export function VoicesForm({ regionSlug, regionCycleWeekId, neighborhoodHint }: 
 
   return (
     <div className="relative rounded-2xl border border-slate-200/60 bg-[#fcf9f6] px-6 py-10 sm:px-8">
+      <div className="text-center">
+        <p className="text-s uppercase tracking-wider text-slate-500">
+          This week&apos;s question
+        </p>
+        <p className="mt-4 text-lg font-medium text-slate-900 text-center max-w-lg mx-auto leading-relaxed pt-2">
+          {question}
+        </p>
+        <div className="mx-auto mt-6 mb-6 h-px max-w-lg bg-slate-200" />
+      </div>
       <form onSubmit={handleSubmit} className="space-y-8">
         <div>
           <label htmlFor="voices-name" className="block text-sm font-medium text-slate-800">
