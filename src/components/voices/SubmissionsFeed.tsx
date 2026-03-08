@@ -62,18 +62,18 @@ export function SubmissionsFeed({
   return (
     <section aria-labelledby="feed-heading">
       <h2 id="feed-heading" className="text-2xl font-semibold text-slate-900">
-        What People Are Saying ({totalApproved})
+        Voices of Place ({totalApproved})
       </h2>
 
       {totalApproved === 0 ? (
         <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50/50 px-6 py-8 text-center">
-          <p className="text-white">
+          <p className="text-slate-600">
             No reflections have been published yet. Yours may be the first once reviewed.
           </p>
         </div>
       ) : (
         <>
-          <ul className="mt-6 space-y-6 list-none p-0 m-0">
+          <ul className="mt-6 space-y-7 list-none p-0 m-0">
             {items.map((sub) => (
               <li key={sub.id}>
                 <SubmissionCard submission={sub} />

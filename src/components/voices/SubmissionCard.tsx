@@ -18,32 +18,42 @@ export function SubmissionCard({ submission }: Props) {
     submission.weekLabel != null && submission.themeTitle != null
       ? `${submission.weekLabel} · ${submission.themeTitle}`
       : null;
+  const metadataParts = [weekContext, dateStr].filter(Boolean);
+  const metadataLine = metadataParts.join(" · ");
 
   return (
     <article
-      className="rounded-2xl border border-white bg-[#D8B2AC] px-6 py-5"
+      className="rounded-xl border border-slate-200 bg-white/70 p-4 sm:p-5 md:p-6"
       aria-labelledby={`submission-name-${submission.id}`}
     >
-      <div className="flex items-start justify-between gap-4 flex-wrap">
-        <p id={`submission-name-${submission.id}`} className="text-base min-w-0">
-          <span className="font-semibold text-white">{submission.name ?? "Anonymous"}</span>
-          <span className="text-white"> · </span>
-          <span className="text-white/80 italic">{submission.neighborhood}</span>
+      {/* Speaker identity with metadata stacked beneath — tighter, more literary */}
+      <header className="space-y-0.5">
+        <p id={`submission-name-${submission.id}`} className="min-w-0 text-base">
+          <span className="font-semibold text-slate-900">
+            {submission.name ?? "Anonymous"}
+          </span>
+          <span className="text-slate-400" aria-hidden>
+            {" · "}
+          </span>
+          <span className="text-slate-500 italic">{submission.neighborhood}</span>
         </p>
-        <div className="flex flex-col items-end gap-1 shrink-0">
-          {weekContext && (
-            <p className="font-semibold text-xs text-white" aria-hidden>
-              {weekContext}
-            </p>
-          )}
-          {dateStr && (
-            <p className="font-semibold text-xs text-white" aria-hidden>
-              {dateStr}
-            </p>
-          )}
-        </div>
+        {metadataLine && (
+          <p className="text-sm text-slate-500" aria-hidden>
+            {metadataLine}
+          </p>
+        )}
+      </header>
+
+      {/* The voice — reflection with a subtle place accent */}
+      <div className="mt-3 sm:mt-4 flex gap-3">
+        <div
+          className="w-1 shrink-0 self-stretch rounded-full bg-amber-200/50"
+          aria-hidden
+        />
+        <p className="text-base leading-relaxed text-slate-900 min-w-0 max-w-prose">
+          {submission.response}
+        </p>
       </div>
-      <p className="mt-3 text-slate-900 leading-loose">{submission.response}</p>
     </article>
   );
 }
