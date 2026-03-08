@@ -120,8 +120,8 @@ export default async function VoicesRegionPage({ params }: Props) {
       {activeWeek ? (
         <section className="w-full bg-[#faf6f1] py-10 sm:py-18" aria-labelledby="voice-question">
           <div className="mx-auto max-w-2xl px-6 text-center sm:px-8">
-            <p className="text-base font-medium text-slate-600 sm:text-lg">
-              This week's question:
+            <p className="text-base uppercase font-medium text-slate-600 sm:text-lg">
+              This Week's Question
             </p>
             <svg
               className="mx-auto mt-4 h-8 w-8 text-amber-700/40 sm:h-10 sm:w-10"
