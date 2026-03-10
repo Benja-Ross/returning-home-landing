@@ -166,7 +166,7 @@ export const missionAndMethod: MissionAndMethodContent = {
       "The purpose behind this practice is larger than any one person, to say the least.",
       "But I do want to offer a human presence behind the work. I don't want to claim a title other than practitioner, and now you know at least one face and voice devoted to helping this grow. More voices to come!",
       "Returning Home has grown through so many relationships, mentorships, experiments, and patience.",
-      "The part of my background that influences me most was when I was an aspiring agriculturalist and Permaculture practicioner. I long wanted to start a  farm and community kitchen. Then, years of living with disabling illness redirected my path and shaped how I understand wholeness, resilience, and will.",
+      "The part of my background that influences me most was when I was an aspiring agriculturalist and Permaculture practitioner. I long wanted to start a farm and community kitchen. Then, years of living with disabling illness redirected my path and shaped how I understand wholeness, resilience, and will.",
       
     ],
 

@@ -28,7 +28,7 @@ export const DEFAULT_WEEKLY_SUMMARIES: Record<number, string> = {
   1: "The journey begins by slowing and localizing our attention and noticing the overlooked details of everyday life.",
   2: "Attention shifts from observation to relationship as we share where we feel at home.",
   3: "Shared memories begin to surface, revealing how place has became what it is today.",
-  4: "The focus moves to present obvservations as we sense what is changing or feels important now.",
+  4: "The focus moves to present observations as we sense what is changing or feels important now.",
   5: "Possibilities begin to appear as we imagine what could help place thrive.",
   6: "The cycle turns toward small steps we could take to care for place individually and together.",
 };
