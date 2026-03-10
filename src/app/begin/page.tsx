@@ -101,7 +101,7 @@ export default function BeginPage() {
                 The Chapter 2 walking game can be done alone or with a small group (1 to 12 people).
               </p>
               <p className="text-base leading-7 text-slate-800 sm:text-lg">
-                The Chapter 2 form requires your email. This is so we can reach out to ask about your interest in joining a discussion group to continue your Returning Home practice.
+                The Chapter 2 form requires your email. This is so we can reach out to ask about your interest in joining a discussion group to deepen your Returning Home practice.
               </p>
             </div>
           </article>
@@ -124,7 +124,7 @@ export default function BeginPage() {
                 <li>Help convene or facilitate future gatherings</li>
               </ul>
               <p className="text-base leading-7 font-semibold text-slate-900 sm:text-lg">
-                Participation deepens if you choose.
+                You have a few pathways to choose.
               </p>
             </div>
           </article>

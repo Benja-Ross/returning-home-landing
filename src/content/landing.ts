@@ -13,10 +13,10 @@ export const landingContent = {
   howItWorks: {
     title: "How does it work?",
     paragraphs: [
-      "The three-chapter pattern works at many scales.",
+      "The three-chapter Returning Home pattern works at many scales.",
       "One person can begin alone. A small circle can move through it together. A whole community can return to it again and again.",
-      "One of the most powerful moments comes when people see their stories mapped together and recognize something they want to experience in their place together.",
-      "Depth grows over time.",
+      "One of the most powerful moments comes when people see their individual stories mapped together and reveal something they want to experience in their place together.",
+      "No matter how it starts, depth and connection grow through regular practice.",
     ],
   },
   chapters: {
