@@ -140,7 +140,7 @@ export default function BeginPage() {
             <ul className="list-disc space-y-1 pl-4 text-base leading-7 text-slate-800 sm:text-lg">
               <li>Erie-Niagara</li>
               <li>Ann Arbor</li>
-              <li>Bangladesh</li>
+              <li>Dhaka</li>
             </ul>
             <p className="text-base leading-7 text-slate-800 sm:text-lg">
               If you&apos;re elsewhere, you can still complete Chapters 1 and 2.

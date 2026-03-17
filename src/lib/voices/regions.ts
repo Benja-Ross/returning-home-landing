@@ -23,12 +23,12 @@ export const REGIONS: Record<string, RegionConfig> = {
     hearingSummary:
       "So far this week we're hearing the voices of things that aren't often seen as having a voice.",
   },
-  bangladesh: {
-    slug: "bangladesh",
-    displayName: "Bangladesh",
+  dhaka: {
+    slug: "dhaka",
+    displayName: "Dhaka",
     stewards: [],
     introParagraphs: [
-      "Voices is for participants in Bangladesh exploring Returning Home in place.",
+      "Voices is for participants in Dhaka exploring Returning Home in place.",
     ],
     neighborhoodHint: "If someone from your region asked you where you live, what would you say?",
     hearingSummary:
