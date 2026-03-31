@@ -161,6 +161,7 @@ export async function getRegionCycleWeeks(
       `
       id,
       status,
+      opens_at,
       theme_title_override,
       summary_short,
       cycle_weeks (
@@ -198,6 +199,7 @@ export async function getRegionCycleWeeks(
       weekNumber: cw.week_number,
       weekLabel: cw.week_label ?? `Week ${cw.week_number}`,
       themeTitle: row.theme_title_override ?? cw.theme_title ?? "",
+      opensAt: row.opens_at ?? null,
       summaryShort: row.summary_short ?? null,
       status,
     });

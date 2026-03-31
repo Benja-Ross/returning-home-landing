@@ -15,6 +15,7 @@ export type RegionCycleWeekSummaryDTO = {
   weekNumber: number;
   weekLabel: string;
   themeTitle: string;
+  opensAt: string | null;
   summaryShort: string | null;
   status: "upcoming" | "active" | "completed";
 };

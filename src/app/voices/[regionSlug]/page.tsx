@@ -32,13 +32,24 @@ const headingClass = "text-2xl font-semibold text-slate-900";
 
 /** Fallback arc labels when region has no cycle weeks in DB. */
 const FALLBACK_ARC_WEEKS = [
-  { subtext: "Week 1", title: "—" },
-  { subtext: "Week 2", title: "—" },
-  { subtext: "Week 3", title: "—" },
-  { subtext: "Week 4", title: "—" },
-  { subtext: "Week 5", title: "—" },
-  { subtext: "Week 6", title: "—" },
+  { weekLabel: "Week 1", themeTitle: "—", opensAt: null, status: "upcoming" as const },
+  { weekLabel: "Week 2", themeTitle: "—", opensAt: null, status: "upcoming" as const },
+  { weekLabel: "Week 3", themeTitle: "—", opensAt: null, status: "upcoming" as const },
+  { weekLabel: "Week 4", themeTitle: "—", opensAt: null, status: "upcoming" as const },
+  { weekLabel: "Week 5", themeTitle: "—", opensAt: null, status: "upcoming" as const },
+  { weekLabel: "Week 6", themeTitle: "—", opensAt: null, status: "upcoming" as const },
 ];
+
+function formatWeekOpenDate(opensAt: string | null): string | null {
+  if (!opensAt) return null;
+  const date = new Date(opensAt);
+  if (Number.isNaN(date.getTime())) return null;
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  }).format(date);
+}
 
 type Props = { params: Promise<{ regionSlug: string }> };
 
@@ -57,7 +68,12 @@ export default async function VoicesRegionPage({ params }: Props) {
 
   const arcWeeks =
     cycleWeeks.length > 0
-      ? cycleWeeks.map((w) => ({ subtext: w.weekLabel, title: w.themeTitle }))
+      ? cycleWeeks.map((w) => ({
+          weekLabel: w.weekLabel,
+          themeTitle: w.themeTitle,
+          opensAt: w.opensAt,
+          status: w.status,
+        }))
       : FALLBACK_ARC_WEEKS;
   const activeWeekIndex =
     activeWeek != null
@@ -113,14 +129,21 @@ export default async function VoicesRegionPage({ params }: Props) {
                       isActive ? "font-extrabold text-slate-900" : "text-slate-700"
                     }`}
                   >
-                    {week.subtext}
+                    {week.weekLabel}
                   </p>
                   <p
                     className={`mt-0.5 text-sm leading-snug sm:text-base ${
                       isActive ? "font-semibold text-slate-900" : "font-medium text-slate-600"
                     }`}
                   >
-                    {week.title}
+                    {week.themeTitle}
+                  </p>
+                  <p
+                    className={`mt-1 text-xs ${
+                      isActive ? "text-slate-600" : "text-slate-500"
+                    }`}
+                  >
+                    {formatWeekOpenDate(week.opensAt) ?? " "}
                   </p>
                 </div>
               );
