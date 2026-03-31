@@ -73,7 +73,7 @@ export function VoicesForm({ regionSlug, regionCycleWeekId, neighborhoodHint, qu
       >
         <div className="max-w-3xl mx-auto">
           <div
-            className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-green-50 text-green-600 mb-5"
+            className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-green-50 text-green-600"
             aria-hidden
           >
             <svg
@@ -88,15 +88,23 @@ export function VoicesForm({ regionSlug, regionCycleWeekId, neighborhoodHint, qu
               <path d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <p className="text-lg font-medium text-slate-900">Thanks.</p>
-          <p className="mt-3 text-base text-slate-600 font-medium">
+          <p className="text-2xl font-medium text-slate-900">Thanks.</p>
+          <p className="mt-2 text-base text-slate-600 font-medium">
             Your reflection has been received.
           </p>
-          <p className="mt-5 max-w-2xl mx-auto text-slate-700 font-medium leading-relaxed">
-            Know someone else in your community who might want to share their voice? Send them this
+          <div className="mt-6 mb-15 mx-auto max-w-xl rounded-lg bg-amber-200/20 border border-slate-200 px-4 py-4">
+            <p className="text-base text-slate-800 leading-relaxed">
+              Each week, there will be another opportunity to add reflections.
+              <br />
+              Please come back to add your voice and see what else is unfolding.
+            </p>
+          </div>
+          <p className="mt-8 mb-8 max-w-2xl mx-auto text-sm text-slate-600 leading-relaxed">
+            Know someone else in your community who might want to share their voice? 
+            <br />Send them this
             page.
           </p>
-          <div className="mt-6">
+          <div className="mt-4">
             <button
               type="button"
               onClick={handleCopyPageLink}
@@ -105,7 +113,7 @@ export function VoicesForm({ regionSlug, regionCycleWeekId, neighborhoodHint, qu
               Copy page link
             </button>
             {linkCopied && (
-              <p className="mt-2 text-sm text-slate-600" aria-live="polite">
+              <p className="mt-2 text-xs text-slate-500" aria-live="polite">
                 Link copied
               </p>
             )}
