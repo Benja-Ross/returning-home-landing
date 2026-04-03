@@ -52,3 +52,24 @@ body {
     min-height: 80px;
   }
 }
+
+/* Voices success state: gentle hint arrow above “Copy page link” */
+@keyframes rh-voices-arrow-nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+}
+
+.rh-voices-arrow-nudge {
+  animation: rh-voices-arrow-nudge 3.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rh-voices-arrow-nudge {
+    animation: none;
+  }
+}

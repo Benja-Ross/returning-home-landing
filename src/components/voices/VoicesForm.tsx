@@ -90,27 +90,54 @@ export function VoicesForm({ regionSlug, regionCycleWeekId, neighborhoodHint, qu
           </div>
           <p className="text-2xl font-medium text-slate-900">Thanks.</p>
           <p className="mt-2 text-base text-slate-600 font-medium">
-            Your reflection has been received.
+            Reflections are reviewed and accepted daily.<br/>
+            Please come back to see yours published below.
           </p>
           <div className="mt-6 mb-15 mx-auto max-w-xl rounded-lg bg-amber-200/20 border border-slate-200 px-4 py-4">
             <p className="text-base text-slate-800 leading-relaxed">
               Each week, there will be another opportunity to add reflections.
               <br />
-              Please come back to add your voice and see what else is unfolding.
+              Continue to add your voice and hear the voice of place emerging.
             </p>
           </div>
-          <p className="mt-8 mb-8 max-w-2xl mx-auto text-sm text-slate-600 leading-relaxed">
-            Know someone else in your community who might want to share their voice? 
-            <br />Send them this
-            page.
+          <p className="mt-8 mb-4 max-w-2xl mx-auto text-sm text-slate-600 leading-relaxed">
+            Know someone else in your community <br />who might want to share their voice? 
           </p>
-          <div className="mt-4">
+          <div className="mt-4 flex flex-col items-center">
+            <div
+              className="rh-voices-arrow-nudge mx-auto mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-amber-50 text-amber-600"
+              aria-hidden="true"
+            >
+              <svg
+                className="h-7 w-5 shrink-0"
+                width="28"
+                height="36"
+                viewBox="0 0 28 36"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14 5.5C12.5 14 11 19.5 14 24.5"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M9 22.5L14 30L19 22.5"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
             <button
               type="button"
               onClick={handleCopyPageLink}
               className="min-h-[44px] rounded-xl bg-slate-900 px-6 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-slate-800 focus:outline focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
             >
-              Copy page link
+              Copy Page Link
             </button>
             {linkCopied && (
               <p className="mt-2 text-xs text-slate-500" aria-live="polite">
