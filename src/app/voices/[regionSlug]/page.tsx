@@ -29,6 +29,12 @@ export const dynamic = "force-dynamic";
 const containerClass = "mx-auto max-w-3xl px-6 py-12";
 const sectionClass = "mt-10 space-y-4";
 const headingClass = "text-2xl font-semibold text-slate-900";
+const VOICES_PROMPT_VIDEO_EMBED_URL = "https://www.youtube.com/embed/jTifWyCOMD4";
+const PODCAST_LINKS = {
+  spotify: "https://example.com/spotify-podcast-link",
+  apple: "https://example.com/apple-podcasts-link",
+  podbean: "https://www.podbean.com/ew/pb-unrt9-1a8ea54",
+};
 
 /** Fallback arc labels when region has no cycle weeks in DB. */
 const FALLBACK_ARC_WEEKS = [
@@ -93,6 +99,51 @@ export default async function VoicesRegionPage({ params }: Props) {
   return (
     <PageLayout hidePageHeader>
       <VoicesHero regionName={region.displayName} heroImageSrc="/images/blur.png" />
+
+      <section className="mx-auto w-full max-w-3xl px-6 pt-7 sm:px-8 sm:pt-8" aria-labelledby="voices-video-label">
+        <details className="group rounded-lg border border-slate-300/80 bg-slate-50/70 px-4 py-3 shadow-sm">
+          <summary
+            id="voices-video-label"
+            className="cursor-pointer list-none text-sm text-slate-700 marker:content-['']"
+          >
+            <span className="inline-flex w-full items-center justify-center gap-2 text-center">
+              <svg
+                className="h-4 w-4 text-rose-600"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden
+              >
+                <path d="M10 1.7a8.3 8.3 0 1 0 0 16.6 8.3 8.3 0 0 0 0-16.6Zm-1.7 5.1c0-.4.5-.7.9-.5l4.6 2.7c.4.2.4.8 0 1l-4.6 2.7c-.4.2-.9 0-.9-.5V6.8Z" />
+              </svg>
+              <span className="font-medium text-slate-900">Watch a short video for this week&apos;s prompt</span>
+              <svg
+                className="h-4 w-4 text-slate-500 transition-transform group-open:rotate-180"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden
+              >
+                <path d="M5 7.5L10 12.5L15 7.5" />
+              </svg>
+            </span>
+          </summary>
+          <div className="mt-3 overflow-hidden rounded-md border border-slate-200/70">
+            <div className="aspect-video w-full">
+              <iframe
+                title="Voices weekly prompt video"
+                src={VOICES_PROMPT_VIDEO_EMBED_URL}
+                className="h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </details>
+      </section>
 
       {/* Top rim: clearly visible lit edge above the slab */}
       <div
@@ -359,6 +410,41 @@ export default async function VoicesRegionPage({ params }: Props) {
             initialTotalApproved={feed.totalApproved}
             initialNextCursor={feed.nextCursor}
           />
+        </section>
+
+        <section className="mt-14 border-t border-slate-200/70 pt-7 pb-3" aria-labelledby="podcast-links-heading">
+          <h2 id="podcast-links-heading" className="text-lg font-semibold text-slate-900">
+            Follow our podcast
+          </h2>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
+            Want to explore the larger story behind this practice? Follow our podcast to be with us as it all unfolds.
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+            <a
+              href={PODCAST_LINKS.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-700 underline underline-offset-2 hover:text-slate-900"
+            >
+              Spotify
+            </a>
+            <a
+              href={PODCAST_LINKS.apple}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-700 underline underline-offset-2 hover:text-slate-900"
+            >
+              Apple Podcasts
+            </a>
+            <a
+              href={PODCAST_LINKS.podbean}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-700 underline underline-offset-2 hover:text-slate-900"
+            >
+              Podbean
+            </a>
+          </div>
         </section>
       </div>
     </PageLayout>
