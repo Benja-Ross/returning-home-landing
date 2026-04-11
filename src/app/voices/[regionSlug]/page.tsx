@@ -30,11 +30,7 @@ const containerClass = "mx-auto max-w-3xl px-6 py-12";
 const sectionClass = "mt-10 space-y-4";
 const headingClass = "text-2xl font-semibold text-slate-900";
 const VOICES_PROMPT_VIDEO_EMBED_URL = "https://www.youtube.com/embed/jTifWyCOMD4";
-const PODCAST_LINKS = {
-  spotify: "https://example.com/spotify-podcast-link",
-  apple: "https://example.com/apple-podcasts-link",
-  podbean: "https://www.podbean.com/ew/pb-unrt9-1a8ea54",
-};
+const PODCAST_PODBEAN_URL = "https://www.podbean.com/ew/pb-unrt9-1a8ea54";
 
 /** Fallback arc labels when region has no cycle weeks in DB. */
 const FALLBACK_ARC_WEEKS = [
@@ -419,28 +415,30 @@ export default async function VoicesRegionPage({ params }: Props) {
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
             Want to explore the larger story behind this practice? Follow our podcast to be with us as it all unfolds.
           </p>
-          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+          <div className="mt-3 flex flex-wrap items-start gap-x-6 gap-y-3 text-sm">
+            <div className="flex flex-col items-center text-center">
+              <span
+                className="text-slate-500 cursor-not-allowed"
+                aria-disabled="true"
+              >
+                Spotify
+              </span>
+              <span className="mt-0.5 text-xs text-slate-500">(coming soon)</span>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <span
+                className="text-slate-500 cursor-not-allowed"
+                aria-disabled="true"
+              >
+                Apple Podcasts
+              </span>
+              <span className="mt-0.5 text-xs text-slate-500">(coming soon)</span>
+            </div>
             <a
-              href={PODCAST_LINKS.spotify}
+              href={PODCAST_PODBEAN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-700 underline underline-offset-2 hover:text-slate-900"
-            >
-              Spotify
-            </a>
-            <a
-              href={PODCAST_LINKS.apple}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-700 underline underline-offset-2 hover:text-slate-900"
-            >
-              Apple Podcasts
-            </a>
-            <a
-              href={PODCAST_LINKS.podbean}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-700 underline underline-offset-2 hover:text-slate-900"
+              className="self-start text-slate-700 underline underline-offset-2 hover:text-slate-900"
             >
               Podbean
             </a>
