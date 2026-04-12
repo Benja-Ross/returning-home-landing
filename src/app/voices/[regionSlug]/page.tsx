@@ -30,7 +30,11 @@ const containerClass = "mx-auto max-w-3xl px-6 py-12";
 const sectionClass = "mt-10 space-y-4";
 const headingClass = "text-2xl font-semibold text-slate-900";
 const VOICES_PROMPT_VIDEO_EMBED_URL = "https://www.youtube.com/embed/jTifWyCOMD4";
-const PODCAST_PODBEAN_URL = "https://www.podbean.com/ew/pb-unrt9-1a8ea54";
+const PODCAST_PODBEAN_URL = "https://www.podbean.com/pw/pbblog-3svvu-1535373";
+const PODCAST_SPOTIFY_URL =
+  "https://open.spotify.com/show/2bQMMnPXolLByovYmw31kt?si=3788fe2cf61148ec";
+const PODCAST_APPLE_URL =
+  "https://podcasts.apple.com/us/podcast/the-returning-home-podcast/id1892657494";
 
 /** Fallback arc labels when region has no cycle weeks in DB. */
 const FALLBACK_ARC_WEEKS = [
@@ -409,31 +413,64 @@ export default async function VoicesRegionPage({ params }: Props) {
         </section>
 
         <section className="mt-14 border-t border-slate-200/70 pt-7 pb-3" aria-labelledby="podcast-links-heading">
-          <h2 id="podcast-links-heading" className="text-lg font-semibold text-slate-900">
-            Follow our podcast
+          <h2
+            id="podcast-links-heading"
+            className="inline-flex items-center gap-3 text-lg font-semibold text-slate-900"
+          >
+            <span>Follow our podcast</span>
+            <svg
+              className="h-[40px] w-[50px] shrink-0 text-amber-200"
+              viewBox="0 0 26 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden
+            >
+              <path
+                d="M3 13V9"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              />
+              <path
+                d="M9 16V6"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              />
+              <path
+                d="M15 14V8"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              />
+              <path
+                d="M21 18V4"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              />
+            </svg>
           </h2>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
             Want to explore the larger story behind this practice? Follow our podcast to be with us as it all unfolds.
           </p>
           <div className="mt-3 flex flex-wrap items-start gap-x-6 gap-y-3 text-sm">
-            <div className="flex flex-col items-center text-center">
-              <span
-                className="text-slate-500 cursor-not-allowed"
-                aria-disabled="true"
-              >
-                Spotify
-              </span>
-              <span className="mt-0.5 text-xs text-slate-500">(coming soon)</span>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <span
-                className="text-slate-500 cursor-not-allowed"
-                aria-disabled="true"
-              >
-                Apple Podcasts
-              </span>
-              <span className="mt-0.5 text-xs text-slate-500">(coming soon)</span>
-            </div>
+            <a
+              href={PODCAST_SPOTIFY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="self-start text-slate-700 underline underline-offset-2 hover:text-slate-900"
+            >
+              Spotify
+            </a>
+            <a
+              href={PODCAST_APPLE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="self-start text-slate-700 underline underline-offset-2 hover:text-slate-900"
+            >
+              Apple Podcasts
+            </a>
             <a
               href={PODCAST_PODBEAN_URL}
               target="_blank"
