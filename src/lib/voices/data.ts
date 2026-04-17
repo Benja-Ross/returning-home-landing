@@ -207,6 +207,41 @@ export async function getRegionCycleWeeks(
   return result;
 }
 
+/**
+ * Aggregate participation totals across all approved public submissions for a region.
+ */
+export async function getRegionParticipationTotals(
+  regionSlug: string
+): Promise<{ totalResponses: number; distinctAreas: number }> {
+  const { data: region, error: regionError } = await supabaseAdmin
+    .from("regions")
+    .select("id")
+    .eq("slug", regionSlug)
+    .limit(1)
+    .maybeSingle();
+
+  if (regionError || !region) {
+    return { totalResponses: 0, distinctAreas: 0 };
+  }
+
+  const { data: submissionRows } = await supabaseAdmin
+    .from("submissions")
+    .select("neighborhood")
+    .eq("region_id", region.id)
+    .eq("moderation_status", "approved")
+    .eq("consent_public", true);
+
+  const neighborhoods = (submissionRows ?? []) as { neighborhood: string | null }[];
+  const totalResponses = neighborhoods.length;
+  const distinctAreas = new Set(
+    neighborhoods
+      .map((s) => (s.neighborhood ?? "").trim().toLowerCase())
+      .filter((s) => s.length > 0)
+  ).size;
+
+  return { totalResponses, distinctAreas };
+}
+
 const DEFAULT_FEED_LIMIT = 12;
 
 const REGION_FEED_CURSOR_SEP = "__";

@@ -9,6 +9,7 @@ import {
   getActiveRegionWeek,
   getRegionCycleWeeks,
   getApprovedSubmissionsPageForRegion,
+  getRegionParticipationTotals,
 } from "@/lib/voices/data";
 import { getParticipationSummary } from "@/lib/voices/participation";
 import {
@@ -67,9 +68,10 @@ export default async function VoicesRegionPage({ params }: Props) {
     notFound();
   }
 
-  const [activeWeek, cycleWeeks] = await Promise.all([
+  const [activeWeek, cycleWeeks, regionParticipation] = await Promise.all([
     getActiveRegionWeek(region.slug),
     getRegionCycleWeeks(region.slug),
+    getRegionParticipationTotals(region.slug),
   ]);
 
   const arcWeeks =
@@ -276,21 +278,15 @@ export default async function VoicesRegionPage({ params }: Props) {
           <div className="space-y-12 pt-12 sm:pt-14">
             {/* Block 1: This Week's Reflection */}
             <div className="space-y-6">
-              <p className="text-xs uppercase tracking-wide text-slate-300/70">
-                {activeWeek ? `${activeWeek.weekLabel} Reflection` : "Reflection"}
-              </p>
-              <h3 className="text-xl font-semibold text-white sm:text-2xl">
-                {activeWeek?.themeTitle ?? "—"}
-              </h3>
-
               <div className="space-y-0">
                 <div className="border-t border-white/10 pt-6 pb-4 space-y-4">
                   <h4 className="text-base font-semibold text-slate-100">Participation</h4>
                   <p className="text-slate-200/85 leading-relaxed">
                     {getParticipationSummary(
-                      activeWeek?.participationSummary ?? null,
-                      activeWeek?.totalResponses ?? 0,
-                      activeWeek?.distinctAreas ?? 0
+                      null,
+                      regionParticipation.totalResponses,
+                      regionParticipation.distinctAreas,
+                      "in total"
                     )}
                   </p>
                 </div>
