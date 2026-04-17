@@ -115,7 +115,7 @@ export default async function VoicesRegionPage({ params }: Props) {
               >
                 <path d="M10 1.7a8.3 8.3 0 1 0 0 16.6 8.3 8.3 0 0 0 0-16.6Zm-1.7 5.1c0-.4.5-.7.9-.5l4.6 2.7c.4.2.4.8 0 1l-4.6 2.7c-.4.2-.9 0-.9-.5V6.8Z" />
               </svg>
-              <span className="font-medium text-slate-900">Watch a short video for this week&apos;s prompt</span>
+              <span className="font-medium text-slate-900">Watch a short video to introduce this practice and the week 1 prompt</span>
               <svg
                 className="h-4 w-4 text-slate-500 transition-transform group-open:rotate-180"
                 viewBox="0 0 20 20"
@@ -479,6 +479,38 @@ export default async function VoicesRegionPage({ params }: Props) {
             >
               Podbean
             </a>
+          </div>
+          <div className="mt-13">
+            <h3 className="inline-flex items-center gap-3 text-lg font-semibold text-slate-900">
+              <span>This week&apos;s episode</span>
+              <svg
+                className="h-6 w-6 shrink-0 text-amber-200"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden
+              >
+                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
+                <path
+                  d="M10 8.8L15.2 12L10 15.2V8.8Z"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  strokeWidth="0.6"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </h3>
+            <iframe
+              className="mt-[15px]"
+              title="Finding the Feeling of Home"
+              height="150"
+              width="100%"
+              style={{ border: "none", minWidth: "min(100%, 430px)", height: "150px" }}
+              scrolling="no"
+              data-name="pb-iframe-player"
+              src="https://www.podbean.com/player-v2/?i=kwg9j-1a9e8f2-pb&from=pb6admin&share=1&download=1&rtl=0&fonts=Arial&skin=1&font-color=auto&logo_link=episode_page&btn-skin=7"
+              loading="lazy"
+            />
           </div>
         </section>
       </div>
