@@ -216,7 +216,7 @@ export function VoicesForm({ regionSlug, regionCycleWeekId, neighborhoodHint, qu
             id="voices-response"
             required
             minLength={5}
-            maxLength={500}
+            maxLength={1500}
             rows={4}
             value={response}
             onChange={(e) => setResponse(e.target.value)}
