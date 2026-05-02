@@ -34,6 +34,17 @@ export const REGIONS: Record<string, RegionConfig> = {
     hearingSummary:
       "This week we're hearing about the life in things that often aren't appreciated for having a life of their own.",
   },
+  "front-range": {
+    slug: "front-range",
+    displayName: "Front Range",
+    stewards: [],
+    introParagraphs: [
+      "Voices supports communities along the Front Range in the Returning Home practice.",
+    ],
+    neighborhoodHint: "If someone asked where you live along the Front Range, what would you say?",
+    hearingSummary:
+      "So far this week we're hearing the voices of things that aren't often seen as having a voice.",
+  },
 } as const;
 
 const VALID_SLUGS = Object.keys(REGIONS) as string[];
