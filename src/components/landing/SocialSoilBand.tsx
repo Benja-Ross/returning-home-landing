@@ -17,7 +17,7 @@ export function SocialSoilBand() {
       {/* Overlay Text */}
       <div className="absolute left-5 bottom-6 md:left-8 md:bottom-8">
         <p className="max-w-[280px] md:max-w-xl text-base sm:text-lg md:text-xl font-semibold leading-relaxed text-white text-left [text-shadow:0_2px_16px_rgba(0,0,0,0.45)]">
-          A practice that grows shared meaning, belonging, and care for place over time.
+        To grow shared meaning, belonging, and possibility <br/>for place over time.
         </p>
       </div>
     </section>

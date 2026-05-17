@@ -1,4 +1,4 @@
-import { ChapterArc } from "@/components/landing/ChapterArc";
+import { QuestArcGrid } from "@/components/landing/QuestArcGrid";
 import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Hero } from "@/components/landing/Hero";
 import { Section } from "@/components/landing/Section";
@@ -13,10 +13,10 @@ export default function Home() {
       {/* Hero */}
       <Hero />
 
-      {/* 3 chapters / arc — arc extends beyond viewport, section clips horizontal overflow */}
+      {/* Six quests / arc — arc extends beyond viewport, section clips horizontal overflow */}
       <Section className="overflow-x-clip mt-8 sm:mt-10" innerClassName="mx-auto max-w-5xl px-6 pt-6 pb-16">
-        <h2 className="text-2xl font-semibold mb-3">{landingContent.chapters.title}</h2>
-        <ChapterArc chapters={landingContent.chapters.cards} />
+        <h2 className="text-2xl font-semibold mb-3">{landingContent.quests.title}</h2>
+        <QuestArcGrid quests={landingContent.quests.items} />
       </Section>
 
       {/* How does it work? */}

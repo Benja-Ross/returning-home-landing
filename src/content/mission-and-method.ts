@@ -2,6 +2,10 @@ export type MissionAndMethodContent = {
   pageTitle: string
   pageSubtitle: string
   opening: string[]
+  prototypingNote: {
+    title: string
+    paragraphs: string[]
+  }
   structure: {
     title: string
     intro: string
@@ -55,6 +59,15 @@ export const missionAndMethod: MissionAndMethodContent = {
 
     "Returning Home exists to offer a clear, grounded, and ongoing path forward, based on something fundamental..."
   ],
+
+  prototypingNote: {
+    title: "A Note on Our Current Prototyping",
+    paragraphs: [
+      "After nearly a year of experimenting with place-based groups, Returning Home has developed a three-chapter practice format.",
+      "We are now experimenting with a lighter adventure format built around six quests that mirror the chapters. The purpose is to discover easier ways to begin Returning Home. The quests offer a wide-open doorway for people and groups to explore their place.",
+      "So when we speak about chapters below, we are describing the deeper practice structure beneath the adventure.",
+    ],
+  },
 
   structure: {
     title: "The Fundamental Nature of Returning Home",

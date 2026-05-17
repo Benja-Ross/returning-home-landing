@@ -2,7 +2,7 @@ export const landingContent = {
   brand: "Returning Home",
   hero: {
     eyebrow: "Returning Home",
-    titleLines: ["A shared practice", "to grow life", "in place."],
+    titleLines: ["A place-based adventure", "to rediscover", "the place we call home."],
     body: "What becomes possible when we turn home together?",
   },
   whatItIs: {
@@ -13,30 +13,20 @@ export const landingContent = {
   howItWorks: {
     title: "How does it work?",
     paragraphs: [
-      "The three-chapter Returning Home pattern works at many scales.",
+      "The Returning Home adventure works at many scales.",
       "One person can begin alone. A small circle can move through it together. A whole community can return to it again and again.",
-      "One of the most powerful moments comes when people see their individual stories mapped together and reveal something they want to experience in their place together.",
       "No matter how it starts, depth and connection grow through regular practice.",
     ],
   },
-  chapters: {
-    title: "The Three Chapters",
-    cards: [
-      {
-        number: "1",
-        title: "Remembering Home",
-        body: "Participatory storytelling to listen to one another and our shared world.",
-      },
-      {
-        number: "2",
-        title: "Revealing the Way Home",
-        body: "Experiences and games to sense what is ready to emerge.",
-      },
-      {
-        number: "3",
-        title: "Reconnecting & Walking Home",
-        body: "Experience design and collective action to live more fully into our shared world.",
-      },
+  quests: {
+    title: "Six Quests of Returning Home",
+    items: [
+      "Noticing Place",
+      "Finding Belonging",
+      "Listening for Local Story",
+      "Sensing What's Changing",
+      "Opening to Possibility",
+      "Acting and Becoming",
     ],
   },
   shifts: {

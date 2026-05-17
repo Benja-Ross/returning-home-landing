@@ -48,8 +48,32 @@ export default function MissionAndMethodPage() {
         </div>
       </section>
 
+      {/* Bridge: prototyping note */}
+      <section className="border-t border-slate-200/80 py-12 sm:py-14">
+        <div className={containerClass}>
+          <aside
+            className="max-w-2xl border-l border-slate-300/80 bg-stone-50/35 py-5 pl-6 pr-3 sm:pl-8 sm:pr-4"
+            aria-label={missionAndMethod.prototypingNote.title}
+          >
+            <h2 className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-neutral-600">
+              {missionAndMethod.prototypingNote.title}
+            </h2>
+            <div className="mt-5 space-y-4">
+              {missionAndMethod.prototypingNote.paragraphs.map((paragraph, i) => (
+                <p
+                  key={i}
+                  className="text-sm leading-[1.65] text-neutral-700 sm:text-[0.9375rem]"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </aside>
+        </div>
+      </section>
+
       {/* Unified Structure section: learning pattern + macro arc + chapter titles */}
-      <section className={`border-t border-slate-200 ${sectionClass} bg-stone-50 py-24 sm:py-28`}>
+      <section className={`border-t border-slate-200 ${sectionClass} bg-stone-50 pt-16 sm:pt-20 pb-24 sm:pb-28`}>
         <div className={containerClass}>
           <h2 className={`${titleClass} mb-16 sm:mb-20 text-center`}>{missionAndMethod.structure.title}</h2>
           <p className={`${bodyClass} mt-6 mb-16 sm:mb-20 text-center max-w-2xl mx-auto`}>
