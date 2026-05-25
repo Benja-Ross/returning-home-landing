@@ -12,6 +12,7 @@ export function GlobalNav(props: { variant?: "overlay" }) {
     { href: "/", label: "Home" },
     { href: "/mission-and-method", label: "Mission and Method" },
     { href: "/begin", label: "Begin" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
