@@ -12,6 +12,17 @@ type FormState = {
   website: string;
 };
 
+type Web3FormsResponse = {
+  success?: boolean;
+  message?: string;
+  body?: {
+    message?: string;
+  };
+};
+
+const web3FormsEndpoint = "https://api.web3forms.com/submit";
+const web3FormsAccessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
 const interestOptions = [
   { value: "participate", label: "Participating" },
   { value: "host", label: "Hosting a local experience" },
@@ -41,19 +52,44 @@ export function ContactForm() {
     setStatus("submitting");
     setErrorMessage("");
 
+    if (!web3FormsAccessKey) {
+      setStatus("error");
+      setErrorMessage("The contact form is not configured yet.");
+      return;
+    }
+
+    if (form.website) {
+      setStatus("success");
+      setForm(initialFormState);
+      return;
+    }
+
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(web3FormsEndpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          access_key: web3FormsAccessKey,
+          subject: `Returning Home contact: ${form.interestType}`,
+          from_name: "Returning Home contact form",
+          replyto: form.email,
+          name: form.name,
+          email: form.email,
+          interest_type: form.interestType,
+          message: form.message,
+          botcheck: "",
+        }),
       });
 
-      const result = (await response.json()) as { ok?: boolean; error?: string };
+      const result = (await response.json()) as Web3FormsResponse;
 
-      if (!response.ok || !result.ok) {
-        throw new Error(result.error ?? "Something went wrong.");
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.body?.message ?? result.message ?? "Something went wrong while sending your message.",
+        );
       }
 
       setStatus("success");
@@ -81,7 +117,7 @@ export function ContactForm() {
           Thank you for reaching out.
         </h2>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-700">
-          Your note has been received. We will read it with care and follow up as we are able.
+          Your note has been received. We will read it and follow up as we are able.
         </p>
         <button
           type="button"
