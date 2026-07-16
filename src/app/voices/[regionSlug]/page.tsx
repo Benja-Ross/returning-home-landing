@@ -498,12 +498,13 @@ export default async function VoicesRegionPage({ params }: Props) {
             </h3>
             <iframe
               className="mt-[15px]"
-              title="#6 Letting Go and Letting Come"
+              title="#7 If You Eat, You’re In: The Adventure of Incredible Edible"
               height="150"
               width="100%"
               style={{ border: "none", minWidth: "min(100%, 430px)", height: "150px" }}
+              scrolling="no"
               data-name="pb-iframe-player"
-              src="https://www.podbean.com/player-v2/?i=yxxx2-1abb8c8-pb&from=pb6admin&share=1&download=1&rtl=0&fonts=Arial&skin=1&font-color=auto&logo_link=episode_page&btn-skin=7"
+              src="https://www.podbean.com/player-v2/?i=543r8-1ac6a71-pb&from=pb6admin&share=1&download=1&rtl=0&fonts=Arial&skin=1&font-color=auto&logo_link=episode_page&btn-skin=7"
               loading="lazy"
             />
           </div>
